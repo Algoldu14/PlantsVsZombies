@@ -45,4 +45,29 @@ public class Celda {
         this.Zombie = Zombie;
     }
 
+    public String printCelda() { //Metodo para imprimir la celda dependiendo de lo que tenga
+
+        String imprimir;
+
+        if (this.getGirasol() != null) {
+
+            imprimir = this.Girasol.toString();
+
+        } else if (this.getLanzaGuisantes() != null) {
+
+            imprimir = this.LanzaGuisantes.toString();
+
+        } else {
+
+            imprimir = this.Zombie.toString();
+        }
+
+        return imprimir;
+    }
+
+    @Override
+    public String toString() {
+        return this.printCelda();
+    }
+
 }
