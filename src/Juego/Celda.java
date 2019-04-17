@@ -11,14 +11,11 @@ package Juego;
  */
 public class Celda {
 
-    private LanzaGuisantes LanzaGuisantes;
-    private Girasol Girasol;
-    private ZombieComun Zombie;
+    private LanzaGuisantes LanzaGuisantes = null;
+    private Girasol Girasol = null;
+    private ZombieComun Zombie = null;
 
-    public Celda(LanzaGuisantes LanzaGuisantes, Girasol Girasol, ZombieComun Zombie) { //valores a nulo ya que de original no hay ninguna cosa
-        this.LanzaGuisantes = null;
-        this.Girasol = null;
-        this.Zombie = null;
+    public Celda() {
     }
 
     public LanzaGuisantes getLanzaGuisantes() {
@@ -57,9 +54,11 @@ public class Celda {
 
             imprimir = this.LanzaGuisantes.toString();
 
-        } else {
+        } else if (this.getZombie() != null) {
 
             imprimir = this.Zombie.toString();
+        } else {
+            imprimir = "    ";//Los cuatro espacios en blanco que ocupa si hay una cosa
         }
 
         return imprimir;
@@ -67,7 +66,7 @@ public class Celda {
 
     @Override
     public String toString() {
-        return this.printCelda();
+        return ("|----------|\n" + "|   " + this.printCelda() + "   |\n" + "|----------|");
     }
 
 }

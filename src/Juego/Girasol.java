@@ -13,7 +13,7 @@ public class Girasol extends Planta{
     
     private int frencuenciaG;
 
-    public Girasol(int frencuenciaG, String nombre, int coste, int resistencia) {
+    public Girasol( String nombre,int frencuenciaG, int coste, int resistencia) {
         super(nombre, coste, resistencia);
         this.frencuenciaG = frencuenciaG;
     }
