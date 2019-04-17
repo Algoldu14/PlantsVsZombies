@@ -9,8 +9,6 @@ package Juego;
  *
  * @author Alvaro
  */
-public class ZombieComun {
-    
-    
+public class Celda {
     
 }

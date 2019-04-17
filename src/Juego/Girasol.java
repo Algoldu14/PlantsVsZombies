@@ -9,6 +9,6 @@ package Juego;
  *
  * @author Alvaro
  */
-public class Girasol {
+public class Girasol extends Planta{
     
 }

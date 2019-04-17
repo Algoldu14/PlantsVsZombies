@@ -9,6 +9,6 @@ package Juego;
  *
  * @author Alvaro
  */
-public class LanzaGuisantes {
+public class LanzaGuisantes extends Planta {
     
 }
