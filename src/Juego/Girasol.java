@@ -11,4 +11,24 @@ package Juego;
  */
 public class Girasol extends Planta{
     
+    private int frencuenciaG;
+
+    public Girasol(int frencuenciaG, String nombre, int coste, int resistencia) {
+        super(nombre, coste, resistencia);
+        this.frencuenciaG = frencuenciaG;
+    }
+
+    public int getFrencuenciaG() {
+        return frencuenciaG;
+    }
+
+    public void setFrencuenciaG(int frencuenciaG) {
+        this.frencuenciaG = frencuenciaG;
+    }
+
+    @Override
+    public String toString() {
+        return this.getNombre() + "(" + this.getResistencia() + ")";
+    }
+    
 }

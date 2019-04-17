@@ -11,4 +11,6 @@ package Juego;
  */
 public class Tablero {
     
+    private Celda matrizTablero[][];
+    
 }
