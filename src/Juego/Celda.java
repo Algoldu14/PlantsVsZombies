@@ -11,62 +11,24 @@ package Juego;
  */
 public class Celda {
 
-    private LanzaGuisantes LanzaGuisantes = null;
-    private Girasol Girasol = null;
-    private ZombieComun Zombie = null;
+    private NPC NPC;
 
-    public Celda() {
+    public Celda(NPC NPC) {
+        this.NPC = NPC;
     }
 
-    public LanzaGuisantes getLanzaGuisantes() {
-        return LanzaGuisantes;
+    public NPC getNPC() {
+        return NPC;
     }
 
-    public void setLanzaGuisantes(LanzaGuisantes LanzaGuisantes) {
-        this.LanzaGuisantes = LanzaGuisantes;
+    public void setNPC(NPC NPC) {
+        this.NPC = NPC;
     }
 
-    public Girasol getGirasol() {
-        return Girasol;
-    }
-
-    public void setGirasol(Girasol Girasol) {
-        this.Girasol = Girasol;
-    }
-
-    public ZombieComun getZombie() {
-        return Zombie;
-    }
-
-    public void setZombie(ZombieComun Zombie) {
-        this.Zombie = Zombie;
-    }
-
-    public String printCelda() { //Metodo para imprimir la celda dependiendo de lo que tenga
-
-        String imprimir;
-
-        if (this.getGirasol() != null) {
-
-            imprimir = this.Girasol.toString();
-
-        } else if (this.getLanzaGuisantes() != null) {
-
-            imprimir = this.LanzaGuisantes.toString();
-
-        } else if (this.getZombie() != null) {
-
-            imprimir = this.Zombie.toString();
-        } else {
-            imprimir = "    ";//Los cuatro espacios en blanco que ocupa si hay una cosa
-        }
-
-        return imprimir;
-    }
-
+    
     @Override
     public String toString() {
-        return ("|----------|\n" + "|   " + this.printCelda() + "   |\n" + "|----------|");
+        return ("|----------|\n" + "|   " + this.getNPC().toString() + "   |\n" + "|----------|");
     }
-
+     
 }

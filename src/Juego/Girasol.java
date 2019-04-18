@@ -9,26 +9,26 @@ package Juego;
  *
  * @author Alvaro
  */
-public class Girasol extends Planta{
+public class Girasol extends NPC {
+
+    private int coste;
+
+    public Girasol(String nombre, int coste, int daño, int resistencia, int frecuencia) {
+        super(nombre, daño, resistencia, frecuencia);
+        this.coste = coste;
+    }
+
+    public int getCoste() {
+        return coste;
+    }
+
+    public void setCoste(int coste) {
+        this.coste = coste;
+    }
     
-    private int frencuenciaG;
-
-    public Girasol( String nombre,int frencuenciaG, int coste, int resistencia) {
-        super(nombre, coste, resistencia);
-        this.frencuenciaG = frencuenciaG;
-    }
-
-    public int getFrencuenciaG() {
-        return frencuenciaG;
-    }
-
-    public void setFrencuenciaG(int frencuenciaG) {
-        this.frencuenciaG = frencuenciaG;
-    }
-
     @Override
     public String toString() {
         return this.getNombre() + "(" + this.getResistencia() + ")";
     }
-    
+
 }

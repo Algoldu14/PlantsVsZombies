@@ -9,16 +9,18 @@ package Juego;
  *
  * @author Alvaro
  */
-public class Planta {
-    
-    private String nombre;
-    private int coste;
-    private int resistencia;
+public class NPC {
 
-    public Planta(String nombre, int coste, int resistencia) {
+    private String nombre;
+    private int daño;
+    private int resistencia;
+    private int frecuencia;
+
+    public NPC(String nombre, int daño, int resistencia, int frecuencia) {
         this.nombre = nombre;
-        this.coste = coste;
+        this.daño = daño;
         this.resistencia = resistencia;
+        this.frecuencia = frecuencia;
     }
 
     public String getNombre() {
@@ -29,12 +31,12 @@ public class Planta {
         this.nombre = nombre;
     }
 
-    public int getCoste() {
-        return coste;
+    public int getDaño() {
+        return daño;
     }
 
-    public void setCoste(int coste) {
-        this.coste = coste;
+    public void setDaño(int daño) {
+        this.daño = daño;
     }
 
     public int getResistencia() {
@@ -45,6 +47,12 @@ public class Planta {
         this.resistencia = resistencia;
     }
 
-    
-}
+    public int getFrecuencia() {
+        return frecuencia;
+    }
 
+    public void setFrecuencia(int frecuencia) {
+        this.frecuencia = frecuencia;
+    }
+
+}

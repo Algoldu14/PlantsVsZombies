@@ -23,21 +23,36 @@ public class Tablero {
 
         for (int i = 0; i < filas; i++) {
             for (int j = 0; j < columnas; j++) {
-                Celda celdaV = new Celda();
-                matrizTablero[i][j] = celdaV;
+                Celda celda = new Celda(null); //metemos celdas vacías
+                matrizTablero[i][j] = celda;
             }
         }
 
         for (int i = 0; i < filas; i++) {
-            
             for (int j = 0; j < columnas; j++) {
                 System.out.println(matrizTablero[i][j].toString());
-                
-                
+
             }
 
         }
 
+    }
+
+    public void introducirNPC (String comando) {
+
+        String arrayComando[] = comando.split(" ");
+        int filaM = Integer.parseInt(arrayComando[1]);
+        int columnaM = Integer.parseInt(arrayComando[2]);
+        
+        if (arrayComando[0].equals("G")) {
+            Girasol girasol = new Girasol("G",20,0,3,2);
+            matrizTablero[filaM][columnaM].setNPC(girasol);
+        } else if (arrayComando[0].equals("L")) {
+            LanzaGuisantes LG = new LanzaGuisantes("L",50,1,3,1);
+            matrizTablero[filaM][columnaM].setNPC(LG);
+        } else {
+            System.out.println("Error, NPC mal introducido :(");
+        }
     }
 
 }

@@ -9,36 +9,26 @@ package Juego;
  *
  * @author Alvaro
  */
-public class LanzaGuisantes extends Planta {
-    
-    private int daño;
-    private int frecuenciaL;
+public class LanzaGuisantes extends NPC {
 
-    public LanzaGuisantes(int daño, int frecuenciaL, String nombre, int coste, int resistencia) {
-        super(nombre, coste, resistencia);
-        this.daño = daño;
-        this.frecuenciaL = frecuenciaL;
+    private int coste;
+
+    public LanzaGuisantes(String nombre, int coste, int daño, int resistencia, int frecuencia) {
+        super(nombre, daño, resistencia, frecuencia);
+        this.coste = coste;
     }
 
-    public int getDaño() {
-        return daño;
+    public int getCoste() {
+        return coste;
     }
 
-    public void setDaño(int daño) {
-        this.daño = daño;
-    }
-
-    public int getFrecuenciaL() {
-        return frecuenciaL;
-    }
-
-    public void setFrecuenciaL(int frecuenciaL) {
-        this.frecuenciaL = frecuenciaL;
+    public void setCoste(int coste) {
+        this.coste = coste;
     }
 
     @Override
     public String toString() {
         return this.getNombre() + "(" + this.getResistencia() + ")";
     }
-    
+
 }
