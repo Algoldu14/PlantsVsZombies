@@ -18,6 +18,8 @@ public class Run {
       
         ZombieComun zombie = new ZombieComun("Z",2,5,2);
         Celda celda = new Celda(zombie);
+        
+        System.out.println(celda.toString());
     }
 
 }
