@@ -55,4 +55,10 @@ public class NPC {
         this.frecuencia = frecuencia;
     }
 
+    @Override
+    public String toString() {
+        return "    ";
+    }
+
+    
 }

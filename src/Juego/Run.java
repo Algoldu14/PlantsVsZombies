@@ -16,8 +16,13 @@ public class Run {
      */
     public static void main(String[] args) {
 
-        int turno = 0;
-
+        Celda[][] matriz=new Celda[0][0];
+        Tablero tablero=new Tablero(matriz,2);
+        tablero.crearTablero(8,9);
+       
+       
+       tablero.imprimirTablero(tablero.crearTablero(8,9));
+       
     }
 
 }

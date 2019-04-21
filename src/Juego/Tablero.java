@@ -21,15 +21,33 @@ public class Tablero {
         this.turno = turno;
     }
 
+    public Celda[][] getMatrizTablero() {
+        return matrizTablero;
+    }
+
+    public void setMatrizTablero(Celda[][] matrizTablero) {
+        this.matrizTablero = matrizTablero;
+    }
+
+    public int getTurno() {
+        return turno;
+    }
+
+    public void setTurno(int turno) {
+        this.turno = turno;
+    }
+    
+    
+
     public void actualizarTablero(String comando) {
 
         if (this.turno <= 30) {
             comando = comando.toUpperCase();
             String arrayComando[] = comando.split(" ");
-
             switch (arrayComando[0]) {
                 case "N": //Si en el comando hay una N inicia el juego
-                    this.imprimirTableroVacio(Integer.parseInt(arrayComando[1]), Integer.parseInt(arrayComando[2]));
+                    this.matrizTablero = this.crearTablero(Integer.parseInt(arrayComando[1]), Integer.parseInt(arrayComando[2]));
+                    this.imprimirTablero(this.matrizTablero);
                     break;
                 case "L": //Si son las plantas
                     this.introducirPlanta(comando);
@@ -41,32 +59,35 @@ public class Tablero {
                     System.out.println("Error al introducir el comando.");
                     break;
             }
-
             this.turno++;
+            this.imprimirTablero(this.matrizTablero);
         } else {
             System.out.println("Fin del juego");
         }
     }
 
-    public void imprimirTableroVacio(int filas, int columnas) {
+    public Celda[][] crearTablero(int filas, int columnas) {
 
         matrizTablero = new Celda[filas][columnas];
 
         for (int i = 0; i < filas; i++) {
             for (int j = 0; j < columnas; j++) {
-                Celda celda = new Celda(null); //metemos celdas vacías
+                NPC NPC=new NPC(" ",0,0,0);
+                Celda celda = new Celda(NPC); //metemos celdas vacías
                 matrizTablero[i][j] = celda;
             }
         }
+        return matrizTablero;
+    }
 
-        for (int i = 0; i < filas; i++) {
-            for (int j = 0; j < columnas; j++) {
-                System.out.print(matrizTablero[i][j].toString());
+    public void imprimirTablero(Celda[][] matrizTablero) {
 
+        for (int f = 0; f < matrizTablero.length; f++) {
+            for (int c = 0; c < matrizTablero[f].length; c++) {
+                System.out.print(matrizTablero[f][c].toString());
             }
-
+            System.out.println();
         }
-
     }
 
     public void introducirPlanta(String comandoJuego) {
@@ -145,4 +166,5 @@ public class Tablero {
                 }
         }
     }
+
 }
