@@ -15,11 +15,9 @@ public class Run {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-      
-        ZombieComun zombie = new ZombieComun("Z",2,5,2);
-        Celda celda = new Celda(zombie);
-        
-        System.out.println(celda.toString());
+
+        int turno = 0;
+
     }
 
 }
