@@ -10,7 +10,7 @@ package Juego;
  * @author Alvaro
  */
 public class Celda {
-
+    
     private NPC NPC;
 
     public Celda(NPC NPC) {
@@ -24,11 +24,11 @@ public class Celda {
     public void setNPC(NPC NPC) {
         this.NPC = NPC;
     }
-
+    
     
     @Override
     public String toString() {
-        return ("|----------|\n" + "|   " + this.getNPC().toString() + "   |\n" + "|----------|");
+        return this.getNPC().toString();
     }
-     
+    
 }

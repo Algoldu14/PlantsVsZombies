@@ -23,6 +23,9 @@ public class NPC {
         this.frecuencia = frecuencia;
     }
 
+    public NPC() {
+    } //constructor para las celdas vacías
+
     public String getNombre() {
         return nombre;
     }
@@ -57,7 +60,7 @@ public class NPC {
 
     @Override
     public String toString() {
-        return "    ";
+        return "|    ";
     }
 
     
