@@ -60,7 +60,7 @@ public class NPC {
 
     @Override
     public String toString() {
-        return "|    ";
+        return "        ";
     }
 
     

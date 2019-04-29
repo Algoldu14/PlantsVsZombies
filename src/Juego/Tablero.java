@@ -21,8 +21,8 @@ public class Tablero {
     private int turno;
 
     public Tablero() {
-        Tablero.columnas = columnas;
-        Tablero.filas = filas;
+        this.columnas = columnas;
+        this.filas = filas;
         this.soles = 50;
         this.matrizTablero = new Celda[filas * 2][columnas];
         this.turno = 1;
@@ -77,36 +77,64 @@ public class Tablero {
         this.turno = turno;
     }
 
-    public void crearTablero() {
-        for (int i = 0; i < ((this.getMatrizTablero().length)); i++) {
-            for (int j = 0; j < (this.getColumnas()); j++) {
-                if (i % 2 == 0) {
-                    if (j == 0) {
-                        System.out.print("|-------");
-                    } else {
-                        System.out.print("--------");
-                    }
-                } else {
-                    matrizTablero[i][j] = new Celda(new NPC());
-                    matrizTablero[i][j].toString();
-                    if (j == this.getColumnas()) {
-                        System.out.println("");
-                    }
+    public void crearTableroIni(int filas, int columnas) {
+
+        for (int fila = 0; fila <= filas * 2; fila++) {
+            if (fila % 2 == 0) {
+                for (int columna = 0; columna < columnas; columna++) {
+                    System.out.print("|");
+                    System.out.print("--------");
+                    System.out.print("|");
                 }
+                System.out.println("");
+            } else {
+                for (int columna = 0; columna < columnas; columna++) {
+                    System.out.print("|");
+                    System.out.print("        ");
+                    System.out.print("|");
+                }
+                System.out.println("");
             }
-            System.out.println("|");
 
         }
     }
 
-    /*public void actualizarTablero(String comando) {
+    public void pintarTablero(int filas, int columnas) {
+
+        this.setMatrizTablero(this.crearMatrizTablero(filas, columnas));
+
+        for (int fila = 0; fila < filas * 2; fila++) {
+            if (fila % 2 == 0) {
+                for (int columna = 0; columna < columnas; columna++) {
+                    System.out.print("|");
+                    System.out.print("--------");
+                    System.out.print("|");
+                }
+                System.out.println("");
+            } else {
+                for (int columna = 0; columna < columnas; columna++) {
+                    System.out.print("|");
+                    System.out.print(this.matrizTablero[(int) (fila / 2)][columna].toString());
+                    System.out.print("|");
+                }
+                System.out.println("");
+            }
+        }
+        for (int columna = 0; columna < columnas; columna++) {
+            System.out.print("|");
+            System.out.print("--------");
+            System.out.print("|");
+        }
+    }
+
+    public void actualizarTablero(String comando) {
 
         if (this.turno <= 30) {
             comando = comando.toUpperCase();
             String arrayComando[] = comando.split(" ");
             switch (arrayComando[0]) {
                 case "N": //Si en el comando hay una N inicia el juego
-                    this.crearTablero();
+                    this.crearTableroIni(this.filas, this.columnas);
                     // this.imprimirTablero(this.matrizTablero);
                     break;
                 case "L": //Si son las plantas
@@ -120,13 +148,13 @@ public class Tablero {
                     break;
             }
             this.turno++;
-            this.imprimirTablero(this.matrizTablero);
+            this.pintarTablero(this.filas, this.columnas);
         } else {
             System.out.println("Fin del juego");
         }
-    }*/
+    }
 
- /*public Celda[][] crearTablero(int filas, int columnas) {
+    public Celda[][] crearMatrizTablero(int filas, int columnas) {
 
         matrizTablero = new Celda[filas][columnas];
 
@@ -138,15 +166,6 @@ public class Tablero {
             }
         }
         return matrizTablero;
-    }*/
-    public void imprimirTablero(Celda[][] matrizTablero) {
-
-        for (int f = 0; f < matrizTablero.length; f++) {
-            for (int c = 0; c < matrizTablero[f].length; c++) {
-                System.out.print(matrizTablero[f][c].toString());
-            }
-            System.out.println();
-        }
     }
 
     public void introducirPlanta(String comandoJuego) {

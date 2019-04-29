@@ -33,8 +33,8 @@ public class Run {
         tablero.setMatrizTablero(matriz);
         
         tablero.setDificultad(dif);
-             
-        tablero.crearTablero();
+        tablero.pintarTablero(filas, columnas);
+        
     }
 
 }
