@@ -7,6 +7,7 @@ package Juego;
 
 import java.util.Random;
 import java.util.Scanner;
+import java.util.Set;
 
 /**
  *
@@ -26,7 +27,7 @@ public final class Tablero {
         this.columnas = columnas;
         this.filas = filas;
         this.soles = 50;
-        this.matrizTablero = this.crearMatrizTablero(this.filas, this.columnas);
+        this.matrizTablero = matrizTablero;
         this.turno = 1;
         this.dificultad = dificultad;
         this.victoria = false;
@@ -104,20 +105,19 @@ public final class Tablero {
 
     public void pintarTablero(int filas, int columnas) {
 
-        //this.setMatrizTablero(this.crearMatrizTablero(this.filas, this.columnas));
         for (int fila = 0; fila < this.filas * 2; fila++) {
             if (fila % 2 == 0) {
                 for (int columna = 0; columna < columnas; columna++) {
                     System.out.print("|");
                     System.out.print("--------");
-                    
+
                 }
                 System.out.println("|");
             } else {
                 for (int columna = 0; columna < columnas; columna++) {
                     System.out.print("|");
                     System.out.print(this.matrizTablero[(int) (fila / 2)][columna].toString());
-                    
+
                 }
                 System.out.println("|");
             }
@@ -125,12 +125,14 @@ public final class Tablero {
         for (int columna = 0; columna < columnas; columna++) {
             System.out.print("|");
             System.out.print("--------");
-            System.out.print("|");
+            
         }
+        System.out.println("|");
+        
     }
 
     public void actualizarTablero() {
-
+        int turnoT = this.getTurno();
         Scanner entrada = new Scanner(System.in);
         while (!this.victoria && this.turno <= 30) {
 
@@ -141,17 +143,25 @@ public final class Tablero {
 
             switch (arrayComando[0]) {
                 case "N": //Si en el comando hay una N inicia el juego
+                    this.setDificultad(arrayComando[1]);
                     this.setFilas(Integer.parseInt(arrayComando[1]));
                     this.setColumnas(Integer.parseInt(arrayComando[2]));
                     this.crearTableroIni(Integer.parseInt(arrayComando[1]), Integer.parseInt(arrayComando[2]));
-                    System.out.println("Tienes: " + this.getSoles() + " totales");
+                    this.setMatrizTablero(this.crearMatrizTablero(this.getFilas(), this.getColumnas()));
+                    System.out.println("Tienes: " + this.getSoles() + " totales    Turno: "+this.getTurno());
                     System.out.println("");
                     break;
                 case "L": //Si son las plantas
                     this.introducirPlanta(comando);
+                    this.pintarTablero(this.getFilas(), this.getColumnas());
+                    System.out.print("Turno: "+this.getTurno());
+                    System.out.println("");
                     break;
                 case "G":
                     this.introducirPlanta(comando);
+                    this.pintarTablero(this.getFilas(), this.getColumnas());
+                    System.out.print("Turno: "+this.getTurno());
+                    System.out.println("");
                     break;
                 case "AYUDA":
                     System.out.println("Manual del Juego: ");
@@ -163,15 +173,19 @@ public final class Tablero {
                     System.out.println("");
                     break;
                 case "": // Si es un enter
+                    this.insertarZombieAleatorio();
+                    turnoT = turnoT+1;
+                    this.setTurno(turnoT);
                     this.pintarTablero(this.getFilas(), this.getColumnas());
-                    this.insertarZombieAleatorio(comando);
-                    this.setTurno(this.turno++);
+                    System.out.println("");
+                    System.out.print("Turno: "+this.getTurno());
+                    System.out.println("");
                     break;
                 case "S":
                     System.exit(0); //Sale del programa
                     break;
                 default:
-                    System.out.println("Error al introducir el comando."); 
+                    System.out.println("Error al introducir el comando.");
                     break;
             }
 
@@ -193,8 +207,7 @@ public final class Tablero {
     }
 
     public void introducirPlanta(String comandoJuego) {
-        
-        
+
         String arrayComando[] = comandoJuego.split(" ");
         int filaM = Integer.parseInt(arrayComando[1]);
         int columnaM = Integer.parseInt(arrayComando[2]);
@@ -213,13 +226,12 @@ public final class Tablero {
         }
     }
 
-    public void insertarZombieAleatorio(String comando) {
+    public void insertarZombieAleatorio() {
 
-        String comandoB = comando.toUpperCase();
-        String arrayComando[] = comandoB.split(" ");
+        
         Random rand = new Random();
 
-        switch (arrayComando[3]) {
+        switch (this.getDificultad()) {
             case "BAJA":
                 if (this.turno >= 10) {
                     if (this.turno == 10 || this.turno == 13 || this.turno == 16
