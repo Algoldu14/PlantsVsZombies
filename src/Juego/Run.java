@@ -5,8 +5,7 @@
  */
 package Juego;
 
-import java.util.HashSet;
-import java.util.Scanner;
+
 
 /**
  *
@@ -20,21 +19,19 @@ public class Run {
     public static void main(String[] args) {
 
         
-        Scanner entrada = new Scanner(System.in);
-        
-        System.out.println("Introduzca filas, columnas y dificultad.");
-        int filas = entrada.nextInt();
-        int columnas = entrada.nextInt();
-        String dif= entrada.next();
-        Celda[][] matriz = new Celda[filas][columnas];
         Tablero tablero = new Tablero();
-        tablero.setFilas(filas);
-        tablero.setColumnas(columnas);
-        tablero.setMatrizTablero(matriz);
         
-        tablero.setDificultad(dif);
-        tablero.pintarTablero(filas, columnas);
         
+        
+        
+        tablero.actualizarTablero();
+        
+        
+
+        
+
+        
+
     }
 
 }
