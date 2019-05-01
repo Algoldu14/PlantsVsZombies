@@ -183,6 +183,7 @@ public final class Tablero {
                     break;
                 case "": // Si es un enter
                     this.insertarZombieAleatorio();
+                    this.moverZombie();
                     this.setTurno(turno++);
                     this.pintarTablero(this.getFilas(), this.getColumnas());
                     System.out.println("");
@@ -236,14 +237,13 @@ public final class Tablero {
     public void insertarZombieAleatorio() {
 
         //Random rand = new Random();
-
         switch (this.getDificultad()) {
             case "BAJA":
                 if (this.turno >= 10) {
                     if (this.turno == 10 || this.turno == 13 || this.turno == 16
                             || this.turno == 19 || this.turno == 22) {
                         ZombieComun zombie = new ZombieComun("Z", 1, 5, 2);
-                        this.matrizTablero[(int)(Math.random() * this.getFilas())+1][this.getColumnas()].setNPC(zombie);
+                        this.matrizTablero[(int) (Math.random() * this.getFilas())][this.getColumnas() - 1].setNPC(zombie);
                     }
                 }
                 break;
@@ -254,7 +254,7 @@ public final class Tablero {
                             || this.turno == 16 || this.turno == 18 || this.turno == 19 || this.turno == 20
                             || this.turno == 22 || this.turno == 23 || this.turno == 24) {
                         ZombieComun zombie = new ZombieComun("Z", 1, 5, 2);
-                        this.matrizTablero[(int)(Math.random() * this.getFilas())+1][this.getColumnas()].setNPC(zombie);
+                        this.matrizTablero[(int) (Math.random() * this.getFilas())][this.getColumnas() - 1].setNPC(zombie);
                     }
                 }
                 break;
@@ -265,12 +265,12 @@ public final class Tablero {
                             || this.turno == 22 || this.turno == 23 || this.turno == 24) {
                         for (int i = 0; i < 2; i++) {
                             ZombieComun zombie = new ZombieComun("Z", 1, 5, 2);
-                            this.matrizTablero[(int)(Math.random() * this.getFilas())+1][this.getColumnas()].setNPC(zombie);
+                            this.matrizTablero[(int) (Math.random() * this.getFilas())][this.getColumnas() - 1].setNPC(zombie);
                         }
                     } else if (this.turno == 17) {
                         for (int i = 0; i < 3; i++) {
                             ZombieComun zombie = new ZombieComun("Z", 1, 5, 2);
-                            this.matrizTablero[(int)(Math.random() * this.getFilas())+1][this.getColumnas()].setNPC(zombie);
+                            this.matrizTablero[(int) (Math.random() * this.getFilas())][this.getColumnas() - 1].setNPC(zombie);
                         }
                     }
                 }
@@ -280,17 +280,35 @@ public final class Tablero {
                     if (this.turno % 2 == 0) {
                         for (int i = 0; i < 2; i++) {
                             ZombieComun zombie = new ZombieComun("Z", 1, 5, 2);
-                            
-                            this.matrizTablero[(int)(Math.random() * this.getFilas())][this.getColumnas()-1].setNPC(zombie);
+
+                            this.matrizTablero[(int) (Math.random() * this.getFilas())][this.getColumnas() - 1].setNPC(zombie);
                         }
                     } else {
                         for (int i = 0; i < 3; i++) {
                             ZombieComun zombie = new ZombieComun("Z", 1, 5, 2);
-                            this.matrizTablero[(int)(Math.random() * this.getFilas())][this.getColumnas()-1].setNPC(zombie);                        }
+                            this.matrizTablero[(int) (Math.random() * this.getFilas())][this.getColumnas() - 1].setNPC(zombie);
+                        }
                     }
                 }
                 break;
         }
     }
 
+    public void moverZombie() {
+        NPC NPC = new NPC();
+        for (int i = 0; i < this.filas; i++) { //bajar frecuencia a los zombies
+            for (int j = 0; j < this.columnas; j++) {
+                if (this.matrizTablero[i][j].getNPC() instanceof ZombieComun){
+                    if(this.matrizTablero[i][j].getNPC().getFrecuencia()==0){
+                       NPC = this.matrizTablero[i][j].getNPC(); //en el NPC vacío metemos el que tiene la frecuencia a 0 para moverlo
+                       this.matrizTablero[i][j].setNPC(new NPC()); //en la posición original metemos un NPC vacío
+                       this.matrizTablero[i-1][j].setNPC(NPC); //metemos el NPC en la siguiente casilla
+                       this.matrizTablero[i-1][j].getNPC().setFrecuencia(2); //reseteamos la frecuencia del NPC
+                    } else {
+                        this.matrizTablero[i][j].getNPC().setFrecuencia(this.matrizTablero[i][j].getNPC().getFrecuencia()-1); //le restamos 1 a la frecuencia del NPC
+                    }
+                }
+            }
+        }
+    }
 }

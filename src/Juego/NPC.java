@@ -14,7 +14,7 @@ public class NPC {
     private String nombre;
     private int daño;
     private int resistencia;
-    private int frecuencia;
+    private int frecuencia;      
 
     public NPC(String nombre, int daño, int resistencia, int frecuencia) {
         this.nombre = nombre;

@@ -5,8 +5,6 @@
  */
 package Juego;
 
-
-
 /**
  *
  * @author Alvaro
@@ -18,19 +16,9 @@ public class Run {
      */
     public static void main(String[] args) {
 
-        
         Tablero tablero = new Tablero();
-        
-        
-        
-        
+
         tablero.actualizarTablero();
-        
-        
-
-        
-
-        
 
     }
 
