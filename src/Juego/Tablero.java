@@ -81,6 +81,14 @@ public final class Tablero {
         this.turno = turno;
     }
 
+    public boolean getVictorio() {
+        return victoria;
+    }
+
+    public void setVictoria(boolean victoria) {
+        this.victoria = victoria;
+    }
+
     public void crearTableroIni(int filas, int columnas) {
 
         for (int fila = 0; fila <= filas * 2; fila++) {
@@ -125,14 +133,14 @@ public final class Tablero {
         for (int columna = 0; columna < columnas; columna++) {
             System.out.print("|");
             System.out.print("--------");
-            
+
         }
         System.out.println("|");
-        
+
     }
 
     public void actualizarTablero() {
-        int turnoT = this.getTurno();
+        int turno = this.getTurno();
         Scanner entrada = new Scanner(System.in);
         while (!this.victoria && this.turno <= 30) {
 
@@ -143,24 +151,25 @@ public final class Tablero {
 
             switch (arrayComando[0]) {
                 case "N": //Si en el comando hay una N inicia el juego
-                    this.setDificultad(arrayComando[1]);
+                    this.setDificultad(arrayComando[3]);
                     this.setFilas(Integer.parseInt(arrayComando[1]));
                     this.setColumnas(Integer.parseInt(arrayComando[2]));
                     this.crearTableroIni(Integer.parseInt(arrayComando[1]), Integer.parseInt(arrayComando[2]));
                     this.setMatrizTablero(this.crearMatrizTablero(this.getFilas(), this.getColumnas()));
-                    System.out.println("Tienes: " + this.getSoles() + " totales    Turno: "+this.getTurno());
+                    System.out.println("Tienes: " + this.getSoles() + " soles");
+                    System.out.println("Turno: " + this.getTurno());
                     System.out.println("");
                     break;
                 case "L": //Si son las plantas
                     this.introducirPlanta(comando);
                     this.pintarTablero(this.getFilas(), this.getColumnas());
-                    System.out.print("Turno: "+this.getTurno());
+                    System.out.print("Turno: " + this.getTurno());
                     System.out.println("");
                     break;
                 case "G":
                     this.introducirPlanta(comando);
                     this.pintarTablero(this.getFilas(), this.getColumnas());
-                    System.out.print("Turno: "+this.getTurno());
+                    System.out.print("Turno: " + this.getTurno());
                     System.out.println("");
                     break;
                 case "AYUDA":
@@ -174,11 +183,10 @@ public final class Tablero {
                     break;
                 case "": // Si es un enter
                     this.insertarZombieAleatorio();
-                    turnoT = turnoT+1;
-                    this.setTurno(turnoT);
+                    this.setTurno(turno++);
                     this.pintarTablero(this.getFilas(), this.getColumnas());
                     System.out.println("");
-                    System.out.print("Turno: "+this.getTurno());
+                    System.out.print("Turno: " + this.getTurno());
                     System.out.println("");
                     break;
                 case "S":
@@ -188,7 +196,6 @@ public final class Tablero {
                     System.out.println("Error al introducir el comando.");
                     break;
             }
-
         }
     }
 
@@ -228,8 +235,7 @@ public final class Tablero {
 
     public void insertarZombieAleatorio() {
 
-        
-        Random rand = new Random();
+        //Random rand = new Random();
 
         switch (this.getDificultad()) {
             case "BAJA":
@@ -237,9 +243,10 @@ public final class Tablero {
                     if (this.turno == 10 || this.turno == 13 || this.turno == 16
                             || this.turno == 19 || this.turno == 22) {
                         ZombieComun zombie = new ZombieComun("Z", 1, 5, 2);
-                        matrizTablero[(rand.nextInt() * matrizTablero.length)][matrizTablero.length].setNPC(zombie);
+                        this.matrizTablero[(int)(Math.random() * this.getFilas())+1][this.getColumnas()].setNPC(zombie);
                     }
                 }
+                break;
             case "MEDIA":
                 if (this.turno >= 7) {
                     if (this.turno == 7 || this.turno == 8 || this.turno == 9 || this.turno == 10
@@ -247,9 +254,10 @@ public final class Tablero {
                             || this.turno == 16 || this.turno == 18 || this.turno == 19 || this.turno == 20
                             || this.turno == 22 || this.turno == 23 || this.turno == 24) {
                         ZombieComun zombie = new ZombieComun("Z", 1, 5, 2);
-                        matrizTablero[(rand.nextInt() * matrizTablero.length)][matrizTablero.length].setNPC(zombie);
+                        this.matrizTablero[(int)(Math.random() * this.getFilas())+1][this.getColumnas()].setNPC(zombie);
                     }
                 }
+                break;
             case "ALTA":
                 if (this.turno >= 5) {
                     if (this.turno == 5 || this.turno == 9 || this.turno == 10 || this.turno == 11
@@ -257,29 +265,31 @@ public final class Tablero {
                             || this.turno == 22 || this.turno == 23 || this.turno == 24) {
                         for (int i = 0; i < 2; i++) {
                             ZombieComun zombie = new ZombieComun("Z", 1, 5, 2);
-                            matrizTablero[(rand.nextInt() * matrizTablero.length)][matrizTablero.length].setNPC(zombie);
+                            this.matrizTablero[(int)(Math.random() * this.getFilas())+1][this.getColumnas()].setNPC(zombie);
                         }
                     } else if (this.turno == 17) {
                         for (int i = 0; i < 3; i++) {
                             ZombieComun zombie = new ZombieComun("Z", 1, 5, 2);
-                            matrizTablero[(rand.nextInt() * matrizTablero.length)][matrizTablero.length].setNPC(zombie);
+                            this.matrizTablero[(int)(Math.random() * this.getFilas())+1][this.getColumnas()].setNPC(zombie);
                         }
                     }
                 }
+                break;
             case "IMPOSIBLE":
-                if (this.turno >= 5 || this.turno < 25) {
+                if (this.getTurno() >= 5 && this.getTurno() < 25) {
                     if (this.turno % 2 == 0) {
                         for (int i = 0; i < 2; i++) {
                             ZombieComun zombie = new ZombieComun("Z", 1, 5, 2);
-                            matrizTablero[(rand.nextInt() * matrizTablero.length)][matrizTablero.length].setNPC(zombie);
+                            
+                            this.matrizTablero[(int)(Math.random() * this.getFilas())][this.getColumnas()-1].setNPC(zombie);
                         }
                     } else {
                         for (int i = 0; i < 3; i++) {
                             ZombieComun zombie = new ZombieComun("Z", 1, 5, 2);
-                            matrizTablero[(rand.nextInt() * matrizTablero.length)][matrizTablero.length].setNPC(zombie);
-                        }
+                            this.matrizTablero[(int)(Math.random() * this.getFilas())][this.getColumnas()-1].setNPC(zombie);                        }
                     }
                 }
+                break;
         }
     }
 
