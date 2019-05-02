@@ -186,10 +186,10 @@ public final class Tablero {
                     System.out.println("");
                     break;
                 case "": // Si es un enter
-                    this.setTurno(turno++);
                     this.sumarGirasoles();
                     this.ataquePlanta();
                     this.moverZombie();
+                    this.setTurno(turno++);
                     this.insertarZombieAleatorio();
                     this.pintarTablero(this.getFilas(), this.getColumnas());
                     System.out.println("");
@@ -351,14 +351,14 @@ public final class Tablero {
                         if (this.matrizTablero[i][columna].getNPC() instanceof ZombieComun && this.matrizTablero[i][j].getNPC().getResistencia() > 0) {
                             this.matrizTablero[i][columna].getNPC().setResistencia(this.matrizTablero[i][columna].getNPC().getResistencia() - 1);
                             this.matrizTablero[i][j].getNPC().setFrecuencia(this.matrizTablero[i][j].getNPC().getFrecuencia() - 1);
-                        } else if (this.matrizTablero[i][columna].getNPC() instanceof ZombieComun && this.matrizTablero[i][j].getNPC().getResistencia() <= 0) {
+                        } else  {
                             this.matrizTablero[i][columna] = new Celda(new NPC());
                         }
                     }
-                } else {
+                } else if(this.matrizTablero[i][j].getNPC() instanceof LanzaGuisantes && this.matrizTablero[i][j].getNPC().getFrecuencia() !=1 ){
                     this.matrizTablero[i][j].getNPC().setFrecuencia(1);
                 }
             }
         }
     }
-}
+} //this.matrizTablero[i][columna].getNPC() instanceof ZombieComun && this.matrizTablero[i][j].getNPC().getResistencia() < 0
