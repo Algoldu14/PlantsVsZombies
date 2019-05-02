@@ -5,9 +5,7 @@
  */
 package Juego;
 
-import Excepciones.*;
 import java.util.HashSet;
-
 import java.util.Scanner;
 import java.util.Set;
 
@@ -172,7 +170,7 @@ public final class Tablero {
                     break;
                 case "G":
                     this.introducirPlanta(comando);
-                    this.setSoles(this.soles - 50);
+                    this.setSoles(this.soles - 20);
                     this.pintarTablero(this.getFilas(), this.getColumnas());
                     System.out.println("Turno: " + this.getTurno());
                     System.out.println("Tienes: " + this.getSoles() + " soles");
@@ -188,10 +186,11 @@ public final class Tablero {
                     System.out.println("");
                     break;
                 case "": // Si es un enter
-                    this.sumarGirasoles();
-                    this.insertarZombieAleatorio();
-                    this.moverZombie();
                     this.setTurno(turno++);
+                    this.sumarGirasoles();
+                    this.ataquePlanta();
+                    this.moverZombie();
+                    this.insertarZombieAleatorio();
                     this.pintarTablero(this.getFilas(), this.getColumnas());
                     System.out.println("");
                     System.out.println("Turno: " + this.getTurno());
@@ -214,8 +213,7 @@ public final class Tablero {
 
         for (int i = 0; i < filas; i++) {
             for (int j = 0; j < columnas; j++) {
-                NPC NPC = new NPC();
-                Celda celda = new Celda(NPC); //metemos celdas vacías
+                Celda celda = new Celda(new NPC()); //metemos celdas vacías
                 matrizTablero[i][j] = celda;
             }
         }
@@ -327,9 +325,7 @@ public final class Tablero {
         } catch (Exception e) {
             System.out.println("Has perdido, los zombies han llegado a tu casa");
             System.exit(0);
-
         }
-
     }
 
     public void sumarGirasoles() {
@@ -344,6 +340,25 @@ public final class Tablero {
                 }
             }
         }
+    }
 
+    public void ataquePlanta() {
+
+        for (int i = 0; i < this.filas; i++) {
+            for (int j = 0; j < this.columnas; j++) {
+                if (this.matrizTablero[i][j].getNPC() instanceof LanzaGuisantes && this.matrizTablero[i][j].getNPC().getFrecuencia() == 1) {
+                    for (int columna = j + 1; columna < this.columnas; columna++) {
+                        if (this.matrizTablero[i][columna].getNPC() instanceof ZombieComun && this.matrizTablero[i][j].getNPC().getResistencia() > 0) {
+                            this.matrizTablero[i][columna].getNPC().setResistencia(this.matrizTablero[i][columna].getNPC().getResistencia() - 1);
+                            this.matrizTablero[i][j].getNPC().setFrecuencia(this.matrizTablero[i][j].getNPC().getFrecuencia() - 1);
+                        } else if (this.matrizTablero[i][columna].getNPC() instanceof ZombieComun && this.matrizTablero[i][j].getNPC().getResistencia() <= 0) {
+                            this.matrizTablero[i][columna] = new Celda(new NPC());
+                        }
+                    }
+                } else {
+                    this.matrizTablero[i][j].getNPC().setFrecuencia(1);
+                }
+            }
+        }
     }
 }
