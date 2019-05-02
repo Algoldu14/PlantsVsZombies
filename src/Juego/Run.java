@@ -5,6 +5,8 @@
  */
 package Juego;
 
+import Excepciones.ExcepcionPlanta;
+
 /**
  *
  * @author Alvaro
@@ -14,7 +16,7 @@ public class Run {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args)  {
 
         Tablero tablero = new Tablero();
 

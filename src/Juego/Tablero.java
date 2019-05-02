@@ -5,7 +5,9 @@
  */
 package Juego;
 
-import java.util.Random;
+import Excepciones.*;
+import java.util.HashSet;
+
 import java.util.Scanner;
 import java.util.Set;
 
@@ -30,7 +32,7 @@ public final class Tablero {
         this.matrizTablero = matrizTablero;
         this.turno = 1;
         this.dificultad = dificultad;
-        this.victoria = false;
+        this.victoria = victoria;
     }
 
     public int getFilas() {
@@ -81,7 +83,7 @@ public final class Tablero {
         this.turno = turno;
     }
 
-    public boolean getVictorio() {
+    public boolean getVictoria() {
         return victoria;
     }
 
@@ -142,7 +144,7 @@ public final class Tablero {
     public void actualizarTablero() {
         int turno = this.getTurno();
         Scanner entrada = new Scanner(System.in);
-        while (!this.victoria && this.turno <= 30) {
+        while (this.turno < 30) {
 
             System.out.println("Introduzca el comando: ");
             String comando = entrada.nextLine();
@@ -162,14 +164,18 @@ public final class Tablero {
                     break;
                 case "L": //Si son las plantas
                     this.introducirPlanta(comando);
+                    this.setSoles(this.soles - 50);
                     this.pintarTablero(this.getFilas(), this.getColumnas());
-                    System.out.print("Turno: " + this.getTurno());
+                    System.out.println("Turno: " + this.getTurno());
+                    System.out.println("Tienes: " + this.getSoles() + " soles");
                     System.out.println("");
                     break;
                 case "G":
                     this.introducirPlanta(comando);
+                    this.setSoles(this.soles - 50);
                     this.pintarTablero(this.getFilas(), this.getColumnas());
-                    System.out.print("Turno: " + this.getTurno());
+                    System.out.println("Turno: " + this.getTurno());
+                    System.out.println("Tienes: " + this.getSoles() + " soles");
                     System.out.println("");
                     break;
                 case "AYUDA":
@@ -182,12 +188,14 @@ public final class Tablero {
                     System.out.println("");
                     break;
                 case "": // Si es un enter
+                    this.sumarGirasoles();
                     this.insertarZombieAleatorio();
                     this.moverZombie();
                     this.setTurno(turno++);
                     this.pintarTablero(this.getFilas(), this.getColumnas());
                     System.out.println("");
-                    System.out.print("Turno: " + this.getTurno());
+                    System.out.println("Turno: " + this.getTurno());
+                    System.out.println("Tienes: " + this.getSoles() + " soles");
                     System.out.println("");
                     break;
                 case "S":
@@ -219,19 +227,23 @@ public final class Tablero {
         String arrayComando[] = comandoJuego.split(" ");
         int filaM = Integer.parseInt(arrayComando[1]);
         int columnaM = Integer.parseInt(arrayComando[2]);
-
-        switch (arrayComando[0]) {
-            case "G":
-                Girasol girasol = new Girasol("G", 20, 0, 3, 2);
-                this.matrizTablero[filaM][columnaM].setNPC(girasol);
-                break;
-            case "L":
-                LanzaGuisantes LG = new LanzaGuisantes("L", 50, 1, 3, 1);
-                this.matrizTablero[filaM][columnaM].setNPC(LG);
-                break;
-            default:
-                break;
+        try {
+            switch (arrayComando[0]) {
+                case "G":
+                    Girasol girasol = new Girasol("G", 20, 0, 3, 2);
+                    this.matrizTablero[filaM][columnaM].setNPC(girasol);
+                    break;
+                case "L":
+                    LanzaGuisantes LG = new LanzaGuisantes("L", 50, 1, 3, 1);
+                    this.matrizTablero[filaM][columnaM].setNPC(LG);
+                    break;
+                default:
+                    break;
+            }
+        } catch (Exception e) {
+            e.getMessage();
         }
+
     }
 
     public void insertarZombieAleatorio() {
@@ -295,20 +307,43 @@ public final class Tablero {
     }
 
     public void moverZombie() {
-        NPC NPC = new NPC();
-        for (int i = 0; i < this.filas; i++) { //bajar frecuencia a los zombies
+        try {
+            NPC NPC = new NPC();
+            for (int i = 0; i < this.filas; i++) { //bajar frecuencia a los zombies
+                for (int j = 0; j < this.columnas; j++) {
+                    if (this.matrizTablero[i][j].getNPC() instanceof ZombieComun) {
+                        if (this.matrizTablero[i][j].getNPC().getFrecuencia() == 0) {
+                            NPC = this.matrizTablero[i][j].getNPC(); //en el NPC vacío metemos el que tiene la frecuencia a 0 para moverlo
+                            this.matrizTablero[i][j].setNPC(new NPC()); //en la posición original metemos un NPC vacío
+                            this.matrizTablero[i][j - 1].setNPC(NPC); //metemos el NPC en la siguiente casilla
+                            this.matrizTablero[i][j - 1].getNPC().setFrecuencia(2); //reseteamos la frecuencia del NPC
+                        } else {
+                            this.matrizTablero[i][j].getNPC().setFrecuencia(this.matrizTablero[i][j].getNPC().getFrecuencia() - 1); //le restamos 1 a la frecuencia del NPC
+                        }
+                    }
+                }
+            }
+
+        } catch (Exception e) {
+            System.out.println("Has perdido, los zombies han llegado a tu casa");
+            System.exit(0);
+
+        }
+
+    }
+
+    public void sumarGirasoles() {
+        for (int i = 0; i < this.filas; i++) {
             for (int j = 0; j < this.columnas; j++) {
-                if (this.matrizTablero[i][j].getNPC() instanceof ZombieComun){
-                    if(this.matrizTablero[i][j].getNPC().getFrecuencia()==0){
-                       NPC = this.matrizTablero[i][j].getNPC(); //en el NPC vacío metemos el que tiene la frecuencia a 0 para moverlo
-                       this.matrizTablero[i][j].setNPC(new NPC()); //en la posición original metemos un NPC vacío
-                       this.matrizTablero[i-1][j].setNPC(NPC); //metemos el NPC en la siguiente casilla
-                       this.matrizTablero[i-1][j].getNPC().setFrecuencia(2); //reseteamos la frecuencia del NPC
+                if (this.matrizTablero[i][j].getNPC() instanceof Girasol) {
+                    if (this.matrizTablero[i][j].getNPC().getFrecuencia() == 0) {
+                        this.setSoles(this.soles + 10); //Si la frecuencia del girasol es 0 suma 10 soles
                     } else {
-                        this.matrizTablero[i][j].getNPC().setFrecuencia(this.matrizTablero[i][j].getNPC().getFrecuencia()-1); //le restamos 1 a la frecuencia del NPC
+                        this.matrizTablero[i][j].getNPC().setFrecuencia(this.matrizTablero[i][j].getNPC().getFrecuencia() - 1);
                     }
                 }
             }
         }
+
     }
 }
