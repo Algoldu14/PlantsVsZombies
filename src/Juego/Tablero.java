@@ -5,9 +5,8 @@
  */
 package Juego;
 
-import java.util.HashSet;
 import java.util.Scanner;
-import java.util.Set;
+
 
 /**
  *
@@ -96,18 +95,15 @@ public final class Tablero {
                 for (int columna = 0; columna < columnas; columna++) {
                     System.out.print("|");
                     System.out.print("--------");
-
                 }
                 System.out.println("|");
             } else {
                 for (int columna = 0; columna < columnas; columna++) {
                     System.out.print("|");
                     System.out.print("        ");
-
                 }
                 System.out.println("|");
             }
-
         }
     }
 
@@ -118,14 +114,12 @@ public final class Tablero {
                 for (int columna = 0; columna < columnas; columna++) {
                     System.out.print("|");
                     System.out.print("--------");
-
                 }
                 System.out.println("|");
             } else {
                 for (int columna = 0; columna < columnas; columna++) {
                     System.out.print("|");
                     System.out.print(this.matrizTablero[(int) (fila / 2)][columna].toString());
-
                 }
                 System.out.println("|");
             }
@@ -133,7 +127,6 @@ public final class Tablero {
         for (int columna = 0; columna < columnas; columna++) {
             System.out.print("|");
             System.out.print("--------");
-
         }
         System.out.println("|");
 
@@ -142,6 +135,7 @@ public final class Tablero {
     public void actualizarTablero() {
         int turno = this.getTurno();
         Scanner entrada = new Scanner(System.in);
+        
         while (this.turno < 30) {
 
             System.out.println("Introduzca el comando: ");
@@ -225,23 +219,19 @@ public final class Tablero {
         String arrayComando[] = comandoJuego.split(" ");
         int filaM = Integer.parseInt(arrayComando[1]);
         int columnaM = Integer.parseInt(arrayComando[2]);
-        try {
-            switch (arrayComando[0]) {
-                case "G":
-                    Girasol girasol = new Girasol("G", 20, 0, 3, 2);
-                    this.matrizTablero[filaM][columnaM].setNPC(girasol);
-                    break;
-                case "L":
-                    LanzaGuisantes LG = new LanzaGuisantes("L", 50, 1, 3, 1);
-                    this.matrizTablero[filaM][columnaM].setNPC(LG);
-                    break;
-                default:
-                    break;
-            }
-        } catch (Exception e) {
-            e.getMessage();
+        
+        switch (arrayComando[0]) {
+            case "G":
+                Girasol girasol = new Girasol("G", 20, 0, 3, 2);
+                this.matrizTablero[filaM][columnaM].setNPC(girasol);
+                break;
+            case "L":
+                LanzaGuisantes LG = new LanzaGuisantes("L", 50, 1, 3, 1);
+                this.matrizTablero[filaM][columnaM].setNPC(LG);
+                break;
+            default:
+                break;
         }
-
     }
 
     public void insertarZombieAleatorio() {
@@ -343,17 +333,20 @@ public final class Tablero {
     }
 
     public void ataquePlanta() {
-        int contAtaque = 1;
+
         for (int i = 0; i < this.filas; i++) {
             for (int j = 0; j < this.columnas; j++) {
-                if (this.matrizTablero[i][j].getNPC() instanceof LanzaGuisantes && contAtaque == 1) {
-                    for (int columna = j + 1; columna < this.columnas; columna++) {
-                        if (this.matrizTablero[i][columna].getNPC() instanceof ZombieComun && this.matrizTablero[i][j].getNPC().getResistencia() > 0) {
-                            this.matrizTablero[i][columna].getNPC().setResistencia(this.matrizTablero[i][columna].getNPC().getResistencia() - 1);
-                            this.matrizTablero[i][j].getNPC().setFrecuencia(this.matrizTablero[i][j].getNPC().getFrecuencia() - 1);
+                if (this.matrizTablero[i][j].getNPC() instanceof LanzaGuisantes && this.matrizTablero[i][j].getNPC().getFrecuencia() > 0) { //Si hay un LanzaGuisantes y puede atacar
+                    for (int columna = j + 1; columna < this.columnas; columna++) { //Recorremos la fila en la que se encuentra
+                        if (this.matrizTablero[i][columna].getNPC() instanceof ZombieComun && this.matrizTablero[i][columna].getNPC().getResistencia() > 0) { //Si es un zombie con vida
+                            this.matrizTablero[i][columna].getNPC().setResistencia(this.matrizTablero[i][columna].getNPC().getResistencia() - 1);//Le quitamos vida al zombie
+                            this.matrizTablero[i][j].getNPC().setFrecuencia(0);//le negamos a la palnta que dispare mas
+                            break; //Rompemos el for para que no ataque mas en ese turno
+                        } else if (this.matrizTablero[i][columna].getNPC() instanceof ZombieComun && this.matrizTablero[i][columna].getNPC().getResistencia() == 0) { //Si el zombie tiene resistencia 0
+                            this.matrizTablero[i][columna] = new Celda(new NPC()); //Se le elimina del tablero
                         }
                     }
-
+                    this.matrizTablero[i][j].getNPC().setFrecuencia(1);//Reseteamos la posibilidad de ataque de la planta para el siguiente turno
                 }
             }
         }
