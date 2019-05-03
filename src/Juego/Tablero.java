@@ -343,22 +343,19 @@ public final class Tablero {
     }
 
     public void ataquePlanta() {
-
+        int contAtaque = 1;
         for (int i = 0; i < this.filas; i++) {
             for (int j = 0; j < this.columnas; j++) {
-                if (this.matrizTablero[i][j].getNPC() instanceof LanzaGuisantes && this.matrizTablero[i][j].getNPC().getFrecuencia() == 1) {
+                if (this.matrizTablero[i][j].getNPC() instanceof LanzaGuisantes && contAtaque == 1) {
                     for (int columna = j + 1; columna < this.columnas; columna++) {
                         if (this.matrizTablero[i][columna].getNPC() instanceof ZombieComun && this.matrizTablero[i][j].getNPC().getResistencia() > 0) {
                             this.matrizTablero[i][columna].getNPC().setResistencia(this.matrizTablero[i][columna].getNPC().getResistencia() - 1);
                             this.matrizTablero[i][j].getNPC().setFrecuencia(this.matrizTablero[i][j].getNPC().getFrecuencia() - 1);
-                        } else  {
-                            this.matrizTablero[i][columna] = new Celda(new NPC());
                         }
                     }
-                } else if(this.matrizTablero[i][j].getNPC() instanceof LanzaGuisantes && this.matrizTablero[i][j].getNPC().getFrecuencia() !=1 ){
-                    this.matrizTablero[i][j].getNPC().setFrecuencia(1);
+
                 }
             }
         }
     }
-} //this.matrizTablero[i][columna].getNPC() instanceof ZombieComun && this.matrizTablero[i][j].getNPC().getResistencia() < 0
+}
