@@ -5,6 +5,7 @@
  */
 package Juego;
 
+import Excepciones.ExcepcionPlanta;
 import java.util.Scanner;
 
 /**
@@ -26,7 +27,7 @@ public final class Tablero {
         this.filas = filas;
         this.soles = 50;
         this.matrizTablero = matrizTablero;
-        this.turno = 1;
+        this.turno = 0;
         this.dificultad = dificultad;
         this.victoria = victoria;
     }
@@ -131,72 +132,85 @@ public final class Tablero {
 
     }
 
-    public void actualizarTablero() {
-        int turno = this.getTurno();
+    public void actualizarTablero() throws ExcepcionPlanta {
+
         Scanner entrada = new Scanner(System.in);
 
         while (this.turno < 30) {
+            try {
 
-            System.out.println("Introduzca el comando: ");
-            String comando = entrada.nextLine();
-            comando = comando.toUpperCase();
-            String arrayComando[] = comando.split(" ");
+                System.out.println("Introduzca el comando: ");
+                String comando = entrada.nextLine();
+                comando = comando.toUpperCase();
+                String arrayComando[] = comando.split(" ");
 
-            switch (arrayComando[0]) {
-                case "N": //Si en el comando hay una N inicia el juego
-                    this.setDificultad(arrayComando[3]);
-                    this.setFilas(Integer.parseInt(arrayComando[1]));
-                    this.setColumnas(Integer.parseInt(arrayComando[2]));
-                    this.crearTableroIni(Integer.parseInt(arrayComando[1]), Integer.parseInt(arrayComando[2]));
-                    this.setMatrizTablero(this.crearMatrizTablero(this.getFilas(), this.getColumnas()));
-                    System.out.println("Tienes: " + this.getSoles() + " soles");
-                    System.out.println("Turno: " + this.getTurno());
-                    System.out.println("");
-                    break;
-                case "L": //Si son las plantas
-                    this.introducirPlanta(comando);
-                    this.setSoles(this.soles - 50);
-                    this.pintarTablero(this.getFilas(), this.getColumnas());
-                    System.out.println("Turno: " + this.getTurno());
-                    System.out.println("Tienes: " + this.getSoles() + " soles");
-                    System.out.println("");
-                    break;
-                case "G":
-                    this.introducirPlanta(comando);
-                    this.setSoles(this.soles - 20);
-                    this.pintarTablero(this.getFilas(), this.getColumnas());
-                    System.out.println("Turno: " + this.getTurno());
-                    System.out.println("Tienes: " + this.getSoles() + " soles");
-                    System.out.println("");
-                    break;
-                case "AYUDA":
-                    System.out.println("Manual del Juego: ");
-                    System.out.println("N <filas> <columnas> <Dificultad> para hacer un juego nuevo (Dificultad: BAJA, MEDIA, ALTA, IMPOSIBLE)");
-                    System.out.println("G <fila> <columna>  para insertar un Girasol en las posiciones introducidas");
-                    System.out.println("L <fila> <columna>  para insertar un lanza guisantes en las posiciones introducidas");
-                    System.out.println("S para salir del juego");
-                    System.out.println("<ENTER> para pasar de turno");
-                    System.out.println("");
-                    break;
-                case "": // Si es un enter
-                    this.sumarGirasoles(); //Se suman los soles cada dos turnos
-                    this.ataquePlanta();  //Las plantas atacan
-                    this.ataqueZombie(); //Los zombies atacan
-                    this.moverZombie(); //Los zombies se mueven
-                    this.setTurno(turno++);
-                    this.insertarZombieAleatorio();
-                    this.pintarTablero(this.getFilas(), this.getColumnas());
-                    System.out.println("");
-                    System.out.println("Turno: " + this.getTurno());
-                    System.out.println("Tienes: " + this.getSoles() + " soles");
-                    System.out.println("");
-                    break;
-                case "S":
-                    System.exit(0); //Sale del programa
-                    break;
-                default:
-                    System.out.println("Error al introducir el comando.");
-                    break;
+                switch (arrayComando[0]) {
+                    case "N": //Si en el comando hay una N inicia el juego
+                        this.setDificultad(arrayComando[3]);
+                        this.setFilas(Integer.parseInt(arrayComando[1]));
+                        this.setColumnas(Integer.parseInt(arrayComando[2]));
+                        this.crearTableroIni(Integer.parseInt(arrayComando[1]), Integer.parseInt(arrayComando[2]));
+                        this.setMatrizTablero(this.crearMatrizTablero(this.getFilas(), this.getColumnas()));
+                        System.out.println("Tienes: " + this.getSoles() + " soles");
+                        System.out.println("Turno: " + this.getTurno());
+                        System.out.println("");
+                        break;
+                    case "L": //Si son las plantas
+                        if (this.soles < 50) {
+                            throw new ExcepcionPlanta(this.soles - 50);
+                        } else {
+                            this.introducirPlanta(comando);
+                            this.setSoles(this.soles - 50);
+                        }
+                        this.pintarTablero(this.getFilas(), this.getColumnas());
+                        System.out.println("Turno: " + this.getTurno());
+                        System.out.println("Tienes: " + this.getSoles() + " soles");
+                        System.out.println("");
+                        break;
+                    case "G":
+                        if (this.soles < 50) {
+                            throw new ExcepcionPlanta(this.soles - 20);
+                        } else {
+                            this.introducirPlanta(comando);
+                            this.setSoles(this.soles - 20);
+                        }
+                        this.pintarTablero(this.getFilas(), this.getColumnas());
+                        System.out.println("Turno: " + this.getTurno());
+                        System.out.println("Tienes: " + this.getSoles() + " soles");
+                        System.out.println("");
+                        break;
+                    case "AYUDA":
+                        System.out.println("Manual del Juego: ");
+                        System.out.println("N <filas> <columnas> <Dificultad> para hacer un juego nuevo (Dificultad: BAJA, MEDIA, ALTA, IMPOSIBLE)");
+                        System.out.println("G <fila> <columna>  para insertar un Girasol en las posiciones introducidas");
+                        System.out.println("L <fila> <columna>  para insertar un lanza guisantes en las posiciones introducidas");
+                        System.out.println("S para salir del juego");
+                        System.out.println("<ENTER> para pasar de turno");
+                        System.out.println("");
+                        break;
+                    case "": // Si es un enter
+                        this.sumarGirasoles(); //Se suman los soles cada dos turnos
+                        this.ataquePlanta();  //Las plantas atacan
+                        this.ataqueZombie(); //Los zombies atacan
+                        this.moverZombie(); //Los zombies se mueven
+                        this.setTurno(this.turno + 1);
+                        this.insertarZombieAleatorio();
+                        this.pintarTablero(this.getFilas(), this.getColumnas());
+                        System.out.println("");
+                        System.out.println("Turno: " + this.getTurno());
+                        System.out.println("Tienes: " + this.getSoles() + " soles");
+                        System.out.println("");
+                        break;
+                    case "S":
+                        System.exit(0); //Sale del programa
+                        break;
+                    default:
+                        System.out.println("Error al introducir el comando.");
+                        break;
+                }
+            } catch (ExcepcionPlanta ex) {
+                System.out.println("No puedes comprar esta planta");
+                System.out.println("");
             }
         }
     }
@@ -360,9 +374,9 @@ public final class Tablero {
         int contAtaque = 1;
         for (int i = 0; i < this.filas; i++) {
             for (int j = 0; j < this.columnas; j++) {
-                if (this.matrizTablero[i][j].getNPC() instanceof ZombieComun && contAtaque == 1) { //Si hay un zombie y puede atacar
-                    if (this.matrizTablero[i][j - 1].getNPC() instanceof LanzaGuisantes 
-                        || this.matrizTablero[i][j - 1].getNPC() instanceof Girasol && j > 0) { //Si en la casilla aneterior
+                if (this.matrizTablero[i][j].getNPC() instanceof ZombieComun && contAtaque == 1 && j >= 1) { //Si hay un zombie y puede atacar
+                    if (this.matrizTablero[i][j - 1].getNPC() instanceof LanzaGuisantes
+                            || this.matrizTablero[i][j - 1].getNPC() instanceof Girasol) { //Si en la casilla aneterior
                         if (this.matrizTablero[i][j - 1].getNPC().getResistencia() != 0) { //Si tiene vida                                              //hay alguna planta
                             this.matrizTablero[i][j - 1].getNPC().setResistencia(this.matrizTablero[i][j - 1].getNPC().getResistencia() - 1); //Le bajamos la resitencia
                             this.matrizTablero[i][j].getNPC().setFrecuencia(2); //Reseteamos la frecuencia del zombie para que no se mueva
@@ -371,7 +385,7 @@ public final class Tablero {
                             this.matrizTablero[i][j - 1].setNPC(new NPC());
                         }
                     }
-                } 
+                }
             }
         }
         contAtaque++; //Subimos a uno para que en el siguiente turno pueda atacar
