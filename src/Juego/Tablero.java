@@ -7,7 +7,6 @@ package Juego;
 
 import java.util.Scanner;
 
-
 /**
  *
  * @author Alvaro
@@ -135,7 +134,7 @@ public final class Tablero {
     public void actualizarTablero() {
         int turno = this.getTurno();
         Scanner entrada = new Scanner(System.in);
-        
+
         while (this.turno < 30) {
 
             System.out.println("Introduzca el comando: ");
@@ -180,9 +179,10 @@ public final class Tablero {
                     System.out.println("");
                     break;
                 case "": // Si es un enter
-                    this.sumarGirasoles();
-                    this.ataquePlanta();
-                    this.moverZombie();
+                    this.sumarGirasoles(); //Se suman los soles cada dos turnos
+                    this.ataquePlanta();  //Las plantas atacan
+                    this.ataqueZombie(); //Los zombies atacan
+                    this.moverZombie(); //Los zombies se mueven
                     this.setTurno(turno++);
                     this.insertarZombieAleatorio();
                     this.pintarTablero(this.getFilas(), this.getColumnas());
@@ -219,7 +219,7 @@ public final class Tablero {
         String arrayComando[] = comandoJuego.split(" ");
         int filaM = Integer.parseInt(arrayComando[1]);
         int columnaM = Integer.parseInt(arrayComando[2]);
-        
+
         switch (arrayComando[0]) {
             case "G":
                 Girasol girasol = new Girasol("G", 20, 0, 3, 2);
@@ -296,6 +296,7 @@ public final class Tablero {
 
     public void moverZombie() {
         try {
+
             NPC NPC = new NPC();
             for (int i = 0; i < this.filas; i++) { //bajar frecuencia a los zombies
                 for (int j = 0; j < this.columnas; j++) {
@@ -319,13 +320,15 @@ public final class Tablero {
     }
 
     public void sumarGirasoles() {
+
         for (int i = 0; i < this.filas; i++) {
             for (int j = 0; j < this.columnas; j++) {
                 if (this.matrizTablero[i][j].getNPC() instanceof Girasol) {
-                    if (this.matrizTablero[i][j].getNPC().getFrecuencia() == 0) {
-                        this.setSoles(this.soles + 10); //Si la frecuencia del girasol es 0 suma 10 soles
-                    } else {
+                    if (this.matrizTablero[i][j].getNPC().getFrecuencia() > 0) { //Si tiene la frecuencia mayor que cero
                         this.matrizTablero[i][j].getNPC().setFrecuencia(this.matrizTablero[i][j].getNPC().getFrecuencia() - 1);
+                    } else {
+                        this.setSoles(this.soles + 10); //Si la frecuencia del girasol es 0 suma 10 soles
+                        this.matrizTablero[i][j].getNPC().setFrecuencia(2);
                     }
                 }
             }
@@ -338,11 +341,11 @@ public final class Tablero {
             for (int j = 0; j < this.columnas; j++) {
                 if (this.matrizTablero[i][j].getNPC() instanceof LanzaGuisantes && this.matrizTablero[i][j].getNPC().getFrecuencia() > 0) { //Si hay un LanzaGuisantes y puede atacar
                     for (int columna = j + 1; columna < this.columnas; columna++) { //Recorremos la fila en la que se encuentra
-                        if (this.matrizTablero[i][columna].getNPC() instanceof ZombieComun && this.matrizTablero[i][columna].getNPC().getResistencia() > 0) { //Si es un zombie con vida
+                        if (this.matrizTablero[i][columna].getNPC() instanceof ZombieComun && this.matrizTablero[i][columna].getNPC().getResistencia() != 0) { //Si es un zombie con vida
                             this.matrizTablero[i][columna].getNPC().setResistencia(this.matrizTablero[i][columna].getNPC().getResistencia() - 1);//Le quitamos vida al zombie
                             this.matrizTablero[i][j].getNPC().setFrecuencia(0);//le negamos a la palnta que dispare mas
                             break; //Rompemos el for para que no ataque mas en ese turno
-                        } else if (this.matrizTablero[i][columna].getNPC() instanceof ZombieComun && this.matrizTablero[i][columna].getNPC().getResistencia() == 0) { //Si el zombie tiene resistencia 0
+                        } else if (this.matrizTablero[i][columna].getNPC() instanceof ZombieComun && this.matrizTablero[i][columna].getNPC().getResistencia() <= 0) { //Si el zombie tiene resistencia 0
                             this.matrizTablero[i][columna] = new Celda(new NPC()); //Se le elimina del tablero
                         }
                     }
@@ -350,5 +353,27 @@ public final class Tablero {
                 }
             }
         }
+    }
+
+    public void ataqueZombie() {
+
+        int contAtaque = 1;
+        for (int i = 0; i < this.filas; i++) {
+            for (int j = 0; j < this.columnas; j++) {
+                if (this.matrizTablero[i][j].getNPC() instanceof ZombieComun && contAtaque == 1) { //Si hay un zombie y puede atacar
+                    if (this.matrizTablero[i][j - 1].getNPC() instanceof LanzaGuisantes 
+                        || this.matrizTablero[i][j - 1].getNPC() instanceof Girasol && j > 0) { //Si en la casilla aneterior
+                        if (this.matrizTablero[i][j - 1].getNPC().getResistencia() != 0) { //Si tiene vida                                              //hay alguna planta
+                            this.matrizTablero[i][j - 1].getNPC().setResistencia(this.matrizTablero[i][j - 1].getNPC().getResistencia() - 1); //Le bajamos la resitencia
+                            this.matrizTablero[i][j].getNPC().setFrecuencia(2); //Reseteamos la frecuencia del zombie para que no se mueva
+                            contAtaque = 0;
+                        } else { //Si la planta tiene cero de vida o menos
+                            this.matrizTablero[i][j - 1].setNPC(new NPC());
+                        }
+                    }
+                } 
+            }
+        }
+        contAtaque++; //Subimos a uno para que en el siguiente turno pueda atacar
     }
 }
