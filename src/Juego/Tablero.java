@@ -5,6 +5,7 @@
  */
 package Juego;
 
+import Excepciones.ExcepcionJuego;
 import Excepciones.ExcepcionPlanta;
 import java.util.Scanner;
 
@@ -132,18 +133,19 @@ public final class Tablero {
 
     }
 
-    public void actualizarTablero() throws ExcepcionPlanta {
+    public void actualizarTablero() throws ExcepcionPlanta, ExcepcionJuego {
 
         Scanner entrada = new Scanner(System.in);
 
         while (this.turno < 30) {
             try {
-
                 System.out.println("Introduzca el comando: ");
                 String comando = entrada.nextLine();
                 comando = comando.toUpperCase();
                 String arrayComando[] = comando.split(" ");
-
+                if (!(comando.isEmpty())) {
+                    throw new ExcepcionJuego(comando);
+                }
                 switch (arrayComando[0]) {
                     case "N": //Si en el comando hay una N inicia el juego
                         this.setDificultad(arrayComando[3]);
@@ -168,7 +170,7 @@ public final class Tablero {
                         System.out.println("");
                         break;
                     case "G":
-                        if (this.soles < 50) {
+                        if (this.soles < 20) {
                             throw new ExcepcionPlanta(this.soles - 20);
                         } else {
                             this.introducirPlanta(comando);
@@ -181,11 +183,11 @@ public final class Tablero {
                         break;
                     case "AYUDA":
                         System.out.println("Manual del Juego: ");
-                        System.out.println("N <filas> <columnas> <Dificultad> para hacer un juego nuevo (Dificultad: BAJA, MEDIA, ALTA, IMPOSIBLE)");
-                        System.out.println("G <fila> <columna>  para insertar un Girasol en las posiciones introducidas");
-                        System.out.println("L <fila> <columna>  para insertar un lanza guisantes en las posiciones introducidas");
-                        System.out.println("S para salir del juego");
-                        System.out.println("<ENTER> para pasar de turno");
+                        System.out.println("N <filas> <columnas> <Dificultad> para hacer un juego nuevo (Dificultad: BAJA, MEDIA, ALTA, IMPOSIBLE).");
+                        System.out.println("G <fila> <columna>  para insertar un Girasol en las posiciones introducidas.");
+                        System.out.println("L <fila> <columna>  para insertar un lanza guisantes en las posiciones introducidas.");
+                        System.out.println("S para salir del juego.");
+                        System.out.println("<ENTER> para pasar de turno.");
                         System.out.println("");
                         break;
                     case "": // Si es un enter
@@ -208,8 +210,11 @@ public final class Tablero {
                         System.out.println("Error al introducir el comando.");
                         break;
                 }
-            } catch (ExcepcionPlanta ex) {
-                System.out.println("No puedes comprar esta planta");
+            } catch (ExcepcionPlanta ep) {
+                System.out.println(ep.getMessage());
+                System.out.println("");
+            } catch (ExcepcionJuego ej) {
+                System.out.println(ej.getMessage());
                 System.out.println("");
             }
         }
@@ -234,17 +239,36 @@ public final class Tablero {
         int filaM = Integer.parseInt(arrayComando[1]);
         int columnaM = Integer.parseInt(arrayComando[2]);
 
-        switch (arrayComando[0]) {
-            case "G":
-                Girasol girasol = new Girasol("G", 20, 0, 3, 2);
-                this.matrizTablero[filaM][columnaM].setNPC(girasol);
-                break;
-            case "L":
-                LanzaGuisantes LG = new LanzaGuisantes("L", 50, 1, 3, 1);
-                this.matrizTablero[filaM][columnaM].setNPC(LG);
-                break;
-            default:
-                break;
+        if (filaM <= this.filas && columnaM <= this.columnas && filaM >= 0 && columnaM >= 0) {
+            switch (arrayComando[0]) {
+                case "G":
+                    if (this.matrizTablero[filaM][columnaM].getNPC() instanceof ZombieComun
+                            || this.matrizTablero[filaM][columnaM].getNPC() instanceof LanzaGuisantes
+                            || this.matrizTablero[filaM][columnaM].getNPC() instanceof Girasol) {
+                        System.out.println("No puedes introducir un girasol en esa posición.");
+                        break;
+                    } else {
+                        Girasol girasol = new Girasol("G", 20, 0, 3, 2);
+                        this.matrizTablero[filaM][columnaM].setNPC(girasol);
+                        break;
+                    }
+                case "L":
+                    if (this.matrizTablero[filaM][columnaM].getNPC() instanceof ZombieComun
+                            || this.matrizTablero[filaM][columnaM].getNPC() instanceof LanzaGuisantes
+                            || this.matrizTablero[filaM][columnaM].getNPC() instanceof Girasol) {
+                        System.out.println("No puedes introducir un lanza guisantes en esa posición.");
+                        break;
+                    } else {
+                        LanzaGuisantes LG = new LanzaGuisantes("L", 50, 1, 3, 1);
+                        this.matrizTablero[filaM][columnaM].setNPC(LG);
+                        break;
+                    }
+                default:
+                    System.out.println("No existe esa planta.");
+                    break;
+            }
+        } else {
+            System.out.println("No existe esa posición.");
         }
     }
 
@@ -305,6 +329,8 @@ public final class Tablero {
                     }
                 }
                 break;
+            default:
+                System.out.println("Dificultad mal introducida");
         }
     }
 
@@ -328,7 +354,7 @@ public final class Tablero {
             }
 
         } catch (Exception e) {
-            System.out.println("Has perdido, los zombies han llegado a tu casa");
+            System.out.println("Has perdido, los zombies han llegado a tu casa.");
             System.exit(0);
         }
     }
@@ -371,16 +397,14 @@ public final class Tablero {
 
     public void ataqueZombie() {
 
-        int contAtaque = 1;
         for (int i = 0; i < this.filas; i++) {
             for (int j = 0; j < this.columnas; j++) {
-                if (this.matrizTablero[i][j].getNPC() instanceof ZombieComun && contAtaque == 1 && j >= 1) { //Si hay un zombie y puede atacar
+                if (this.matrizTablero[i][j].getNPC() instanceof ZombieComun && j >= 1) { //Si hay un zombie y puede atacar
                     if (this.matrizTablero[i][j - 1].getNPC() instanceof LanzaGuisantes
-                            || this.matrizTablero[i][j - 1].getNPC() instanceof Girasol) { //Si en la casilla aneterior
-                        if (this.matrizTablero[i][j - 1].getNPC().getResistencia() != 0) { //Si tiene vida                                              //hay alguna planta
+                            || this.matrizTablero[i][j - 1].getNPC() instanceof Girasol) { //Si en la casilla aneterior hay alguna planta
+                        if (this.matrizTablero[i][j - 1].getNPC().getResistencia() != 0) { //Si tiene vida
                             this.matrizTablero[i][j - 1].getNPC().setResistencia(this.matrizTablero[i][j - 1].getNPC().getResistencia() - 1); //Le bajamos la resitencia
                             this.matrizTablero[i][j].getNPC().setFrecuencia(2); //Reseteamos la frecuencia del zombie para que no se mueva
-                            contAtaque = 0;
                         } else { //Si la planta tiene cero de vida o menos
                             this.matrizTablero[i][j - 1].setNPC(new NPC());
                         }
@@ -388,6 +412,5 @@ public final class Tablero {
                 }
             }
         }
-        contAtaque++; //Subimos a uno para que en el siguiente turno pueda atacar
     }
 }
