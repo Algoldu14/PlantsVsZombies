@@ -11,7 +11,12 @@ import java.util.Scanner;
 
 /**
  *
- * @author Alvaro
+ * @author Alvaro y Patricia
+ */
+
+/*
+Esta clase es la clase principal del programa, en ella se controla todas las acciones del tablero al 
+igual que la actualizacion del mismo, aqui se encuantra la interfaz del juego tambien
  */
 public final class Tablero {
 
@@ -89,25 +94,26 @@ public final class Tablero {
         this.victoria = victoria;
     }
 
-    public void crearTableroIni(int filas, int columnas) {
+    /*
+    El metodo de crearMatrizTablero es el que crea la matriz donde se guardan los NPCs, inicialmente
+    la matriz esta compuesta de Celdas que contienen NPCs vacios.
+     */
+    public Celda[][] crearMatrizTablero(int filas, int columnas) {
 
-        for (int fila = 0; fila <= filas * 2; fila++) {
-            if (fila % 2 == 0) {
-                for (int columna = 0; columna < columnas; columna++) {
-                    System.out.print("|");
-                    System.out.print("--------");
-                }
-                System.out.println("|");
-            } else {
-                for (int columna = 0; columna < columnas; columna++) {
-                    System.out.print("|");
-                    System.out.print("        ");
-                }
-                System.out.println("|");
+        matrizTablero = new Celda[filas][columnas];
+
+        for (int i = 0; i < filas; i++) {
+            for (int j = 0; j < columnas; j++) {
+                Celda celda = new Celda(new NPC()); //metemos celdas vacías
+                matrizTablero[i][j] = celda;
             }
         }
+        return matrizTablero;
     }
 
+    /*
+    Este metodo pinta el tablero solicitado por el comando N <filas> <columnas> <Dificultad>.
+     */
     public void pintarTablero(int filas, int columnas) {
 
         for (int fila = 0; fila < this.filas * 2; fila++) {
@@ -133,6 +139,11 @@ public final class Tablero {
 
     }
 
+    /*
+    El metodo actualizarTablero es el metodo mas importante de esta clase y del programa, en este metodo se analiza
+    el comando introducido y determina lo que tiene que ir haciendo. Al igual que va pidiendo la introduccion de los 
+    nuevos comandos y tratados con sus excepciones.
+     */
     public void actualizarTablero() throws ExcepcionPlanta, ExcepcionJuego {
 
         Scanner entrada = new Scanner(System.in);
@@ -143,16 +154,16 @@ public final class Tablero {
                 String comando = entrada.nextLine();
                 comando = comando.toUpperCase();
                 String arrayComando[] = comando.split(" ");
-                if (!(comando.isEmpty())) {
-                    throw new ExcepcionJuego(comando);
-                }
+                //if (!(comando.isEmpty())) {
+                //  throw new ExcepcionJuego(comando);
+                //}
                 switch (arrayComando[0]) {
                     case "N": //Si en el comando hay una N inicia el juego
                         this.setDificultad(arrayComando[3]);
                         this.setFilas(Integer.parseInt(arrayComando[1]));
                         this.setColumnas(Integer.parseInt(arrayComando[2]));
-                        this.crearTableroIni(Integer.parseInt(arrayComando[1]), Integer.parseInt(arrayComando[2]));
                         this.setMatrizTablero(this.crearMatrizTablero(this.getFilas(), this.getColumnas()));
+                        this.pintarTablero(this.filas, this.columnas);
                         System.out.println("Tienes: " + this.getSoles() + " soles");
                         System.out.println("Turno: " + this.getTurno());
                         System.out.println("");
@@ -162,7 +173,7 @@ public final class Tablero {
                             throw new ExcepcionPlanta(this.soles - 50);
                         } else {
                             this.introducirPlanta(comando);
-                            this.setSoles(this.soles - 50);
+                            
                         }
                         this.pintarTablero(this.getFilas(), this.getColumnas());
                         System.out.println("Turno: " + this.getTurno());
@@ -174,7 +185,7 @@ public final class Tablero {
                             throw new ExcepcionPlanta(this.soles - 20);
                         } else {
                             this.introducirPlanta(comando);
-                            this.setSoles(this.soles - 20);
+                            
                         }
                         this.pintarTablero(this.getFilas(), this.getColumnas());
                         System.out.println("Turno: " + this.getTurno());
@@ -195,8 +206,9 @@ public final class Tablero {
                         this.ataquePlanta();  //Las plantas atacan
                         this.ataqueZombie(); //Los zombies atacan
                         this.moverZombie(); //Los zombies se mueven
-                        this.setTurno(this.turno + 1);
-                        this.insertarZombieAleatorio();
+                        this.insertarZombieAleatorio(); //Metemos zombies nuevos
+                        this.limpiarTablero(); //Limpiamos el tablero
+                        this.setTurno(this.turno + 1); //Aumentamos el turno
                         this.pintarTablero(this.getFilas(), this.getColumnas());
                         System.out.println("");
                         System.out.println("Turno: " + this.getTurno());
@@ -213,26 +225,20 @@ public final class Tablero {
             } catch (ExcepcionPlanta ep) {
                 System.out.println(ep.getMessage());
                 System.out.println("");
-            } catch (ExcepcionJuego ej) {
+            }
+            /*
+            catch (ExcepcionJuego ej) {
                 System.out.println(ej.getMessage());
                 System.out.println("");
             }
+             */
         }
     }
 
-    public Celda[][] crearMatrizTablero(int filas, int columnas) {
-
-        matrizTablero = new Celda[filas][columnas];
-
-        for (int i = 0; i < filas; i++) {
-            for (int j = 0; j < columnas; j++) {
-                Celda celda = new Celda(new NPC()); //metemos celdas vacías
-                matrizTablero[i][j] = celda;
-            }
-        }
-        return matrizTablero;
-    }
-
+    /*
+    Metodo usado para introducir la planta en la posicion indicada en el comando, comprobando si la posicion introducida
+    es correcta o si la planta existe
+     */
     public void introducirPlanta(String comandoJuego) {
 
         String arrayComando[] = comandoJuego.split(" ");
@@ -246,10 +252,12 @@ public final class Tablero {
                             || this.matrizTablero[filaM][columnaM].getNPC() instanceof LanzaGuisantes
                             || this.matrizTablero[filaM][columnaM].getNPC() instanceof Girasol) {
                         System.out.println("No puedes introducir un girasol en esa posición.");
+                        System.out.println("");
                         break;
                     } else {
                         Girasol girasol = new Girasol("G", 20, 0, 3, 2);
                         this.matrizTablero[filaM][columnaM].setNPC(girasol);
+                        this.setSoles(this.soles - 20);
                         break;
                     }
                 case "L":
@@ -257,24 +265,31 @@ public final class Tablero {
                             || this.matrizTablero[filaM][columnaM].getNPC() instanceof LanzaGuisantes
                             || this.matrizTablero[filaM][columnaM].getNPC() instanceof Girasol) {
                         System.out.println("No puedes introducir un lanza guisantes en esa posición.");
+                        System.out.println("");
                         break;
                     } else {
                         LanzaGuisantes LG = new LanzaGuisantes("L", 50, 1, 3, 1);
                         this.matrizTablero[filaM][columnaM].setNPC(LG);
+                        this.setSoles(this.soles - 50);
                         break;
                     }
                 default:
                     System.out.println("No existe esa planta.");
+                    System.out.println("");
                     break;
             }
         } else {
             System.out.println("No existe esa posición.");
+            System.out.println("");
         }
     }
 
+    /*
+    Metodo usado para que los zombies vayan entrando en el tablero de una forma concreta que hemos determinado en la
+    ultima columna del tablero
+     */
     public void insertarZombieAleatorio() {
 
-        //Random rand = new Random();
         switch (this.getDificultad()) {
             case "BAJA":
                 if (this.turno >= 10) {
@@ -334,6 +349,10 @@ public final class Tablero {
         }
     }
 
+    /*
+    En este metodo hacemos que los zombies avancen por el tablero hacia alante, si hay un zombie delante el zombie no 
+    se movera hasta que tenga la siguiente casilla libre
+     */
     public void moverZombie() {
         try {
 
@@ -341,12 +360,16 @@ public final class Tablero {
             for (int i = 0; i < this.filas; i++) { //bajar frecuencia a los zombies
                 for (int j = 0; j < this.columnas; j++) {
                     if (this.matrizTablero[i][j].getNPC() instanceof ZombieComun) {
-                        if (this.matrizTablero[i][j].getNPC().getFrecuencia() == 0) {
-                            NPC = this.matrizTablero[i][j].getNPC(); //en el NPC vacío metemos el que tiene la frecuencia a 0 para moverlo
-                            this.matrizTablero[i][j].setNPC(new NPC()); //en la posición original metemos un NPC vacío
-                            this.matrizTablero[i][j - 1].setNPC(NPC); //metemos el NPC en la siguiente casilla
-                            this.matrizTablero[i][j - 1].getNPC().setFrecuencia(2); //reseteamos la frecuencia del NPC
-                        } else {
+                        if (this.matrizTablero[i][j].getNPC().getFrecuencia() == 0) { //Si el zombie se puede mover
+                            if (this.matrizTablero[i][j - 1].getNPC() instanceof ZombieComun && j >= 1) { //Si hay un zombie delante
+                                this.matrizTablero[i][j].getNPC().setFrecuencia(1); //Le ponemos la frecuencia a uno para que no avance
+                            } else {
+                                NPC = this.matrizTablero[i][j].getNPC(); //en el NPC vacío metemos el que tiene la frecuencia a 0 para moverlo
+                                this.matrizTablero[i][j].setNPC(new NPC()); //en la posición original metemos un NPC vacío
+                                this.matrizTablero[i][j - 1].setNPC(NPC); //metemos el NPC en la siguiente casilla
+                                this.matrizTablero[i][j - 1].getNPC().setFrecuencia(2); //reseteamos la frecuencia del NPC
+                            }
+                        } else { //Si no se puede mover
                             this.matrizTablero[i][j].getNPC().setFrecuencia(this.matrizTablero[i][j].getNPC().getFrecuencia() - 1); //le restamos 1 a la frecuencia del NPC
                         }
                     }
@@ -359,6 +382,9 @@ public final class Tablero {
         }
     }
 
+    /*
+    Metodo para sumar los girasoles que generan las plantas Girasol contando en el turno que se han introducido
+     */
     public void sumarGirasoles() {
 
         for (int i = 0; i < this.filas; i++) {
@@ -385,8 +411,7 @@ public final class Tablero {
                             this.matrizTablero[i][columna].getNPC().setResistencia(this.matrizTablero[i][columna].getNPC().getResistencia() - 1);//Le quitamos vida al zombie
                             this.matrizTablero[i][j].getNPC().setFrecuencia(0);//le negamos a la palnta que dispare mas
                             break; //Rompemos el for para que no ataque mas en ese turno
-                        } else if (this.matrizTablero[i][columna].getNPC() instanceof ZombieComun && this.matrizTablero[i][columna].getNPC().getResistencia() <= 0) { //Si el zombie tiene resistencia 0
-                            this.matrizTablero[i][columna] = new Celda(new NPC()); //Se le elimina del tablero
+
                         }
                     }
                     this.matrizTablero[i][j].getNPC().setFrecuencia(1);//Reseteamos la posibilidad de ataque de la planta para el siguiente turno
@@ -405,12 +430,22 @@ public final class Tablero {
                         if (this.matrizTablero[i][j - 1].getNPC().getResistencia() != 0) { //Si tiene vida
                             this.matrizTablero[i][j - 1].getNPC().setResistencia(this.matrizTablero[i][j - 1].getNPC().getResistencia() - 1); //Le bajamos la resitencia
                             this.matrizTablero[i][j].getNPC().setFrecuencia(2); //Reseteamos la frecuencia del zombie para que no se mueva
-                        } else { //Si la planta tiene cero de vida o menos
-                            this.matrizTablero[i][j - 1].setNPC(new NPC());
+
                         }
                     }
                 }
             }
         }
     }
-}
+
+    public void limpiarTablero() {
+        for (int i = 0; i < this.filas; i++) {
+            for (int j = 0; j < this.columnas; j++) {
+                if (this.matrizTablero[i][j].getNPC().getResistencia()<=0) { //Si el NP que haya en esa casilla no tiene vida
+                    this.matrizTablero[i][j].setNPC(new NPC());
+                    }
+                }
+            }
+        }
+    }
+

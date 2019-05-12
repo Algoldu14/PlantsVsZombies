@@ -5,6 +5,7 @@
  */
 package Juego;
 
+import Excepciones.ExcepcionJuego;
 import Excepciones.ExcepcionPlanta;
 
 /**
@@ -15,8 +16,10 @@ public class Run {
 
     /**
      * @param args the command line arguments
+     * @throws Excepciones.ExcepcionPlanta
+     * @throws Excepciones.ExcepcionJuego
      */
-    public static void main(String[] args) throws ExcepcionPlanta  {
+    public static void main(String[] args) throws ExcepcionPlanta, ExcepcionJuego  {
 
         Tablero tablero = new Tablero();
 
