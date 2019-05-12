@@ -7,8 +7,12 @@ package Juego;
 
 /**
  *
- * @author Alvaro
+ * @author Alvaro y Patricia
  */
+
+/*
+La clase NPC es la clase padre de las plantas y los zombies ya que comparten ciertos atributos.
+*/
 public class NPC {
 
     private String nombre;

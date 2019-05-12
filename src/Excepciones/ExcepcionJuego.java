@@ -7,7 +7,7 @@ package Excepciones;
 
 /**
  *
- * @author Alvaro
+ * @author Alvaro y Patricia
  */
 public class ExcepcionJuego extends Exception {
 
@@ -38,7 +38,6 @@ public class ExcepcionJuego extends Exception {
     public String getMessage() {
 
         String mensaje = "";
-        
         String arrayComando[] = this.comando.split(" ");
 
         switch (arrayComando[0]) {
@@ -49,8 +48,8 @@ public class ExcepcionJuego extends Exception {
                     if (!(this.esNumerico(arrayComando[1]) && this.esNumerico(arrayComando[2]))) {
                         mensaje = "Comando mal introducido. Introduzcalo de nuevo.";
                     }
-                    if (arrayComando[3] != "BAJA" || arrayComando[3] != "MEDIA"
-                            || arrayComando[3] != "ALTA" || arrayComando[3] != "IMPOSIBLE") {
+                    if (!(arrayComando[3].equals("BAJA") && arrayComando[3].equals("MEDIA")
+                            && arrayComando[3].equals("ALTA") && arrayComando[3].equals("IMPOSIBLE"))) {
                         mensaje = "Dificultad mal introducida. Introduzcalo de nuevo.";
                     }
                 }

@@ -7,8 +7,12 @@ package Juego;
 
 /**
  *
- * @author Alvaro
+ * @author Alvaro y Patricia
  */
+
+/*
+La clase LanzaGuisantes hereda de NPC y es la que ataca a los zombies.
+*/
 public class LanzaGuisantes extends NPC {
 
     private int coste;

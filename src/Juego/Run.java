@@ -10,7 +10,7 @@ import Excepciones.ExcepcionPlanta;
 
 /**
  *
- * @author Alvaro
+ * @author Alvaro y Patricia
  */
 public class Run {
 

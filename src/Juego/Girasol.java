@@ -7,8 +7,12 @@ package Juego;
 
 /**
  *
- * @author Alvaro
+ * @author Alvaro y Patricia
  */
+
+/*
+La clase Girasol hereda de NPC y es la productora de la moneda del juego.
+*/
 public class Girasol extends NPC {
 
     private int coste;

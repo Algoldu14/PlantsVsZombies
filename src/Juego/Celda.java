@@ -7,8 +7,13 @@ package Juego;
 
 /**
  *
- * @author Alvaro
+ * @author Alvaro y Patricia
  */
+
+/*
+La clase Celda es el objeto que introducimos en la matriz del tablero. Dentro de ella 
+estan los NPCs.
+*/
 public class Celda {
     
     private NPC NPC;

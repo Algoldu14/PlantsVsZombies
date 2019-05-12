@@ -7,8 +7,9 @@ package Excepciones;
 
 /**
  *
- * @author Alvaro
+ * @author Alvaro y Patricia
  */
+
 public class ExcepcionPlanta extends Exception {
 
     private int difSoles;

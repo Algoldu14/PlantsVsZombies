@@ -7,8 +7,12 @@ package Juego;
 
 /**
  *
- * @author Alvaro
+ * @author Alvaro y Patricia
  */
+
+/*
+La clase ZombieComun hereda de NPC y son los enemigos del juego.
+*/
 public class ZombieComun extends NPC {
 
     public ZombieComun(String nombre, int daño, int resistencia, int frecuencia) {
