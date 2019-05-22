@@ -588,11 +588,9 @@ public final class Tablero {
                 System.out.println("La bomba no ha eliminado nada");
                 System.out.println("");
             }
-
         } else {
             System.out.println("No existe esa posicion el la matriz");
             System.out.println("");
         }
-
     }
 }
