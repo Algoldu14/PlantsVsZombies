@@ -59,7 +59,7 @@ public class Jugador {
 
     @Override
     public String toString() {
-        return "Nombre: " + this.nombre + " DNI: " + this.DNI + " Puntos: " + this.puntos + "Fecha registro: " + this.fechaRegistro + " ";
+        return "Nombre: " + this.nombre + " DNI: " + this.DNI + " Puntos: " + this.puntos + "Fecha registro: " + this.fechaRegistro;
     }
 
 }

@@ -123,7 +123,7 @@
     <Component class="javax.swing.JButton" name="botonRegistrarUs">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="99" green="99" red="99" type="rgb"/>
+          <Color blue="66" green="66" red="66" type="rgb"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Courier New" size="14" style="0"/>
@@ -133,11 +133,14 @@
         </Property>
         <Property name="text" type="java.lang.String" value="REGISTRAR"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonRegistrarUsActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="botonAJugar">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="99" green="99" red="99" type="rgb"/>
+          <Color blue="66" green="66" red="66" type="rgb"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Courier New" size="14" style="0"/>
@@ -147,11 +150,14 @@
         </Property>
         <Property name="text" type="java.lang.String" value="&#xa1;A JUGAR!"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonAJugarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="botonVolverInicio">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="99" green="99" red="99" type="rgb"/>
+          <Color blue="66" green="66" red="66" type="rgb"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Courier New" size="14" style="0"/>
@@ -167,6 +173,9 @@
           <Dimension value="[109, 33]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonVolverInicioActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

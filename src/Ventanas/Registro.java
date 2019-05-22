@@ -5,17 +5,38 @@
  */
 package Ventanas;
 
+import java.awt.Color;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Alvaro
  */
 public class Registro extends javax.swing.JFrame {
 
+    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
     /**
      * Creates new form Registro
      */
     public Registro() {
         initComponents();
+        this.getContentPane().setBackground(Color.darkGray);
+        this.botonAJugar.setVisible(false);
+
+    }
+
+    public static String fechaActual() {
+        //Inicializo una variable llamada Date
+        Date fecha = new Date();
+        //Le digo en que formato quiero que este, que sera dia, mes y año
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/YYYY");
+        //Me retorna un valor que es la fecha acual
+        return formatoFecha.format(fecha);
     }
 
     /**
@@ -51,22 +72,37 @@ public class Registro extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("REGISTRO");
 
-        botonRegistrarUs.setBackground(new java.awt.Color(153, 153, 153));
+        botonRegistrarUs.setBackground(new java.awt.Color(102, 102, 102));
         botonRegistrarUs.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
         botonRegistrarUs.setForeground(new java.awt.Color(255, 255, 255));
         botonRegistrarUs.setText("REGISTRAR");
+        botonRegistrarUs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonRegistrarUsActionPerformed(evt);
+            }
+        });
 
-        botonAJugar.setBackground(new java.awt.Color(153, 153, 153));
+        botonAJugar.setBackground(new java.awt.Color(102, 102, 102));
         botonAJugar.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
         botonAJugar.setForeground(new java.awt.Color(255, 255, 255));
         botonAJugar.setText("¡A JUGAR!");
+        botonAJugar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAJugarActionPerformed(evt);
+            }
+        });
 
-        botonVolverInicio.setBackground(new java.awt.Color(153, 153, 153));
+        botonVolverInicio.setBackground(new java.awt.Color(102, 102, 102));
         botonVolverInicio.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
         botonVolverInicio.setForeground(new java.awt.Color(255, 255, 255));
         botonVolverInicio.setText("ATRÁS");
         botonVolverInicio.setMaximumSize(new java.awt.Dimension(109, 33));
         botonVolverInicio.setMinimumSize(new java.awt.Dimension(109, 33));
+        botonVolverInicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonVolverInicioActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -121,7 +157,38 @@ public class Registro extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
+    private void botonVolverInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverInicioActionPerformed
+        // TODO add your handling code here:
+        new VentanaInicio().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_botonVolverInicioActionPerformed
+
+    private void botonRegistrarUsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarUsActionPerformed
+        // TODO add your handling code here:
+
+        if (this.nombreRegistro.getText().equals("") || this.DNIRegistro.getText().equals("")) { //Si los espacios a rellenar para registrarse estan en blanco
+            JOptionPane.showMessageDialog(this, "ERROR: No puede dejar campos en blanco", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+        try {
+            String nombre = this.nombreLabel.getText();
+            String DNI = this.DNIRegistro.getText();
+            LocalDate fechaAct = LocalDate.now();
+            LocalDate fechaReg =  LocalDate.parse(fechaAct.format(dtf), dtf);
+
+        } catch (NumberFormatException nfe) {//Metodo que utilizaremos para capturar los errores por formato
+            System.out.println(nfe.toString());
+            JOptionPane.showMessageDialog(this, "ERROR: Error de formato numérico: " + nfe.toString(), "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception e) {//Método para capturar cualquier posible error
+            JOptionPane.showMessageDialog(this, "ERROR: " + e.toString(), "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_botonRegistrarUsActionPerformed
+
+
+    private void botonAJugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAJugarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonAJugarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField DNIRegistro;

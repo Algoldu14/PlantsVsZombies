@@ -5,6 +5,9 @@
  */
 package Ventanas;
 
+import java.awt.Color;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Alvaro
@@ -16,6 +19,7 @@ public class VentanaInicio extends javax.swing.JFrame {
      */
     public VentanaInicio() {
         initComponents();
+        this.getContentPane().setBackground(Color.darkGray);
     }
 
     /**
@@ -35,10 +39,11 @@ public class VentanaInicio extends javax.swing.JFrame {
         BotonIniciarSesion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(0, 0, 0));
         setPreferredSize(new java.awt.Dimension(553, 430));
         setResizable(false);
 
-        botonRegistro.setBackground(new java.awt.Color(153, 153, 153));
+        botonRegistro.setBackground(new java.awt.Color(102, 102, 102));
         botonRegistro.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         botonRegistro.setForeground(new java.awt.Color(255, 255, 255));
         botonRegistro.setText("REGÍSTRATE");
@@ -48,7 +53,7 @@ public class VentanaInicio extends javax.swing.JFrame {
             }
         });
 
-        botonSalir.setBackground(new java.awt.Color(153, 153, 153));
+        botonSalir.setBackground(new java.awt.Color(102, 102, 102));
         botonSalir.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         botonSalir.setForeground(new java.awt.Color(255, 255, 255));
         botonSalir.setText("SALIR");
@@ -62,19 +67,29 @@ public class VentanaInicio extends javax.swing.JFrame {
         titulo.setForeground(new java.awt.Color(255, 255, 255));
         titulo.setText("PlantsVsZombies");
 
-        ranking.setBackground(new java.awt.Color(153, 153, 153));
+        ranking.setBackground(new java.awt.Color(102, 102, 102));
         ranking.setFont(new java.awt.Font("Courier New", 0, 20)); // NOI18N
         ranking.setForeground(new java.awt.Color(255, 255, 255));
         ranking.setText("RANKING");
+        ranking.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rankingActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Hecho por Patricia y Álvaro");
 
-        BotonIniciarSesion.setBackground(new java.awt.Color(153, 153, 153));
+        BotonIniciarSesion.setBackground(new java.awt.Color(102, 102, 102));
         BotonIniciarSesion.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         BotonIniciarSesion.setForeground(new java.awt.Color(255, 255, 255));
         BotonIniciarSesion.setText("INICIAR SESIÓN");
+        BotonIniciarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonIniciarSesionActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -123,46 +138,30 @@ public class VentanaInicio extends javax.swing.JFrame {
 
     private void botonRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistroActionPerformed
         // TODO add your handling code here:
+        new Registro().setVisible(true);
+        dispose();
     }//GEN-LAST:event_botonRegistroActionPerformed
 
     private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
         // TODO add your handling code here:
+        // JOptionPane.showConfirmDialog(null, "¿Realmente desea salir del juego?", "Confirmar salida", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);  //Muestro un mensaje para asegurarme que desea salir
+        //Si recibe un 0, finaliza el programa
+        System.exit(0);
     }//GEN-LAST:event_botonSalirActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VentanaInicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VentanaInicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VentanaInicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VentanaInicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void BotonIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonIniciarSesionActionPerformed
+        // TODO add your handling code here:
+        new IniciarSesion().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_BotonIniciarSesionActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VentanaInicio().setVisible(true);
-            }
-        });
-    }
+    private void rankingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rankingActionPerformed
+        // TODO add your handling code here:
+        new Ranking().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_rankingActionPerformed
+
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonIniciarSesion;

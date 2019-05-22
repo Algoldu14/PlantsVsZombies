@@ -5,6 +5,8 @@
  */
 package Ventanas;
 
+import java.awt.Color;
+
 /**
  *
  * @author Alvaro
@@ -16,6 +18,7 @@ public class IniciarSesion extends javax.swing.JFrame {
      */
     public IniciarSesion() {
         initComponents();
+        this.getContentPane().setBackground(Color.darkGray);
     }
 
     /**
@@ -51,15 +54,20 @@ public class IniciarSesion extends javax.swing.JFrame {
             }
         });
 
-        BotonAJugar.setBackground(new java.awt.Color(153, 153, 153));
+        BotonAJugar.setBackground(new java.awt.Color(102, 102, 102));
         BotonAJugar.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
         BotonAJugar.setForeground(new java.awt.Color(255, 255, 255));
         BotonAJugar.setText("¡A JUGAR!");
 
-        BotonAtras.setBackground(new java.awt.Color(153, 153, 153));
+        BotonAtras.setBackground(new java.awt.Color(102, 102, 102));
         BotonAtras.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
         BotonAtras.setForeground(new java.awt.Color(255, 255, 255));
         BotonAtras.setText("ATRÁS");
+        BotonAtras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonAtrasActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -105,6 +113,12 @@ public class IniciarSesion extends javax.swing.JFrame {
     private void DNIInicioSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DNIInicioSesionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_DNIInicioSesionActionPerformed
+
+    private void BotonAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAtrasActionPerformed
+        // TODO add your handling code here:
+        new VentanaInicio().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_BotonAtrasActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
