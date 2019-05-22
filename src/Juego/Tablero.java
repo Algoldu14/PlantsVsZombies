@@ -220,6 +220,18 @@ public final class Tablero {
                         System.out.println("Quedan: " + this.contadorZombies + " zombies");
                         System.out.println("");
                         break;
+                    case "B":
+                        if (this.soles < 200) {
+                            throw new ExcepcionPlanta(this.soles - 200);
+                        } else {
+                            this.meterBomba(comando);
+                        }
+                        this.pintarTablero(this.getFilas(), this.getColumnas());
+                        System.out.println("Turno: " + this.getTurno());
+                        System.out.println("Tienes: " + this.getSoles() + " soles");
+                        System.out.println("Quedan: " + this.contadorZombies + " zombies");
+                        System.out.println("");
+                        break;
                     case "AYUDA":
                         System.out.println("Manual del Juego: ");
                         System.out.println("N <filas> <columnas> <Dificultad> para hacer un juego nuevo (Dificultad: BAJA, MEDIA, ALTA, IMPOSIBLE).");
@@ -261,7 +273,7 @@ public final class Tablero {
             /*catch (ExcepcionJuego ej) {
                 System.out.println(ej.getMessage());
                 System.out.println("");
-            }*/     
+            }*/
         }
         if (this.isVictoria()) {
             System.out.println("¡Enhorabuena! Las plantas ganan.");
@@ -546,6 +558,40 @@ public final class Tablero {
             if (zombiesRestantesT == 0) {
                 this.setVictoria(true);
             }
+        }
+
+    }
+    public void meterBomba(String comandoJuego) {
+
+        String arrayComando[] = comandoJuego.split(" ");
+        int filaM = Integer.parseInt(arrayComando[1]);
+        int columnaM = Integer.parseInt(arrayComando[2]);
+
+        if (filaM <= this.filas && columnaM <= this.columnas && filaM >= 0 && columnaM >= 0) { //SI has metido bien el comando
+            if (this.matrizTablero[filaM][columnaM].getNPC() instanceof ZombieComun) {
+                this.matrizTablero[filaM][columnaM].setNPC(new NPC()); //Vaciamos esa casilla
+                this.setSoles(this.getSoles() - 200);
+                System.out.println("Has eliminado un zombie");
+                System.out.println("");
+            } else if (this.matrizTablero[filaM][columnaM].getNPC() instanceof LanzaGuisantes) {
+                this.matrizTablero[filaM][columnaM].setNPC(new NPC()); //Vaciamos esa casilla
+                this.setSoles(this.getSoles() - 200);
+                System.out.println("Has eliminado un Lanza Guisantes");
+                System.out.println("");
+            } else if (this.matrizTablero[filaM][columnaM].getNPC() instanceof Girasol) {
+                this.matrizTablero[filaM][columnaM].setNPC(new NPC()); //Vaciamos esa casilla
+                this.setSoles(this.getSoles() - 200);
+                System.out.println("Has eliminado un Girasol");
+                System.out.println("");
+            } else {
+                this.setSoles(this.getSoles() - 200);
+                System.out.println("La bomba no ha eliminado nada");
+                System.out.println("");
+            }
+
+        } else {
+            System.out.println("No existe esa posicion el la matriz");
+            System.out.println("");
         }
 
     }
