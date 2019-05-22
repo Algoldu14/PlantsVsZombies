@@ -5,13 +5,14 @@
  */
 package Juego;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
  *
  * @author Alvaro
  */
-public class Jugador {
+public class Jugador implements Serializable {
 
     private String nombre;
     private String DNI;

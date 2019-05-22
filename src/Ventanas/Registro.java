@@ -5,12 +5,14 @@
  */
 package Ventanas;
 
+import Juego.Jugador;
 import java.awt.Color;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import Juego.BBDDJuego;
 
 /**
  *
@@ -169,13 +171,14 @@ public class Registro extends javax.swing.JFrame {
         if (this.nombreRegistro.getText().equals("") || this.DNIRegistro.getText().equals("")) { //Si los espacios a rellenar para registrarse estan en blanco
             JOptionPane.showMessageDialog(this, "ERROR: No puede dejar campos en blanco", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
         }
-
         try {
             String nombre = this.nombreLabel.getText();
             String DNI = this.DNIRegistro.getText();
             LocalDate fechaAct = LocalDate.now();
             LocalDate fechaReg =  LocalDate.parse(fechaAct.format(dtf), dtf);
-
+            Jugador jugadorNuevo = new Jugador(nombre, DNI, fechaReg, 0);
+            BBDDJuego.altaJugador(jugadorNuevo);
+            this.botonAJugar.setVisible(true);
         } catch (NumberFormatException nfe) {//Metodo que utilizaremos para capturar los errores por formato
             System.out.println(nfe.toString());
             JOptionPane.showMessageDialog(this, "ERROR: Error de formato numérico: " + nfe.toString(), "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
@@ -187,6 +190,8 @@ public class Registro extends javax.swing.JFrame {
 
     private void botonAJugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAJugarActionPerformed
         // TODO add your handling code here:
+        new Tablero().setVisible(true);
+        dispose();
     }//GEN-LAST:event_botonAJugarActionPerformed
 
 

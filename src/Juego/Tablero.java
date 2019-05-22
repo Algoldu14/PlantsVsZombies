@@ -31,8 +31,8 @@ public final class Tablero {
     private boolean victoria;
 
     public Tablero() {
-        this.columnas = columnas;
-        this.filas = filas;
+        this.columnas = 8;
+        this.filas = 7;
         this.soles = 50;
         this.matrizTablero = matrizTablero;
         this.turno = 0;
@@ -111,12 +111,12 @@ public final class Tablero {
     El metodo de crearMatrizTablero es el que crea la matriz donde se guardan los NPCs, inicialmente
     la matriz esta compuesta de Celdas que contienen NPCs vacios.
      */
-    public Celda[][] crearMatrizTablero(int filas, int columnas) {
+    public Celda[][] crearMatrizTablero() {
 
-        matrizTablero = new Celda[filas][columnas];
+        matrizTablero = new Celda[this.filas][this.columnas];
 
-        for (int i = 0; i < filas; i++) {
-            for (int j = 0; j < columnas; j++) {
+        for (int i = 0; i < this.filas; i++) {
+            for (int j = 0; j < this.columnas; j++) {
                 Celda celda = new Celda(new NPC()); //metemos celdas vacías
                 matrizTablero[i][j] = celda;
             }
@@ -127,30 +127,30 @@ public final class Tablero {
     /*
     El método pintarTablero pinta el tablero solicitado por el comando N <filas> <columnas> <Dificultad>.
      */
-    public void pintarTablero(int filas, int columnas) {
-
-        for (int fila = 0; fila < this.filas * 2; fila++) {
-            if (fila % 2 == 0) {
-                for (int columna = 0; columna < columnas; columna++) {
-                    System.out.print("|");
-                    System.out.print("--------");
-                }
-                System.out.println("|");
-            } else {
-                for (int columna = 0; columna < columnas; columna++) {
-                    System.out.print("|");
-                    System.out.print(this.matrizTablero[(int) (fila / 2)][columna].toString());
-                }
-                System.out.println("|");
-            }
-        }
-        for (int columna = 0; columna < columnas; columna++) {
-            System.out.print("|");
-            System.out.print("--------");
-        }
-        System.out.println("|");
-
-    }
+//    public void pintarTablero(int filas, int columnas) {
+//
+//        for (int fila = 0; fila < this.filas * 2; fila++) {
+//            if (fila % 2 == 0) {
+//                for (int columna = 0; columna < columnas; columna++) {
+//                    System.out.print("|");
+//                    System.out.print("--------");
+//                }
+//                System.out.println("|");
+//            } else {
+//                for (int columna = 0; columna < columnas; columna++) {
+//                    System.out.print("|");
+//                    System.out.print(this.matrizTablero[(int) (fila / 2)][columna].toString());
+//                }
+//                System.out.println("|");
+//            }
+//        }
+//        for (int columna = 0; columna < columnas; columna++) {
+//            System.out.print("|");
+//            System.out.print("--------");
+//        }
+//        System.out.println("|");
+//
+//    }
 
     /*
     El metodo actualizarTablero es el metodo mas importante de esta clase y del programa, en este metodo se analiza
@@ -189,8 +189,8 @@ public final class Tablero {
                         }
                         this.setFilas(Integer.parseInt(arrayComando[1]));
                         this.setColumnas(Integer.parseInt(arrayComando[2]));
-                        this.setMatrizTablero(this.crearMatrizTablero(this.getFilas(), this.getColumnas()));
-                        this.pintarTablero(this.filas, this.columnas);
+//                        this.setMatrizTablero(this.crearMatrizTablero(this.getFilas(), this.getColumnas()));
+//                        this.pintarTablero(this.filas, this.columnas);
                         System.out.println("Tienes: " + this.getSoles() + " soles");
                         System.out.println("Turno: " + this.getTurno());
                         System.out.println("Quedan: " + this.contadorZombies + " zombies");
@@ -202,7 +202,7 @@ public final class Tablero {
                         } else {
                             this.introducirPlanta(comando);
                         }
-                        this.pintarTablero(this.getFilas(), this.getColumnas());
+//                        this.pintarTablero(this.getFilas(), this.getColumnas());
                         System.out.println("Turno: " + this.getTurno());
                         System.out.println("Tienes: " + this.getSoles() + " soles");
                         System.out.println("Quedan: " + this.contadorZombies + " zombies");
@@ -214,7 +214,7 @@ public final class Tablero {
                         } else {
                             this.introducirPlanta(comando);
                         }
-                        this.pintarTablero(this.getFilas(), this.getColumnas());
+//                        this.pintarTablero(this.getFilas(), this.getColumnas());
                         System.out.println("Turno: " + this.getTurno());
                         System.out.println("Tienes: " + this.getSoles() + " soles");
                         System.out.println("Quedan: " + this.contadorZombies + " zombies");
@@ -226,7 +226,7 @@ public final class Tablero {
                         } else {
                             this.meterBomba(comando);
                         }
-                        this.pintarTablero(this.getFilas(), this.getColumnas());
+//                        this.pintarTablero(this.getFilas(), this.getColumnas());
                         System.out.println("Turno: " + this.getTurno());
                         System.out.println("Tienes: " + this.getSoles() + " soles");
                         System.out.println("Quedan: " + this.contadorZombies + " zombies");
@@ -252,7 +252,7 @@ public final class Tablero {
                         this.limpiarTablero(); //Limpiamos el tablero
                         this.comprobarVictoria();
                         this.setTurno(this.turno + 1); //Aumentamos el turno
-                        this.pintarTablero(this.getFilas(), this.getColumnas());
+//                        this.pintarTablero(this.getFilas(), this.getColumnas());
                         System.out.println("");
                         System.out.println("Turno: " + this.getTurno());
                         System.out.println("Tienes: " + this.getSoles() + " soles");
@@ -561,6 +561,7 @@ public final class Tablero {
         }
 
     }
+
     public void meterBomba(String comandoJuego) {
 
         String arrayComando[] = comandoJuego.split(" ");
