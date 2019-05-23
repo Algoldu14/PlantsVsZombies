@@ -19,6 +19,7 @@ public class VentanaIniciarSesion extends javax.swing.JFrame {
     public VentanaIniciarSesion() {
         initComponents();
         this.getContentPane().setBackground(Color.darkGray);
+        DNIInicioSesion.setToolTipText("00000000A");
     }
 
     /**
@@ -57,6 +58,11 @@ public class VentanaIniciarSesion extends javax.swing.JFrame {
         BotonAJugar.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
         BotonAJugar.setForeground(new java.awt.Color(255, 255, 255));
         BotonAJugar.setText("¡A JUGAR!");
+        BotonAJugar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonAJugarActionPerformed(evt);
+            }
+        });
 
         BotonAtras.setBackground(new java.awt.Color(102, 102, 102));
         BotonAtras.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
@@ -118,6 +124,12 @@ public class VentanaIniciarSesion extends javax.swing.JFrame {
         new VentanaInicio().setVisible(true);
         dispose();
     }//GEN-LAST:event_BotonAtrasActionPerformed
+
+    private void BotonAJugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAJugarActionPerformed
+        // TODO add your handling code here:
+        new VentanaTablero().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_BotonAJugarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

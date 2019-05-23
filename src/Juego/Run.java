@@ -17,13 +17,9 @@ public class Run {
 
     public static void main(String[] args) throws ExcepcionPlanta, ExcepcionJuego {
 
-//        VentanaInicio miVentanaIni = new VentanaInicio();
-//        
-//        miVentanaIni.setVisible(true);
-          
-          Tablero tablero = new Tablero();
-          
-          tablero.actualizarTablero();
+        VentanaInicio miVentanaIni = new VentanaInicio();
+        
+        miVentanaIni.setVisible(true);
     }
 
 }

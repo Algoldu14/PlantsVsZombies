@@ -29,6 +29,8 @@ public class VentanaRegistro extends javax.swing.JFrame {
         initComponents();
         this.getContentPane().setBackground(Color.darkGray);
         this.botonAJugar.setVisible(false);
+        nombreRegistro.setToolTipText("María García");
+        DNIRegistro.setToolTipText("00000000A");
 
     }
 
@@ -66,9 +68,21 @@ public class VentanaRegistro extends javax.swing.JFrame {
         nombreLabel.setForeground(new java.awt.Color(255, 255, 255));
         nombreLabel.setText("Introduce tu nombre:");
 
+        nombreRegistro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombreRegistroActionPerformed(evt);
+            }
+        });
+
         jLabel2.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Introduce tu DNI:");
+
+        DNIRegistro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DNIRegistroActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Courier New", 1, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -193,6 +207,14 @@ public class VentanaRegistro extends javax.swing.JFrame {
         new VentanaTablero().setVisible(true);
         dispose();
     }//GEN-LAST:event_botonAJugarActionPerformed
+
+    private void nombreRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreRegistroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nombreRegistroActionPerformed
+
+    private void DNIRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DNIRegistroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DNIRegistroActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -33,8 +33,8 @@ public final class Tablero {
     private boolean victoria;
 
     public Tablero() {
-        this.columnas = columnas;
-        this.filas = filas;
+        this.columnas = 8;
+        this.filas = 7;
         this.soles = 50;
         this.matrizTablero = matrizTablero;
         this.turno = 0;
@@ -113,7 +113,7 @@ public final class Tablero {
     El metodo de crearMatrizTablero es el que crea la matriz donde se guardan los NPCs, inicialmente
     la matriz esta compuesta de Celdas que contienen NPCs vacios.
      */
-    public Celda[][] crearMatrizTablero(int filas, int columnas) {
+    public Celda[][] crearMatrizTablero() {
 
         matrizTablero = new Celda[this.filas][this.columnas];
 
@@ -127,88 +127,22 @@ public final class Tablero {
     }
 
     /*
-    El método pintarTablero pinta el tablero solicitado por el comando N <filas> <columnas> <Dificultad>.
-     */
-    public void pintarTablero(int filas, int columnas) {
-
-        for (int fila = 0; fila < this.filas * 2; fila++) {
-            if (fila % 2 == 0) {
-                for (int columna = 0; columna < columnas; columna++) {
-                    System.out.print("|");
-                    System.out.print("--------");
-                }
-                System.out.println("|");
-            } else {
-                for (int columna = 0; columna < columnas; columna++) {
-                    System.out.print("|");
-                    System.out.print(this.matrizTablero[(int) (fila / 2)][columna].toString());
-                }
-                System.out.println("|");
-            }
-        }
-        for (int columna = 0; columna < columnas; columna++) {
-            System.out.print("|");
-            System.out.print("--------");
-        }
-        System.out.println("|");
-
-    }
-
-    /*
     El metodo actualizarTablero es el metodo mas importante de esta clase y del programa, en este metodo se analiza
     el comando introducido y determina lo que tiene que ir haciendo. Al igual que va pidiendo la introduccion de los 
     nuevos comandos y tratados con sus excepciones.
      */
-    public void actualizarTablero() throws ExcepcionPlanta, ExcepcionJuego {
+    public void actualizarTablero(String comando) throws ExcepcionPlanta, ExcepcionJuego {
 
-        Scanner entrada = new Scanner(System.in);
-
-        while (this.turno < 30 || this.isVictoria()) {
             try {
-                System.out.println("Introduzca el comando: ");
-                String comando = entrada.nextLine();
                 comando = comando.toUpperCase();
                 String arrayComando[] = comando.split(" ");
-                /*if (!(comando.isEmpty())) {
-                    throw new ExcepcionJuego(comando);
-                }*/
                 switch (arrayComando[0]) {
-                    case "N": //Si en el comando hay una N inicia el juego
-                        this.setDificultad(arrayComando[3]);
-                        switch (this.getDificultad()) {
-                            case "BAJA":
-                                this.setContadorZombies(5);
-                                break;
-                            case "MEDIA":
-                                this.setContadorZombies(15);
-                                break;
-                            case "ALTA":
-                                this.setContadorZombies(25);
-                                break;
-                            case "IMPOSIBLE":
-                                this.setContadorZombies(50);
-                                break;
-                        }
-                        this.setFilas(Integer.parseInt(arrayComando[1]));
-                        this.setColumnas(Integer.parseInt(arrayComando[2]));
-                        this.setMatrizTablero(this.crearMatrizTablero(this.getFilas(), this.getColumnas()));
-                        this.pintarTablero(this.filas, this.columnas);
-                        System.out.println("Tienes: " + this.getSoles() + " soles");
-                        System.out.println("Turno: " + this.getTurno());
-                        System.out.println("Quedan: " + this.contadorZombies + " zombies");
-                        System.out.println("");
-                        break;
                     case "L": //Si son las plantas
                         if (this.soles < 50) {
                             throw new ExcepcionPlanta(ExcepcionPlanta.INSUFICIENTES_SOLES);
                         } else {
                             this.introducirPlanta(comando);
                         }
-                        this.pintarTablero(this.getFilas(), this.getColumnas());
-                        System.out.println("Turno: " + this.getTurno());
-                        System.out.println("Tienes: " + this.getSoles() + " soles");
-                        System.out.println("Quedan: " + this.contadorZombies + " zombies");
-                        System.out.println("");
                         break;
                     case "G":
                         if (this.soles < 20) {
@@ -216,35 +150,19 @@ public final class Tablero {
                         } else {
                             this.introducirPlanta(comando);
                         }
-                        this.pintarTablero(this.getFilas(), this.getColumnas());
-                        System.out.println("Turno: " + this.getTurno());
-                        System.out.println("Tienes: " + this.getSoles() + " soles");
-                        System.out.println("Quedan: " + this.contadorZombies + " zombies");
-                        System.out.println("");
-                        break;
                     case "B":
                         if (this.soles < 200) {
                             throw new ExcepcionPlanta(ExcepcionPlanta.INSUFICIENTES_SOLES);
                         } else {
                             this.meterBomba(comando);
                         }
-                        this.pintarTablero(this.getFilas(), this.getColumnas());
-                        System.out.println("Turno: " + this.getTurno());
-                        System.out.println("Tienes: " + this.getSoles() + " soles");
-                        System.out.println("Quedan: " + this.contadorZombies + " zombies");
-                        System.out.println("");
                         break;
-                    case "NZ":
+                    case "N":
                         if (this.soles < 50) {
                             throw new ExcepcionPlanta(ExcepcionPlanta.INSUFICIENTES_SOLES);
                         } else {
                             this.introducirPlanta(comando);
                         }
-                        this.pintarTablero(this.getFilas(), this.getColumnas());
-                        System.out.println("Turno: " + this.getTurno());
-                        System.out.println("Tienes: " + this.getSoles() + " soles");
-                        System.out.println("Quedan: " + this.contadorZombies + " zombies");
-                        System.out.println("");
                         break;
                     case "P":
                         if (this.soles < 50) {
@@ -252,60 +170,15 @@ public final class Tablero {
                         } else {
                             this.introducirPlanta(comando);
                         }
-                        this.pintarTablero(this.getFilas(), this.getColumnas());
-                        System.out.println("Turno: " + this.getTurno());
-                        System.out.println("Tienes: " + this.getSoles() + " soles");
-                        System.out.println("Quedan: " + this.contadorZombies + " zombies");
-                        System.out.println("");
-                        break;
-                    case "AYUDA":
-                        System.out.println("Manual del Juego: ");
-                        System.out.println("N <filas> <columnas> <Dificultad> para hacer un juego nuevo (Dificultad: BAJA, MEDIA, ALTA, IMPOSIBLE).");
-                        System.out.println("G <fila> <columna>  para insertar un Girasol en las posiciones introducidas.");
-                        System.out.println("L <fila> <columna>  para insertar un lanza guisantes en las posiciones introducidas.");
-                        System.out.println("S para salir del juego.");
-                        System.out.println("<ENTER> para pasar de turno.");
-                        System.out.println("");
-                        break;
-                    case "": // Si es un enter
-                        this.sumarGirasoles(); //Se suman los soles cada dos turnos
-                        this.ataquePlanta();  //Las plantas atacan
-                        this.ataqueZombie(); //Los zombies atacan
-                        this.moverZombie(); //Los zombies se mueven
-                        if (this.contadorZombies > 0) {
-                            this.insertarZombieAleatorio(); //Metemos zombies nuevos    
-                        }
-                        this.limpiarTablero(); //Limpiamos el tablero
-                        this.comprobarVictoria();
-                        this.setTurno(this.turno + 1); //Aumentamos el turno
-                        this.pintarTablero(this.getFilas(), this.getColumnas());
-                        System.out.println("");
-                        System.out.println("Turno: " + this.getTurno());
-                        System.out.println("Tienes: " + this.getSoles() + " soles");
-                        System.out.println("Quedan: " + this.contadorZombies + " zombies");
-                        System.out.println("");
-                        break;
-                    case "S":
-                        System.exit(0); //Sale del programa
                         break;
                     default:
                         System.out.println("Error al introducir el comando.");
                         break;
                 }
             } catch (ExcepcionPlanta ep) {
-                System.out.println(ep.getMessage());
-                System.out.println("");
+                
             }
-            /*catch (ExcepcionJuego ej) {
-                System.out.println(ej.getMessage());
-                System.out.println("");
-            }*/
-        }
-        if (this.isVictoria()) {
-            System.out.println("¡Enhorabuena! Las plantas ganan.");
-        } else {
-            System.out.println("¡Has perdido! Los zombies ganan.");
-        }
+        
     }
 
     /*
@@ -391,7 +264,7 @@ public final class Tablero {
                 System.out.println("");
             }
         } catch (ExcepcionPlanta ep) {
-            ep.getMessage();
+           
         }
     }
 
@@ -691,30 +564,26 @@ public final class Tablero {
                         if (this.matrizTablero[i - 1][columnaAr].getNPC() instanceof ZombieComun
                                 || this.matrizTablero[i - 1][columnaAr].getNPC() instanceof Deportista
                                 || this.matrizTablero[i - 1][columnaAr].getNPC() instanceof Caracubo) {
-                            this.matrizTablero[i - 1][columnaAr].getNPC().setResistencia(0);
+                            this.matrizTablero[i - 1][columnaAr].setNPC(new NPC());
                         }
                     }
                     for (int columnaAb = j - 1; columnaAb <= j + 1; columnaAb++) {
                         if (this.matrizTablero[i][columnaAb].getNPC() instanceof ZombieComun
                                 || this.matrizTablero[i + 1][columnaAb].getNPC() instanceof Deportista
                                 || this.matrizTablero[i + 1][columnaAb].getNPC() instanceof Caracubo) {
-                            this.matrizTablero[i + 1][columnaAb].getNPC().setResistencia(0);
+                            this.matrizTablero[i + 1][columnaAb].setNPC(new NPC());
                         }
                     }
-
                     if (this.matrizTablero[i][j + 1].getNPC() instanceof ZombieComun
                             || this.matrizTablero[i][j + 1].getNPC() instanceof Deportista
                             || this.matrizTablero[i][j + 1].getNPC() instanceof Caracubo) {
 
-                        this.matrizTablero[i][j + 1].getNPC().setResistencia(0);
-
+                        this.matrizTablero[i][j + 1].setNPC(new NPC());
                     }
                     if (this.matrizTablero[i][j - 1].getNPC() instanceof ZombieComun
                             || this.matrizTablero[i][j + 1].getNPC() instanceof Deportista
                             || this.matrizTablero[i][j + 1].getNPC() instanceof Caracubo) {
-
-                        this.matrizTablero[i][j + 1].getNPC().setResistencia(0);
-
+                        this.matrizTablero[i][j + 1].setNPC(new NPC());
                     }
                     this.matrizTablero[i][j].getNPC().setFrecuencia(this.matrizTablero[i][j].getNPC().getFrecuencia() - 1);
                 }

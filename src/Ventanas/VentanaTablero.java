@@ -5,22 +5,28 @@
  */
 package Ventanas;
 
+
 import java.awt.Color;
 import javax.swing.JOptionPane;
-
+import Juego.*;
 
 /**
  *
- * @author Alvaro
+ * @author Alvaro y Patricia
  */
 public class VentanaTablero extends javax.swing.JFrame {
 
+    Tablero tablero = new Tablero();
+    
     /**
      * Creates new form Tablero
      */
     public VentanaTablero() {
         initComponents();
-        this.getContentPane().setBackground(Color.darkGray);
+        this.getContentPane().setBackground(Color.DARK_GRAY);
+        lectorComando.setToolTipText("G 0 0");
+        tablero.crearMatrizTablero();
+        this.imprimirTablero();
     }
 
     /**
@@ -33,73 +39,14 @@ public class VentanaTablero extends javax.swing.JFrame {
     private void initComponents() {
 
         botonSalir = new javax.swing.JButton();
-        casilla00 = new javax.swing.JTextField();
-        casilla10 = new javax.swing.JTextField();
-        casilla20 = new javax.swing.JTextField();
-        casilla30 = new javax.swing.JTextField();
-        casilla40 = new javax.swing.JTextField();
-        casilla50 = new javax.swing.JTextField();
-        casilla60 = new javax.swing.JTextField();
-        casilla01 = new javax.swing.JTextField();
-        casilla11 = new javax.swing.JTextField();
-        casilla21 = new javax.swing.JTextField();
-        casilla31 = new javax.swing.JTextField();
-        casilla41 = new javax.swing.JTextField();
-        casilla51 = new javax.swing.JTextField();
-        casilla61 = new javax.swing.JTextField();
-        casilla02 = new javax.swing.JTextField();
-        casilla12 = new javax.swing.JTextField();
-        casilla22 = new javax.swing.JTextField();
-        casilla32 = new javax.swing.JTextField();
-        casilla42 = new javax.swing.JTextField();
-        casilla52 = new javax.swing.JTextField();
-        casilla62 = new javax.swing.JTextField();
-        casilla03 = new javax.swing.JTextField();
-        casilla13 = new javax.swing.JTextField();
-        casilla23 = new javax.swing.JTextField();
-        casilla33 = new javax.swing.JTextField();
-        casilla43 = new javax.swing.JTextField();
-        casilla53 = new javax.swing.JTextField();
-        casilla63 = new javax.swing.JTextField();
-        casilla04 = new javax.swing.JTextField();
-        casilla14 = new javax.swing.JTextField();
-        casilla24 = new javax.swing.JTextField();
-        casilla34 = new javax.swing.JTextField();
-        casilla44 = new javax.swing.JTextField();
-        casilla54 = new javax.swing.JTextField();
-        casilla64 = new javax.swing.JTextField();
-        casilla05 = new javax.swing.JTextField();
-        casilla15 = new javax.swing.JTextField();
-        casilla25 = new javax.swing.JTextField();
-        casilla35 = new javax.swing.JTextField();
-        casilla45 = new javax.swing.JTextField();
-        casilla55 = new javax.swing.JTextField();
-        casilla65 = new javax.swing.JTextField();
-        casilla06 = new javax.swing.JTextField();
-        casilla16 = new javax.swing.JTextField();
-        casilla26 = new javax.swing.JTextField();
-        casilla36 = new javax.swing.JTextField();
-        casilla46 = new javax.swing.JTextField();
-        casilla56 = new javax.swing.JTextField();
-        casilla66 = new javax.swing.JTextField();
-        casilla07 = new javax.swing.JTextField();
-        casilla17 = new javax.swing.JTextField();
-        casilla27 = new javax.swing.JTextField();
-        casilla37 = new javax.swing.JTextField();
-        casilla47 = new javax.swing.JTextField();
-        casilla57 = new javax.swing.JTextField();
-        casilla67 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        contadorZombies = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        contadorTurno = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         lectorComando = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         BotonPasarTurno = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        contadorSoles = new javax.swing.JTextField();
         BotonInsertarComando = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -115,6 +62,65 @@ public class VentanaTablero extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
+        celda00 = new javax.swing.JLabel();
+        celda10 = new javax.swing.JLabel();
+        celda20 = new javax.swing.JLabel();
+        celda30 = new javax.swing.JLabel();
+        celda40 = new javax.swing.JLabel();
+        celda50 = new javax.swing.JLabel();
+        celda60 = new javax.swing.JLabel();
+        celda01 = new javax.swing.JLabel();
+        celda11 = new javax.swing.JLabel();
+        celda21 = new javax.swing.JLabel();
+        celda31 = new javax.swing.JLabel();
+        celda41 = new javax.swing.JLabel();
+        celda51 = new javax.swing.JLabel();
+        celda61 = new javax.swing.JLabel();
+        celda02 = new javax.swing.JLabel();
+        celda12 = new javax.swing.JLabel();
+        celda22 = new javax.swing.JLabel();
+        celda32 = new javax.swing.JLabel();
+        celda42 = new javax.swing.JLabel();
+        celda52 = new javax.swing.JLabel();
+        celda62 = new javax.swing.JLabel();
+        celda03 = new javax.swing.JLabel();
+        celda13 = new javax.swing.JLabel();
+        celda23 = new javax.swing.JLabel();
+        celda33 = new javax.swing.JLabel();
+        celda43 = new javax.swing.JLabel();
+        celda53 = new javax.swing.JLabel();
+        celda63 = new javax.swing.JLabel();
+        celda04 = new javax.swing.JLabel();
+        celda14 = new javax.swing.JLabel();
+        celda24 = new javax.swing.JLabel();
+        celda34 = new javax.swing.JLabel();
+        celda44 = new javax.swing.JLabel();
+        celda54 = new javax.swing.JLabel();
+        celda64 = new javax.swing.JLabel();
+        celda05 = new javax.swing.JLabel();
+        celda15 = new javax.swing.JLabel();
+        celda25 = new javax.swing.JLabel();
+        celda35 = new javax.swing.JLabel();
+        celda45 = new javax.swing.JLabel();
+        celda55 = new javax.swing.JLabel();
+        celda65 = new javax.swing.JLabel();
+        celda06 = new javax.swing.JLabel();
+        celda16 = new javax.swing.JLabel();
+        celda26 = new javax.swing.JLabel();
+        celda36 = new javax.swing.JLabel();
+        celda46 = new javax.swing.JLabel();
+        celda56 = new javax.swing.JLabel();
+        celda66 = new javax.swing.JLabel();
+        celda07 = new javax.swing.JLabel();
+        celda17 = new javax.swing.JLabel();
+        celda27 = new javax.swing.JLabel();
+        celda37 = new javax.swing.JLabel();
+        celda47 = new javax.swing.JLabel();
+        celda57 = new javax.swing.JLabel();
+        celda67 = new javax.swing.JLabel();
+        labelContadorZombies = new javax.swing.JLabel();
+        labelTurno = new javax.swing.JLabel();
+        labelSoles = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -126,12 +132,6 @@ public class VentanaTablero extends javax.swing.JFrame {
         botonSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonSalirActionPerformed(evt);
-            }
-        });
-
-        casilla40.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                casilla40ActionPerformed(evt);
             }
         });
 
@@ -150,6 +150,12 @@ public class VentanaTablero extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("0");
+
+        lectorComando.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lectorComandoActionPerformed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -223,6 +229,7 @@ public class VentanaTablero extends javax.swing.JFrame {
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("4");
 
+        jLabel18.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
         jLabel18.setText("5");
 
@@ -234,135 +241,331 @@ public class VentanaTablero extends javax.swing.JFrame {
         jLabel20.setForeground(new java.awt.Color(255, 255, 255));
         jLabel20.setText("7");
 
+        celda00.setBackground(new java.awt.Color(0, 255, 0));
+        celda00.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+
+        celda10.setBackground(new java.awt.Color(0, 255, 0));
+        celda10.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+
+        celda20.setBackground(new java.awt.Color(0, 255, 0));
+        celda20.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+
+        celda30.setBackground(new java.awt.Color(0, 255, 0));
+        celda30.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+
+        celda40.setBackground(new java.awt.Color(0, 255, 0));
+        celda40.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+
+        celda50.setBackground(new java.awt.Color(0, 255, 0));
+        celda50.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+
+        celda60.setBackground(new java.awt.Color(0, 255, 0));
+        celda60.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+
+        celda01.setBackground(new java.awt.Color(0, 255, 0));
+        celda01.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+
+        celda11.setBackground(new java.awt.Color(0, 255, 0));
+        celda11.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+
+        celda21.setBackground(new java.awt.Color(0, 255, 0));
+        celda21.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+
+        celda31.setBackground(new java.awt.Color(0, 255, 0));
+        celda31.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+
+        celda41.setBackground(new java.awt.Color(0, 255, 0));
+        celda41.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+
+        celda51.setBackground(new java.awt.Color(0, 255, 0));
+        celda51.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+
+        celda61.setBackground(new java.awt.Color(0, 255, 0));
+        celda61.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+
+        celda02.setBackground(new java.awt.Color(0, 255, 0));
+        celda02.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+
+        celda12.setBackground(new java.awt.Color(0, 255, 0));
+        celda12.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+
+        celda22.setBackground(new java.awt.Color(0, 255, 0));
+        celda22.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+
+        celda32.setBackground(new java.awt.Color(0, 255, 0));
+        celda32.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+
+        celda42.setBackground(new java.awt.Color(0, 255, 0));
+        celda42.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+
+        celda52.setBackground(new java.awt.Color(0, 255, 0));
+        celda52.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+
+        celda62.setBackground(new java.awt.Color(0, 255, 0));
+        celda62.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+
+        celda03.setBackground(new java.awt.Color(0, 255, 0));
+        celda03.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+
+        celda13.setBackground(new java.awt.Color(0, 255, 0));
+        celda13.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+
+        celda23.setBackground(new java.awt.Color(0, 255, 0));
+        celda23.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+
+        celda33.setBackground(new java.awt.Color(0, 255, 0));
+        celda33.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+
+        celda43.setBackground(new java.awt.Color(0, 255, 0));
+        celda43.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+
+        celda53.setBackground(new java.awt.Color(0, 255, 0));
+        celda53.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+
+        celda63.setBackground(new java.awt.Color(0, 255, 0));
+        celda63.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+
+        celda04.setBackground(new java.awt.Color(0, 255, 0));
+        celda04.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+
+        celda14.setBackground(new java.awt.Color(0, 255, 0));
+        celda14.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+
+        celda24.setBackground(new java.awt.Color(0, 255, 0));
+        celda24.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+
+        celda34.setBackground(new java.awt.Color(0, 255, 0));
+        celda34.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+
+        celda44.setBackground(new java.awt.Color(0, 255, 0));
+        celda44.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+
+        celda54.setBackground(new java.awt.Color(0, 255, 0));
+        celda54.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+
+        celda64.setBackground(new java.awt.Color(0, 255, 0));
+        celda64.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+
+        celda05.setBackground(new java.awt.Color(0, 255, 0));
+        celda05.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+
+        celda15.setBackground(new java.awt.Color(0, 255, 0));
+        celda15.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+
+        celda25.setBackground(new java.awt.Color(0, 255, 0));
+        celda25.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+
+        celda35.setBackground(new java.awt.Color(0, 255, 0));
+        celda35.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+
+        celda45.setBackground(new java.awt.Color(0, 255, 0));
+        celda45.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+
+        celda55.setBackground(new java.awt.Color(0, 255, 0));
+        celda55.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+
+        celda65.setBackground(new java.awt.Color(0, 255, 0));
+        celda65.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+
+        celda06.setBackground(new java.awt.Color(0, 255, 0));
+        celda06.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+
+        celda16.setBackground(new java.awt.Color(0, 255, 0));
+        celda16.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+
+        celda26.setBackground(new java.awt.Color(0, 255, 0));
+        celda26.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+
+        celda36.setBackground(new java.awt.Color(0, 255, 0));
+        celda36.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+
+        celda46.setBackground(new java.awt.Color(0, 255, 0));
+        celda46.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+
+        celda56.setBackground(new java.awt.Color(0, 255, 0));
+        celda56.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+
+        celda66.setBackground(new java.awt.Color(0, 255, 0));
+        celda66.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+
+        celda07.setBackground(new java.awt.Color(0, 255, 0));
+        celda07.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+
+        celda17.setBackground(new java.awt.Color(0, 255, 0));
+        celda17.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+
+        celda27.setBackground(new java.awt.Color(0, 255, 0));
+        celda27.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+
+        celda37.setBackground(new java.awt.Color(0, 255, 0));
+        celda37.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+
+        celda47.setBackground(new java.awt.Color(0, 255, 0));
+        celda47.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+
+        celda57.setBackground(new java.awt.Color(0, 255, 0));
+        celda57.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+
+        celda67.setBackground(new java.awt.Color(0, 255, 0));
+        celda67.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+
+        labelContadorZombies.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+
+        labelTurno.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+
+        labelSoles.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                .addGap(92, 92, 92)
+                .addComponent(jLabel13)
+                .addGap(80, 80, 80)
+                .addComponent(jLabel14)
+                .addGap(86, 86, 86)
+                .addComponent(jLabel15)
+                .addGap(84, 84, 84)
+                .addComponent(jLabel16)
+                .addGap(87, 87, 87)
+                .addComponent(jLabel17)
+                .addGap(85, 85, 85)
+                .addComponent(jLabel18)
+                .addGap(83, 83, 83)
+                .addComponent(jLabel19)
+                .addGap(96, 96, 96)
+                .addComponent(jLabel20)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel12))
+                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(casilla00, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(casilla10, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(casilla50, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(casilla60, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(casilla20, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(casilla30, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(casilla40, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(celda10, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(celda20, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(celda30, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(celda40, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(celda50, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(celda60, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(celda00, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(casilla41, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(casilla51, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(celda61, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(casilla42, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(casilla52, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(casilla11, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(celda62, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(casilla01, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(casilla12, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(casilla02, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(casilla61, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(casilla62, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(casilla31, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(celda21, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(casilla21, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(celda31, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(casilla22, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(casilla32, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(celda22, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(celda32, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(celda41, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(celda51, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(celda42, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(celda52, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(celda11, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(celda01, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(celda02, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(celda12, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(celda63, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(celda53, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(celda43, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(celda33, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(celda23, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(celda03, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(celda13, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(casilla13, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(celda44, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(casilla14, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(celda45, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(casilla15, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(celda46, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(casilla16, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(casilla17, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(celda47, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(casilla23, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(celda34, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(casilla24, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(celda35, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(casilla25, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(celda36, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(casilla26, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(casilla27, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(celda37, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(casilla33, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(celda04, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(celda14, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
-                                .addComponent(casilla34, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(celda05, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(celda15, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
-                                .addComponent(casilla35, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(celda06, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(celda16, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
-                                .addComponent(casilla36, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(casilla37, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(celda07, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(celda17, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(casilla43, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(celda24, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(casilla44, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(celda25, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(casilla45, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(celda26, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(casilla46, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(celda27, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(celda64, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(celda54, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
-                                .addComponent(casilla47, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(casilla53, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(casilla54, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(casilla55, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(casilla56, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(casilla57, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(casilla63, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(casilla64, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(casilla65, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(casilla66, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(casilla67, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(casilla03, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(casilla04, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(casilla05, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(casilla06, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(casilla07, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(celda55, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(celda56, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(celda57, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(celda65, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(celda66, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(celda67, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 496, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -377,253 +580,272 @@ public class VentanaTablero extends javax.swing.JFrame {
                         .addGap(29, 29, 29)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(botonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(layout.createSequentialGroup()
                                     .addGap(3, 3, 3)
                                     .addComponent(jLabel1)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(contadorZombies, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(18, 18, 18)
+                                    .addComponent(labelContadorZombies, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel2)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(contadorTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                            .addComponent(jLabel6)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(labelSoles, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                            .addComponent(jLabel2)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(labelTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(BotonPasarTurno))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel6)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(contadorSoles, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(BotonPasarTurno))))
                         .addGap(0, 22, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                .addGap(90, 90, 90)
-                .addComponent(jLabel13)
-                .addGap(86, 86, 86)
-                .addComponent(jLabel14)
-                .addGap(85, 85, 85)
-                .addComponent(jLabel15)
-                .addGap(85, 85, 85)
-                .addComponent(jLabel16)
-                .addGap(87, 87, 87)
-                .addComponent(jLabel17)
-                .addGap(86, 86, 86)
-                .addComponent(jLabel18)
-                .addGap(83, 83, 83)
-                .addComponent(jLabel19)
-                .addGap(84, 84, 84)
-                .addComponent(jLabel20)
-                .addGap(0, 0, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {celda00, celda01, celda02, celda03, celda04, celda05, celda06, celda07, celda10, celda11, celda12, celda13, celda14, celda15, celda16, celda17, celda20, celda21, celda22, celda23, celda24, celda25, celda26, celda27, celda30, celda31, celda32, celda33, celda34, celda35, celda36, celda37, celda40, celda41, celda42, celda43, celda44, celda45, celda46, celda47, celda50, celda51, celda52, celda53, celda54, celda55, celda56, celda57, celda60, celda61, celda62, celda63, celda64, celda65, celda66, celda67});
+
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(jLabel14)
                     .addComponent(jLabel15)
                     .addComponent(jLabel16)
                     .addComponent(jLabel17)
                     .addComponent(jLabel18)
                     .addComponent(jLabel19)
-                    .addComponent(jLabel20))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(casilla00, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(casilla01, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(casilla02, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(casilla03, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(casilla04, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(casilla05, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(casilla06, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(casilla07, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(contadorZombies, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel20)
+                    .addComponent(jLabel14))
+                .addGap(4, 4, 4)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(celda06, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(celda05, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(labelContadorZombies, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(celda01, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(celda00, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(celda02, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(celda03, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(celda04, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(celda07, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(casilla10, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(casilla11, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(casilla12, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(casilla13, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(casilla14, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(casilla15, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(casilla16, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(casilla17, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(contadorTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(BotonPasarTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel7)))
-                .addGap(18, 18, 18)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(jLabel7))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(BotonPasarTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(celda12, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(celda13, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(celda14, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(celda15, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(celda16, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(celda17, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(celda10, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(celda11, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(labelTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 18, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(contadorSoles, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(casilla20, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(casilla21, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(casilla22, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(casilla23, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(casilla24, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(casilla25, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(casilla26, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(casilla27, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel8)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(casilla30, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel9))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(casilla31, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(casilla32, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(casilla33, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(casilla34, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(casilla35, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(casilla36, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(casilla37, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(casilla40, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(casilla41, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(casilla42, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(casilla43, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(casilla44, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(casilla45, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(casilla46, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(casilla47, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel10))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lectorComando, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(26, 26, 26)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(casilla50, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(casilla51, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(casilla52, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(casilla53, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(casilla54, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(casilla55, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(casilla56, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(casilla57, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel11)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(celda27, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(celda26, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(celda25, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(celda24, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(celda23, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(celda22, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(celda21, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(celda20, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelSoles, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(BotonInsertarComando)))
+                        .addGap(38, 38, 38)
+                        .addComponent(jLabel8)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(celda37, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(celda36, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(celda35, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(celda30, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(celda31, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(celda32, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(celda33, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(celda34, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(jLabel9)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(casilla60, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(casilla61, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(casilla62, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(casilla63, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(casilla64, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(casilla65, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(casilla66, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(casilla67, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12))
-                        .addGap(37, 37, 37))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lectorComando, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(celda41, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(celda42, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(celda43, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(celda44, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(celda45, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(celda46, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(celda40, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(22, 22, 22)
+                                .addComponent(jLabel10)))
+                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(BotonInsertarComando, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(celda57, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(celda56, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(celda55, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(celda54, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(celda53, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(celda52, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(celda51, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(celda50, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jLabel11))))
+                        .addGap(18, 18, 18))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(celda47, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(botonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(25, 25, 25))))
+                        .addGap(25, 25, 25))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(celda60, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(celda61, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(celda62, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(celda63, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(celda64, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(celda65, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(celda66, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(celda67, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel12)))
+                        .addGap(37, 37, 37))))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {celda00, celda01, celda02, celda03, celda04, celda05, celda06, celda07, celda10, celda11, celda12, celda13, celda14, celda15, celda16, celda17, celda20, celda21, celda22, celda23, celda24, celda25, celda26, celda27, celda30, celda31, celda32, celda33, celda34, celda35, celda36, celda37, celda40, celda41, celda42, celda43, celda44, celda45, celda46, celda47, celda50, celda51, celda52, celda53, celda54, celda55, celda56, celda57, celda60, celda61, celda62, celda63, celda64, celda65, celda66, celda67});
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
         // TODO add your handling code here:
-        
         JOptionPane.showConfirmDialog(null, "¿Realmente desea salir del juego?", "Perderas todo el progreso", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
-        
         new VentanaInicio().setVisible(true);
         dispose();
     }//GEN-LAST:event_botonSalirActionPerformed
 
-    private void casilla40ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla40ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_casilla40ActionPerformed
-
     private void BotonPasarTurnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonPasarTurnoActionPerformed
         // TODO add your handling code here:
+        tablero.sumarGirasoles(); //Se suman los soles cada dos turnos
+        tablero.ataquePlanta();  //Las plantas atacan
+        tablero.ataqueZombie(); //Los zombies atacan
+        tablero.moverZombie(); //Los zombies se mueven
+        if (tablero.getContadorZombies() > 0) {
+            tablero.insertarZombieAleatorio(); //Metemos zombies nuevos    
+        }
+        tablero.limpiarTablero(); //Limpiamos el tablero
+        tablero.comprobarVictoria();
+        tablero.setTurno(tablero.getTurno() + 1); //Aumentamos el turno
     }//GEN-LAST:event_BotonPasarTurnoActionPerformed
 
     private void BotonInsertarComandoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonInsertarComandoActionPerformed
-        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            tablero.actualizarTablero(lectorComando.getText());
+        } catch (Exception x) {
+            JOptionPane.showMessageDialog(this, "Error:" + x.toString(), "Mensaje de error", JOptionPane.ERROR_MESSAGE);
+        } 
     }//GEN-LAST:event_BotonInsertarComandoActionPerformed
 
+    private void lectorComandoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lectorComandoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lectorComandoActionPerformed
+
+    /**
+     Esta funcion imprime el tablero en la interfaz
+     */
+    public void imprimirTablero(){
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonInsertarComando;
     private javax.swing.JButton BotonPasarTurno;
     private javax.swing.JButton botonSalir;
-    private javax.swing.JTextField casilla00;
-    private javax.swing.JTextField casilla01;
-    private javax.swing.JTextField casilla02;
-    private javax.swing.JTextField casilla03;
-    private javax.swing.JTextField casilla04;
-    private javax.swing.JTextField casilla05;
-    private javax.swing.JTextField casilla06;
-    private javax.swing.JTextField casilla07;
-    private javax.swing.JTextField casilla10;
-    private javax.swing.JTextField casilla11;
-    private javax.swing.JTextField casilla12;
-    private javax.swing.JTextField casilla13;
-    private javax.swing.JTextField casilla14;
-    private javax.swing.JTextField casilla15;
-    private javax.swing.JTextField casilla16;
-    private javax.swing.JTextField casilla17;
-    private javax.swing.JTextField casilla20;
-    private javax.swing.JTextField casilla21;
-    private javax.swing.JTextField casilla22;
-    private javax.swing.JTextField casilla23;
-    private javax.swing.JTextField casilla24;
-    private javax.swing.JTextField casilla25;
-    private javax.swing.JTextField casilla26;
-    private javax.swing.JTextField casilla27;
-    private javax.swing.JTextField casilla30;
-    private javax.swing.JTextField casilla31;
-    private javax.swing.JTextField casilla32;
-    private javax.swing.JTextField casilla33;
-    private javax.swing.JTextField casilla34;
-    private javax.swing.JTextField casilla35;
-    private javax.swing.JTextField casilla36;
-    private javax.swing.JTextField casilla37;
-    private javax.swing.JTextField casilla40;
-    private javax.swing.JTextField casilla41;
-    private javax.swing.JTextField casilla42;
-    private javax.swing.JTextField casilla43;
-    private javax.swing.JTextField casilla44;
-    private javax.swing.JTextField casilla45;
-    private javax.swing.JTextField casilla46;
-    private javax.swing.JTextField casilla47;
-    private javax.swing.JTextField casilla50;
-    private javax.swing.JTextField casilla51;
-    private javax.swing.JTextField casilla52;
-    private javax.swing.JTextField casilla53;
-    private javax.swing.JTextField casilla54;
-    private javax.swing.JTextField casilla55;
-    private javax.swing.JTextField casilla56;
-    private javax.swing.JTextField casilla57;
-    private javax.swing.JTextField casilla60;
-    private javax.swing.JTextField casilla61;
-    private javax.swing.JTextField casilla62;
-    private javax.swing.JTextField casilla63;
-    private javax.swing.JTextField casilla64;
-    private javax.swing.JTextField casilla65;
-    private javax.swing.JTextField casilla66;
-    private javax.swing.JTextField casilla67;
-    private javax.swing.JTextField contadorSoles;
-    private javax.swing.JTextField contadorTurno;
-    private javax.swing.JTextField contadorZombies;
+    private javax.swing.JLabel celda00;
+    private javax.swing.JLabel celda01;
+    private javax.swing.JLabel celda02;
+    private javax.swing.JLabel celda03;
+    private javax.swing.JLabel celda04;
+    private javax.swing.JLabel celda05;
+    private javax.swing.JLabel celda06;
+    private javax.swing.JLabel celda07;
+    private javax.swing.JLabel celda10;
+    private javax.swing.JLabel celda11;
+    private javax.swing.JLabel celda12;
+    private javax.swing.JLabel celda13;
+    private javax.swing.JLabel celda14;
+    private javax.swing.JLabel celda15;
+    private javax.swing.JLabel celda16;
+    private javax.swing.JLabel celda17;
+    private javax.swing.JLabel celda20;
+    private javax.swing.JLabel celda21;
+    private javax.swing.JLabel celda22;
+    private javax.swing.JLabel celda23;
+    private javax.swing.JLabel celda24;
+    private javax.swing.JLabel celda25;
+    private javax.swing.JLabel celda26;
+    private javax.swing.JLabel celda27;
+    private javax.swing.JLabel celda30;
+    private javax.swing.JLabel celda31;
+    private javax.swing.JLabel celda32;
+    private javax.swing.JLabel celda33;
+    private javax.swing.JLabel celda34;
+    private javax.swing.JLabel celda35;
+    private javax.swing.JLabel celda36;
+    private javax.swing.JLabel celda37;
+    private javax.swing.JLabel celda40;
+    private javax.swing.JLabel celda41;
+    private javax.swing.JLabel celda42;
+    private javax.swing.JLabel celda43;
+    private javax.swing.JLabel celda44;
+    private javax.swing.JLabel celda45;
+    private javax.swing.JLabel celda46;
+    private javax.swing.JLabel celda47;
+    private javax.swing.JLabel celda50;
+    private javax.swing.JLabel celda51;
+    private javax.swing.JLabel celda52;
+    private javax.swing.JLabel celda53;
+    private javax.swing.JLabel celda54;
+    private javax.swing.JLabel celda55;
+    private javax.swing.JLabel celda56;
+    private javax.swing.JLabel celda57;
+    private javax.swing.JLabel celda60;
+    private javax.swing.JLabel celda61;
+    private javax.swing.JLabel celda62;
+    private javax.swing.JLabel celda63;
+    private javax.swing.JLabel celda64;
+    private javax.swing.JLabel celda65;
+    private javax.swing.JLabel celda66;
+    private javax.swing.JLabel celda67;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -644,6 +866,9 @@ public class VentanaTablero extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel labelContadorZombies;
+    private javax.swing.JLabel labelSoles;
+    private javax.swing.JLabel labelTurno;
     private javax.swing.JTextField lectorComando;
     // End of variables declaration//GEN-END:variables
 }
