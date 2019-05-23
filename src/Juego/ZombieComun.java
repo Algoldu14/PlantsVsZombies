@@ -24,4 +24,7 @@ public class ZombieComun extends NPC {
         return this.getNombre() + "(" + this.getResistencia() + ")    ";
     }
 
+    public void uwu(){
+        
+    }
 }
