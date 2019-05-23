@@ -5,9 +5,9 @@
  */
 package Juego;
 
-
+import Excepciones.ExcepcionJuego;
+import Excepciones.ExcepcionPlanta;
 import Ventanas.VentanaInicio;
-
 
 /**
  *
@@ -15,15 +15,15 @@ import Ventanas.VentanaInicio;
  */
 public class Run {
 
-   
-    public static void main(String[] args) {
-        
-        VentanaInicio miVentanaIni = new VentanaInicio();
-        
-        miVentanaIni.setVisible(true);
-        
-        
+    public static void main(String[] args) throws ExcepcionPlanta, ExcepcionJuego {
 
+//        VentanaInicio miVentanaIni = new VentanaInicio();
+//        
+//        miVentanaIni.setVisible(true);
+          
+          Tablero tablero = new Tablero();
+          
+          tablero.actualizarTablero();
     }
 
 }

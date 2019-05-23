@@ -33,8 +33,8 @@ public final class Tablero {
     private boolean victoria;
 
     public Tablero() {
-        this.columnas = 8;
-        this.filas = 7;
+        this.columnas = columnas;
+        this.filas = filas;
         this.soles = 50;
         this.matrizTablero = matrizTablero;
         this.turno = 0;
@@ -113,7 +113,7 @@ public final class Tablero {
     El metodo de crearMatrizTablero es el que crea la matriz donde se guardan los NPCs, inicialmente
     la matriz esta compuesta de Celdas que contienen NPCs vacios.
      */
-    public Celda[][] crearMatrizTablero() {
+    public Celda[][] crearMatrizTablero(int filas, int columnas) {
 
         matrizTablero = new Celda[this.filas][this.columnas];
 
@@ -129,30 +129,30 @@ public final class Tablero {
     /*
     El método pintarTablero pinta el tablero solicitado por el comando N <filas> <columnas> <Dificultad>.
      */
-//    public void pintarTablero(int filas, int columnas) {
-//
-//        for (int fila = 0; fila < this.filas * 2; fila++) {
-//            if (fila % 2 == 0) {
-//                for (int columna = 0; columna < columnas; columna++) {
-//                    System.out.print("|");
-//                    System.out.print("--------");
-//                }
-//                System.out.println("|");
-//            } else {
-//                for (int columna = 0; columna < columnas; columna++) {
-//                    System.out.print("|");
-//                    System.out.print(this.matrizTablero[(int) (fila / 2)][columna].toString());
-//                }
-//                System.out.println("|");
-//            }
-//        }
-//        for (int columna = 0; columna < columnas; columna++) {
-//            System.out.print("|");
-//            System.out.print("--------");
-//        }
-//        System.out.println("|");
-//
-//    }
+    public void pintarTablero(int filas, int columnas) {
+
+        for (int fila = 0; fila < this.filas * 2; fila++) {
+            if (fila % 2 == 0) {
+                for (int columna = 0; columna < columnas; columna++) {
+                    System.out.print("|");
+                    System.out.print("--------");
+                }
+                System.out.println("|");
+            } else {
+                for (int columna = 0; columna < columnas; columna++) {
+                    System.out.print("|");
+                    System.out.print(this.matrizTablero[(int) (fila / 2)][columna].toString());
+                }
+                System.out.println("|");
+            }
+        }
+        for (int columna = 0; columna < columnas; columna++) {
+            System.out.print("|");
+            System.out.print("--------");
+        }
+        System.out.println("|");
+
+    }
 
     /*
     El metodo actualizarTablero es el metodo mas importante de esta clase y del programa, en este metodo se analiza
@@ -165,7 +165,7 @@ public final class Tablero {
 
         while (this.turno < 30 || this.isVictoria()) {
             try {
-//                System.out.println("Introduzca el comando: ");
+                System.out.println("Introduzca el comando: ");
                 String comando = entrada.nextLine();
                 comando = comando.toUpperCase();
                 String arrayComando[] = comando.split(" ");
@@ -173,42 +173,42 @@ public final class Tablero {
                     throw new ExcepcionJuego(comando);
                 }*/
                 switch (arrayComando[0]) {
-//                    case "N": //Si en el comando hay una N inicia el juego
-//                        this.setDificultad(arrayComando[3]);
-//                        switch (this.getDificultad()) {
-//                            case "BAJA":
-//                                this.setContadorZombies(5);
-//                                break;
-//                            case "MEDIA":
-//                                this.setContadorZombies(15);
-//                                break;
-//                            case "ALTA":
-//                                this.setContadorZombies(25);
-//                                break;
-//                            case "IMPOSIBLE":
-//                                this.setContadorZombies(50);
-//                                break;
-//                        }
-//                        this.setFilas(Integer.parseInt(arrayComando[1]));
-//                        this.setColumnas(Integer.parseInt(arrayComando[2]));
-////                        this.setMatrizTablero(this.crearMatrizTablero(this.getFilas(), this.getColumnas()));
-////                        this.pintarTablero(this.filas, this.columnas);
-//                        System.out.println("Tienes: " + this.getSoles() + " soles");
-//                        System.out.println("Turno: " + this.getTurno());
-//                        System.out.println("Quedan: " + this.contadorZombies + " zombies");
-//                        System.out.println("");
-//                        break;
+                    case "N": //Si en el comando hay una N inicia el juego
+                        this.setDificultad(arrayComando[3]);
+                        switch (this.getDificultad()) {
+                            case "BAJA":
+                                this.setContadorZombies(5);
+                                break;
+                            case "MEDIA":
+                                this.setContadorZombies(15);
+                                break;
+                            case "ALTA":
+                                this.setContadorZombies(25);
+                                break;
+                            case "IMPOSIBLE":
+                                this.setContadorZombies(50);
+                                break;
+                        }
+                        this.setFilas(Integer.parseInt(arrayComando[1]));
+                        this.setColumnas(Integer.parseInt(arrayComando[2]));
+                        this.setMatrizTablero(this.crearMatrizTablero(this.getFilas(), this.getColumnas()));
+                        this.pintarTablero(this.filas, this.columnas);
+                        System.out.println("Tienes: " + this.getSoles() + " soles");
+                        System.out.println("Turno: " + this.getTurno());
+                        System.out.println("Quedan: " + this.contadorZombies + " zombies");
+                        System.out.println("");
+                        break;
                     case "L": //Si son las plantas
                         if (this.soles < 50) {
                             throw new ExcepcionPlanta(ExcepcionPlanta.INSUFICIENTES_SOLES);
                         } else {
                             this.introducirPlanta(comando);
                         }
-//                        this.pintarTablero(this.getFilas(), this.getColumnas());
-//                        System.out.println("Turno: " + this.getTurno());
-//                        System.out.println("Tienes: " + this.getSoles() + " soles");
-//                        System.out.println("Quedan: " + this.contadorZombies + " zombies");
-//                        System.out.println("");
+                        this.pintarTablero(this.getFilas(), this.getColumnas());
+                        System.out.println("Turno: " + this.getTurno());
+                        System.out.println("Tienes: " + this.getSoles() + " soles");
+                        System.out.println("Quedan: " + this.contadorZombies + " zombies");
+                        System.out.println("");
                         break;
                     case "G":
                         if (this.soles < 20) {
@@ -216,11 +216,11 @@ public final class Tablero {
                         } else {
                             this.introducirPlanta(comando);
                         }
-//                        this.pintarTablero(this.getFilas(), this.getColumnas());
-//                        System.out.println("Turno: " + this.getTurno());
-//                        System.out.println("Tienes: " + this.getSoles() + " soles");
-//                        System.out.println("Quedan: " + this.contadorZombies + " zombies");
-//                        System.out.println("");
+                        this.pintarTablero(this.getFilas(), this.getColumnas());
+                        System.out.println("Turno: " + this.getTurno());
+                        System.out.println("Tienes: " + this.getSoles() + " soles");
+                        System.out.println("Quedan: " + this.contadorZombies + " zombies");
+                        System.out.println("");
                         break;
                     case "B":
                         if (this.soles < 200) {
@@ -228,42 +228,66 @@ public final class Tablero {
                         } else {
                             this.meterBomba(comando);
                         }
-//                        this.pintarTablero(this.getFilas(), this.getColumnas());
-//                        System.out.println("Turno: " + this.getTurno());
-//                        System.out.println("Tienes: " + this.getSoles() + " soles");
-//                        System.out.println("Quedan: " + this.contadorZombies + " zombies");
-//                        System.out.println("");
+                        this.pintarTablero(this.getFilas(), this.getColumnas());
+                        System.out.println("Turno: " + this.getTurno());
+                        System.out.println("Tienes: " + this.getSoles() + " soles");
+                        System.out.println("Quedan: " + this.contadorZombies + " zombies");
+                        System.out.println("");
                         break;
-//                    case "AYUDA":
-//                        System.out.println("Manual del Juego: ");
-//                        System.out.println("N <filas> <columnas> <Dificultad> para hacer un juego nuevo (Dificultad: BAJA, MEDIA, ALTA, IMPOSIBLE).");
-//                        System.out.println("G <fila> <columna>  para insertar un Girasol en las posiciones introducidas.");
-//                        System.out.println("L <fila> <columna>  para insertar un lanza guisantes en las posiciones introducidas.");
-//                        System.out.println("S para salir del juego.");
-//                        System.out.println("<ENTER> para pasar de turno.");
-//                        System.out.println("");
-//                        break;
-//                    case "": // Si es un enter
-//                        this.sumarGirasoles(); //Se suman los soles cada dos turnos
-//                        this.ataquePlanta();  //Las plantas atacan
-//                        this.ataqueZombie(); //Los zombies atacan
-//                        this.moverZombie(); //Los zombies se mueven
-//                        if (this.contadorZombies > 0) {
-//                            this.insertarZombieAleatorio(); //Metemos zombies nuevos    
-//                        }
-//                        this.limpiarTablero(); //Limpiamos el tablero
-//                        this.comprobarVictoria();
-//                        this.setTurno(this.turno + 1); //Aumentamos el turno
-//                        this.pintarTablero(this.getFilas(), this.getColumnas());
-//                        System.out.println("");
-//                        System.out.println("Turno: " + this.getTurno());
-//                        System.out.println("Tienes: " + this.getSoles() + " soles");
-//                        System.out.println("Quedan: " + this.contadorZombies + " zombies");
-//                        System.out.println("");
-//                        break;
-//                    case "S":
-//                        System.exit(0); //Sale del programa
-//                        break;
+                    case "NZ":
+                        if (this.soles < 50) {
+                            throw new ExcepcionPlanta(ExcepcionPlanta.INSUFICIENTES_SOLES);
+                        } else {
+                            this.introducirPlanta(comando);
+                        }
+                        this.pintarTablero(this.getFilas(), this.getColumnas());
+                        System.out.println("Turno: " + this.getTurno());
+                        System.out.println("Tienes: " + this.getSoles() + " soles");
+                        System.out.println("Quedan: " + this.contadorZombies + " zombies");
+                        System.out.println("");
+                        break;
+                    case "P":
+                        if (this.soles < 50) {
+                            throw new ExcepcionPlanta(ExcepcionPlanta.INSUFICIENTES_SOLES);
+                        } else {
+                            this.introducirPlanta(comando);
+                        }
+                        this.pintarTablero(this.getFilas(), this.getColumnas());
+                        System.out.println("Turno: " + this.getTurno());
+                        System.out.println("Tienes: " + this.getSoles() + " soles");
+                        System.out.println("Quedan: " + this.contadorZombies + " zombies");
+                        System.out.println("");
+                        break;
+                    case "AYUDA":
+                        System.out.println("Manual del Juego: ");
+                        System.out.println("N <filas> <columnas> <Dificultad> para hacer un juego nuevo (Dificultad: BAJA, MEDIA, ALTA, IMPOSIBLE).");
+                        System.out.println("G <fila> <columna>  para insertar un Girasol en las posiciones introducidas.");
+                        System.out.println("L <fila> <columna>  para insertar un lanza guisantes en las posiciones introducidas.");
+                        System.out.println("S para salir del juego.");
+                        System.out.println("<ENTER> para pasar de turno.");
+                        System.out.println("");
+                        break;
+                    case "": // Si es un enter
+                        this.sumarGirasoles(); //Se suman los soles cada dos turnos
+                        this.ataquePlanta();  //Las plantas atacan
+                        this.ataqueZombie(); //Los zombies atacan
+                        this.moverZombie(); //Los zombies se mueven
+                        if (this.contadorZombies > 0) {
+                            this.insertarZombieAleatorio(); //Metemos zombies nuevos    
+                        }
+                        this.limpiarTablero(); //Limpiamos el tablero
+                        this.comprobarVictoria();
+                        this.setTurno(this.turno + 1); //Aumentamos el turno
+                        this.pintarTablero(this.getFilas(), this.getColumnas());
+                        System.out.println("");
+                        System.out.println("Turno: " + this.getTurno());
+                        System.out.println("Tienes: " + this.getSoles() + " soles");
+                        System.out.println("Quedan: " + this.contadorZombies + " zombies");
+                        System.out.println("");
+                        break;
+                    case "S":
+                        System.exit(0); //Sale del programa
+                        break;
                     default:
                         System.out.println("Error al introducir el comando.");
                         break;
@@ -395,16 +419,16 @@ public final class Tablero {
                                     || !(this.matrizTablero[filaAleatoria][this.columnas - 1].getNPC() instanceof Nuez)) {
                                 int zandom = rand.nextInt(3);
                                 if (zandom == 0) {
-                                    ZombieComun zombie = new ZombieComun("Z", 1, 5, 2);
-                                    this.matrizTablero[filaAleatoria][this.columnas - 1].setNPC(zombie);
+                                    ZombieComun zombieC = new ZombieComun("Z", 1, 5, 1);
+                                    this.matrizTablero[filaAleatoria][this.columnas - 1].setNPC(zombieC);
                                     this.setContadorZombies(this.contadorZombies - 1);
                                 } else if (zandom == 1) {
-                                    Caracubo zombie = new Caracubo("C", 1, 8, 4);
-                                    this.matrizTablero[filaAleatoria][this.columnas - 1].setNPC(zombie);
+                                    Caracubo zombieCa = new Caracubo("C", 1, 8, 3);
+                                    this.matrizTablero[filaAleatoria][this.columnas - 1].setNPC(zombieCa);
                                     this.setContadorZombies(this.contadorZombies - 1);
                                 } else {
-                                    Deportista zombie = new Deportista("D", 1, 2, 1);
-                                    this.matrizTablero[filaAleatoria][this.columnas - 1].setNPC(zombie);
+                                    Deportista zombieD = new Deportista("D", 1, 2, 0);
+                                    this.matrizTablero[filaAleatoria][this.columnas - 1].setNPC(zombieD);
                                     this.setContadorZombies(this.contadorZombies - 1);
                                 }
                             }
@@ -425,16 +449,16 @@ public final class Tablero {
                                         || !(this.matrizTablero[filaAleatoria][this.columnas - 1].getNPC() instanceof Nuez)) {
                                     int zandom = rand.nextInt(3);
                                     if (zandom == 0) {
-                                        ZombieComun zombie = new ZombieComun("Z", 1, 5, 2);
-                                        this.matrizTablero[filaAleatoria][this.columnas - 1].setNPC(zombie);
+                                        ZombieComun zombieC = new ZombieComun("Z", 1, 5, 1);
+                                        this.matrizTablero[filaAleatoria][this.columnas - 1].setNPC(zombieC);
                                         this.setContadorZombies(this.contadorZombies - 1);
                                     } else if (zandom == 1) {
-                                        Caracubo zombie = new Caracubo("C", 1, 8, 4);
-                                        this.matrizTablero[filaAleatoria][this.columnas - 1].setNPC(zombie);
+                                        Caracubo zombieCa = new Caracubo("C", 1, 8, 3);
+                                        this.matrizTablero[filaAleatoria][this.columnas - 1].setNPC(zombieCa);
                                         this.setContadorZombies(this.contadorZombies - 1);
                                     } else {
-                                        Deportista zombie = new Deportista("D", 1, 2, 1);
-                                        this.matrizTablero[filaAleatoria][this.columnas - 1].setNPC(zombie);
+                                        Deportista zombieD = new Deportista("D", 1, 2, 0);
+                                        this.matrizTablero[filaAleatoria][this.columnas - 1].setNPC(zombieD);
                                         this.setContadorZombies(this.contadorZombies - 1);
                                     }
                                 }
@@ -450,16 +474,16 @@ public final class Tablero {
                                     || !(this.matrizTablero[filaAleatoria][this.columnas - 1].getNPC() instanceof Nuez)) {
                                 int zandom = rand.nextInt(3);
                                 if (zandom == 0) {
-                                    ZombieComun zombie = new ZombieComun("Z", 1, 5, 2);
-                                    this.matrizTablero[filaAleatoria][this.columnas - 1].setNPC(zombie);
+                                    ZombieComun zombieC = new ZombieComun("Z", 1, 5, 1);
+                                    this.matrizTablero[filaAleatoria][this.columnas - 1].setNPC(zombieC);
                                     this.setContadorZombies(this.contadorZombies - 1);
                                 } else if (zandom == 1) {
-                                    Caracubo zombie = new Caracubo("C", 1, 8, 4);
-                                    this.matrizTablero[filaAleatoria][this.columnas - 1].setNPC(zombie);
+                                    Caracubo zombieCa = new Caracubo("C", 1, 8, 3);
+                                    this.matrizTablero[filaAleatoria][this.columnas - 1].setNPC(zombieCa);
                                     this.setContadorZombies(this.contadorZombies - 1);
                                 } else {
-                                    Deportista zombie = new Deportista("D", 1, 2, 1);
-                                    this.matrizTablero[filaAleatoria][this.columnas - 1].setNPC(zombie);
+                                    Deportista zombieD = new Deportista("D", 1, 2, 0);
+                                    this.matrizTablero[filaAleatoria][this.columnas - 1].setNPC(zombieD);
                                     this.setContadorZombies(this.contadorZombies - 1);
                                 }
                             }
@@ -480,16 +504,16 @@ public final class Tablero {
                                         || !(this.matrizTablero[filaAleatoria][this.columnas - 1].getNPC() instanceof Nuez)) {
                                     int zandom = rand.nextInt(3);
                                     if (zandom == 0) {
-                                        ZombieComun zombie = new ZombieComun("Z", 1, 5, 2);
-                                        this.matrizTablero[filaAleatoria][this.columnas - 1].setNPC(zombie);
+                                        ZombieComun zombieC = new ZombieComun("Z", 1, 5, 1);
+                                        this.matrizTablero[filaAleatoria][this.columnas - 1].setNPC(zombieC);
                                         this.setContadorZombies(this.contadorZombies - 1);
                                     } else if (zandom == 1) {
-                                        Caracubo zombie = new Caracubo("C", 1, 8, 4);
-                                        this.matrizTablero[filaAleatoria][this.columnas - 1].setNPC(zombie);
+                                        Caracubo zombieCa = new Caracubo("C", 1, 8, 3);
+                                        this.matrizTablero[filaAleatoria][this.columnas - 1].setNPC(zombieCa);
                                         this.setContadorZombies(this.contadorZombies - 1);
                                     } else {
-                                        Deportista zombie = new Deportista("D", 1, 2, 1);
-                                        this.matrizTablero[filaAleatoria][this.columnas - 1].setNPC(zombie);
+                                        Deportista zombieD = new Deportista("D", 1, 2, 0);
+                                        this.matrizTablero[filaAleatoria][this.columnas - 1].setNPC(zombieD);
                                         this.setContadorZombies(this.contadorZombies - 1);
                                     }
                                 }
@@ -505,16 +529,16 @@ public final class Tablero {
                                     || !(this.matrizTablero[filaAleatoria][this.columnas - 1].getNPC() instanceof Nuez)) {
                                 int zandom = rand.nextInt(3);
                                 if (zandom == 0) {
-                                    ZombieComun zombie = new ZombieComun("Z", 1, 5, 2);
-                                    this.matrizTablero[filaAleatoria][this.columnas - 1].setNPC(zombie);
+                                    ZombieComun zombieC = new ZombieComun("Z", 1, 5, 1);
+                                    this.matrizTablero[filaAleatoria][this.columnas - 1].setNPC(zombieC);
                                     this.setContadorZombies(this.contadorZombies - 1);
                                 } else if (zandom == 1) {
-                                    Caracubo zombie = new Caracubo("C", 1, 8, 4);
-                                    this.matrizTablero[filaAleatoria][this.columnas - 1].setNPC(zombie);
+                                    Caracubo zombieCa = new Caracubo("C", 1, 8, 3);
+                                    this.matrizTablero[filaAleatoria][this.columnas - 1].setNPC(zombieCa);
                                     this.setContadorZombies(this.contadorZombies - 1);
                                 } else {
-                                    Deportista zombie = new Deportista("D", 1, 2, 1);
-                                    this.matrizTablero[filaAleatoria][this.columnas - 1].setNPC(zombie);
+                                    Deportista zombieD = new Deportista("D", 1, 2, 0);
+                                    this.matrizTablero[filaAleatoria][this.columnas - 1].setNPC(zombieD);
                                     this.setContadorZombies(this.contadorZombies - 1);
                                 }
                             }
@@ -535,16 +559,16 @@ public final class Tablero {
                                         || !(this.matrizTablero[filaAleatoria][this.columnas - 1].getNPC() instanceof Nuez)) {
                                     int zandom = rand.nextInt(3);
                                     if (zandom == 0) {
-                                        ZombieComun zombie = new ZombieComun("Z", 1, 5, 2);
-                                        this.matrizTablero[filaAleatoria][this.columnas - 1].setNPC(zombie);
+                                        ZombieComun zombieC = new ZombieComun("Z", 1, 5, 1);
+                                        this.matrizTablero[filaAleatoria][this.columnas - 1].setNPC(zombieC);
                                         this.setContadorZombies(this.contadorZombies - 1);
                                     } else if (zandom == 1) {
-                                        Caracubo zombie = new Caracubo("C", 1, 8, 4);
-                                        this.matrizTablero[filaAleatoria][this.columnas - 1].setNPC(zombie);
+                                        Caracubo zombieCa = new Caracubo("C", 1, 8, 3);
+                                        this.matrizTablero[filaAleatoria][this.columnas - 1].setNPC(zombieCa);
                                         this.setContadorZombies(this.contadorZombies - 1);
                                     } else {
-                                        Deportista zombie = new Deportista("D", 1, 2, 1);
-                                        this.matrizTablero[filaAleatoria][this.columnas - 1].setNPC(zombie);
+                                        Deportista zombieD = new Deportista("D", 1, 2, 0);
+                                        this.matrizTablero[filaAleatoria][this.columnas - 1].setNPC(zombieD);
                                         this.setContadorZombies(this.contadorZombies - 1);
                                     }
                                 }
@@ -561,16 +585,16 @@ public final class Tablero {
                                         || !(this.matrizTablero[filaAleatoria][this.columnas - 1].getNPC() instanceof Nuez)) {
                                     int zandom = rand.nextInt(3);
                                     if (zandom == 0) {
-                                        ZombieComun zombie = new ZombieComun("Z", 1, 5, 2);
-                                        this.matrizTablero[filaAleatoria][this.columnas - 1].setNPC(zombie);
+                                        ZombieComun zombieC = new ZombieComun("Z", 1, 5, 1);
+                                        this.matrizTablero[filaAleatoria][this.columnas - 1].setNPC(zombieC);
                                         this.setContadorZombies(this.contadorZombies - 1);
                                     } else if (zandom == 1) {
-                                        Caracubo zombie = new Caracubo("C", 1, 8, 4);
-                                        this.matrizTablero[filaAleatoria][this.columnas - 1].setNPC(zombie);
+                                        Caracubo zombieCa = new Caracubo("C", 1, 8, 3);
+                                        this.matrizTablero[filaAleatoria][this.columnas - 1].setNPC(zombieCa);
                                         this.setContadorZombies(this.contadorZombies - 1);
                                     } else {
-                                        Deportista zombie = new Deportista("D", 1, 2, 1);
-                                        this.matrizTablero[filaAleatoria][this.columnas - 1].setNPC(zombie);
+                                        Deportista zombieD = new Deportista("D", 1, 2, 0);
+                                        this.matrizTablero[filaAleatoria][this.columnas - 1].setNPC(zombieD);
                                         this.setContadorZombies(this.contadorZombies - 1);
                                     }
                                 }
@@ -591,15 +615,25 @@ public final class Tablero {
             NPC NPC = new NPC();
             for (int i = 0; i < this.filas; i++) { //bajar frecuencia a los zombies
                 for (int j = 0; j < this.columnas; j++) {
-                    if (this.matrizTablero[i][j].getNPC() instanceof ZombieComun) {
+                    if (this.matrizTablero[i][j].getNPC() instanceof ZombieComun
+                            || this.matrizTablero[i][j].getNPC() instanceof Caracubo
+                            || this.matrizTablero[i][j].getNPC() instanceof Deportista) {
                         if (this.matrizTablero[i][j].getNPC().getFrecuencia() == 0) { //Si el zombie se puede mover
-                            if (this.matrizTablero[i][j - 1].getNPC() instanceof ZombieComun && j >= 1) { //Si hay un zombie delante
+                            if ((this.matrizTablero[i][j - 1].getNPC() instanceof ZombieComun
+                                    || this.matrizTablero[i][j - 1].getNPC() instanceof Caracubo
+                                    || this.matrizTablero[i][j - 1].getNPC() instanceof Deportista) && j >= 1) { //Si hay un zombie delante
                                 this.matrizTablero[i][j].getNPC().setFrecuencia(1); //Le ponemos la frecuencia a uno para que no avance
                             } else {
                                 NPC = this.matrizTablero[i][j].getNPC(); //en el NPC vacío metemos el que tiene la frecuencia a 0 para moverlo
                                 this.matrizTablero[i][j].setNPC(new NPC()); //en la posición original metemos un NPC vacío
                                 this.matrizTablero[i][j - 1].setNPC(NPC); //metemos el NPC en la siguiente casilla
-                                this.matrizTablero[i][j - 1].getNPC().setFrecuencia(2); //reseteamos la frecuencia del NPC
+                                if (this.matrizTablero[i][j - 1].getNPC() instanceof ZombieComun) {
+                                    this.matrizTablero[i][j - 1].getNPC().setFrecuencia(1); //reseteamos la frecuencia del NPC
+                                } else if (this.matrizTablero[i][j - 1].getNPC() instanceof Caracubo) {
+                                    this.matrizTablero[i][j - 1].getNPC().setFrecuencia(3); //reseteamos la frecuencia del NPC
+                                } else if (this.matrizTablero[i][j - 1].getNPC() instanceof Deportista) {
+                                    this.matrizTablero[i][j - 1].getNPC().setFrecuencia(0);//Si es el deportista
+                                }
                             }
                         } else { //Si no se puede mover
                             this.matrizTablero[i][j].getNPC().setFrecuencia(this.matrizTablero[i][j].getNPC().getFrecuencia() - 1); //le restamos 1 a la frecuencia del NPC
@@ -609,7 +643,7 @@ public final class Tablero {
             }
         } catch (Exception e) {
             System.out.println("Has perdido, los zombies han llegado a tu casa.");
-            System.exit(0);
+
         }
     }
 
@@ -618,6 +652,9 @@ public final class Tablero {
      */
     public void sumarGirasoles() {
 
+        if (this.turno % 2 == 0) {
+            this.setSoles(this.soles + 20);
+        }
         for (int i = 0; i < this.filas; i++) {
             for (int j = 0; j < this.columnas; j++) {
                 if (this.matrizTablero[i][j].getNPC() instanceof Girasol) {
@@ -659,9 +696,13 @@ public final class Tablero {
 
         for (int i = 0; i < this.filas; i++) {
             for (int j = 0; j < this.columnas; j++) {
-                if (this.matrizTablero[i][j].getNPC() instanceof ZombieComun && j >= 1) { //Si hay un zombie y puede atacar
+                if ((this.matrizTablero[i][j].getNPC() instanceof ZombieComun
+                        || this.matrizTablero[i][j].getNPC() instanceof Caracubo
+                        || this.matrizTablero[i][j].getNPC() instanceof Deportista) && j >= 1) { //Si hay un zombie y puede atacar
                     if (this.matrizTablero[i][j - 1].getNPC() instanceof LanzaGuisantes
-                            || this.matrizTablero[i][j - 1].getNPC() instanceof Girasol) { //Si en la casilla aneterior hay alguna planta
+                            || this.matrizTablero[i][j - 1].getNPC() instanceof Girasol
+                            || this.matrizTablero[i][j - 1].getNPC() instanceof Nuez
+                            || this.matrizTablero[i][j - 1].getNPC() instanceof Petacereza) { //Si en la casilla aneterior hay alguna planta
                         if (this.matrizTablero[i][j - 1].getNPC().getResistencia() != 0) { //Si tiene vida
                             this.matrizTablero[i][j - 1].getNPC().setResistencia(this.matrizTablero[i][j - 1].getNPC().getResistencia() - 1); //Le bajamos la resitencia
                             this.matrizTablero[i][j].getNPC().setFrecuencia(1); //Reseteamos la frecuencia del zombie para que no se mueva
