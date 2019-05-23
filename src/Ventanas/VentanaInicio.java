@@ -6,7 +6,6 @@
 package Ventanas;
 
 import java.awt.Color;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -106,13 +105,10 @@ public class VentanaInicio extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(57, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(titulo)
-                        .addGap(35, 35, 35))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(titulo))
+                .addGap(35, 35, 35))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,9 +124,9 @@ public class VentanaInicio extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(botonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(ranking, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(75, 75, 75)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(63, 63, 63))
         );
 
         pack();
@@ -138,7 +134,7 @@ public class VentanaInicio extends javax.swing.JFrame {
 
     private void botonRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistroActionPerformed
         // TODO add your handling code here:
-        new Registro().setVisible(true);
+        new VentanaRegistro().setVisible(true);
         dispose();
     }//GEN-LAST:event_botonRegistroActionPerformed
 
@@ -151,13 +147,13 @@ public class VentanaInicio extends javax.swing.JFrame {
 
     private void BotonIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonIniciarSesionActionPerformed
         // TODO add your handling code here:
-        new IniciarSesion().setVisible(true);
+        new VentanaIniciarSesion().setVisible(true);
         dispose();
     }//GEN-LAST:event_BotonIniciarSesionActionPerformed
 
     private void rankingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rankingActionPerformed
         // TODO add your handling code here:
-        new Ranking().setVisible(true);
+        new VentanaRanking().setVisible(true);
         dispose();
     }//GEN-LAST:event_rankingActionPerformed
 

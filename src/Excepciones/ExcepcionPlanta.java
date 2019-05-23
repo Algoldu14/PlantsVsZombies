@@ -9,24 +9,12 @@ package Excepciones;
  *
  * @author Alvaro y Patricia
  */
-
 public class ExcepcionPlanta extends Exception {
 
-    private int difSoles;
+    public static final String INSUFICIENTES_SOLES = "No tienes suficientes soles para comprar esta planta. ";
+    public static final String POSICION_OCUPADA = "No puedes poner esta planta aqui. ";
 
-    public ExcepcionPlanta(int difSoles) {
-        this.difSoles = difSoles;
-    }
-
-    @Override
-    public String getMessage() {
-
-        String mensaje = "";
-
-        if (this.difSoles < 0) {
-            mensaje = "No puedes comprar esta planta.";
-        }
-
-        return mensaje;
+    public ExcepcionPlanta(String txt) {
+        super(txt);
     }
 }

@@ -18,14 +18,14 @@ import Juego.BBDDJuego;
  *
  * @author Alvaro
  */
-public class Registro extends javax.swing.JFrame {
+public class VentanaRegistro extends javax.swing.JFrame {
 
     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     /**
      * Creates new form Registro
      */
-    public Registro() {
+    public VentanaRegistro() {
         initComponents();
         this.getContentPane().setBackground(Color.darkGray);
         this.botonAJugar.setVisible(false);
@@ -190,7 +190,7 @@ public class Registro extends javax.swing.JFrame {
 
     private void botonAJugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAJugarActionPerformed
         // TODO add your handling code here:
-        new Tablero().setVisible(true);
+        new VentanaTablero().setVisible(true);
         dispose();
     }//GEN-LAST:event_botonAJugarActionPerformed
 

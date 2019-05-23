@@ -11,12 +11,12 @@ import java.awt.Color;
  *
  * @author Alvaro
  */
-public class IniciarSesion extends javax.swing.JFrame {
+public class VentanaIniciarSesion extends javax.swing.JFrame {
 
     /**
      * Creates new form IniciarSesion
      */
-    public IniciarSesion() {
+    public VentanaIniciarSesion() {
         initComponents();
         this.getContentPane().setBackground(Color.darkGray);
     }
@@ -37,7 +37,6 @@ public class IniciarSesion extends javax.swing.JFrame {
         BotonAtras = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(554, 380));
         setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Courier New", 1, 48)); // NOI18N

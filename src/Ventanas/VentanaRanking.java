@@ -12,12 +12,12 @@ import javax.swing.JTextArea;
  *
  * @author Alvaro
  */
-public class Ranking extends javax.swing.JFrame {
+public class VentanaRanking extends javax.swing.JFrame {
 
     /**
      * Creates new form Ranking
      */
-    public Ranking() {
+    public VentanaRanking() {
         initComponents();
         this.getContentPane().setBackground(Color.darkGray);
     }
