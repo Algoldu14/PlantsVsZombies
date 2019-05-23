@@ -45,14 +45,25 @@ public class VentanaDificultad extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Elige la dificultad:");
 
+        botonBaja.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        botonBaja.setForeground(new java.awt.Color(255, 255, 255));
         botonBaja.setText("BAJA (5 zombies)");
 
+        botonMedia.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        botonMedia.setForeground(new java.awt.Color(255, 255, 255));
         botonMedia.setText("MEDIA (15 zombies)");
 
+        botonAlta.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        botonAlta.setForeground(new java.awt.Color(255, 255, 255));
         botonAlta.setText("ALTA (25 zombies)");
 
+        botonImposible.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        botonImposible.setForeground(new java.awt.Color(255, 255, 255));
         botonImposible.setText("IMPOSIBLE (50 zombies)");
 
+        botonAJugar.setBackground(new java.awt.Color(102, 102, 102));
+        botonAJugar.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        botonAJugar.setForeground(new java.awt.Color(255, 255, 255));
         botonAJugar.setText("¡A JUGAR!");
         botonAJugar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -60,6 +71,9 @@ public class VentanaDificultad extends javax.swing.JFrame {
             }
         });
 
+        botonAtras.setBackground(new java.awt.Color(102, 102, 102));
+        botonAtras.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        botonAtras.setForeground(new java.awt.Color(255, 255, 255));
         botonAtras.setText("ATRÁS");
         botonAtras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,14 +111,14 @@ public class VentanaDificultad extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
-                .addComponent(botonBaja, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(botonBaja)
+                .addGap(18, 18, 18)
                 .addComponent(botonMedia)
                 .addGap(18, 18, 18)
                 .addComponent(botonAlta)
                 .addGap(18, 18, 18)
                 .addComponent(botonImposible)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonAJugar, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
