@@ -6,6 +6,7 @@
 package Ventanas;
 
 import java.awt.Color;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,9 +17,16 @@ public class VentanaDificultad extends javax.swing.JFrame {
     /**
      * Creates new form Dificultad
      */
+    static String dificultad;
+
     public VentanaDificultad() {
         initComponents();
+
         this.getContentPane().setBackground(Color.darkGray);
+        buttonGroupDificultad.add(botonBaja);
+        buttonGroupDificultad.add(botonMedia);
+        buttonGroupDificultad.add(botonAlta);
+        buttonGroupDificultad.add(botonImposible);
     }
 
     /**
@@ -45,21 +53,45 @@ public class VentanaDificultad extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Elige la dificultad:");
 
+        botonBaja.setBackground(new java.awt.Color(102, 102, 102));
         botonBaja.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         botonBaja.setForeground(new java.awt.Color(255, 255, 255));
         botonBaja.setText("BAJA (5 zombies)");
+        botonBaja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonBajaActionPerformed(evt);
+            }
+        });
 
+        botonMedia.setBackground(new java.awt.Color(102, 102, 102));
         botonMedia.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         botonMedia.setForeground(new java.awt.Color(255, 255, 255));
         botonMedia.setText("MEDIA (15 zombies)");
+        botonMedia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonMediaActionPerformed(evt);
+            }
+        });
 
+        botonAlta.setBackground(new java.awt.Color(102, 102, 102));
         botonAlta.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         botonAlta.setForeground(new java.awt.Color(255, 255, 255));
         botonAlta.setText("ALTA (25 zombies)");
+        botonAlta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAltaActionPerformed(evt);
+            }
+        });
 
+        botonImposible.setBackground(new java.awt.Color(102, 102, 102));
         botonImposible.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         botonImposible.setForeground(new java.awt.Color(255, 255, 255));
         botonImposible.setText("IMPOSIBLE (50 zombies)");
+        botonImposible.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonImposibleActionPerformed(evt);
+            }
+        });
 
         botonAJugar.setBackground(new java.awt.Color(102, 102, 102));
         botonAJugar.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
@@ -130,8 +162,14 @@ public class VentanaDificultad extends javax.swing.JFrame {
 
     private void botonAJugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAJugarActionPerformed
         // TODO add your handling code here:
-        new VentanaTablero().setVisible(true);
-        dispose();
+        if (!(this.botonBaja.isSelected()) && !(this.botonMedia.isSelected())
+                && !(this.botonMedia.isSelected()) && !(this.botonAlta.isSelected())) {
+            JOptionPane.showMessageDialog(this, "ERROR: Selecciona una dificultad", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            new VentanaTablero().setVisible(true);
+            dispose();
+        }
+
     }//GEN-LAST:event_botonAJugarActionPerformed
 
     private void botonAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAtrasActionPerformed
@@ -139,6 +177,26 @@ public class VentanaDificultad extends javax.swing.JFrame {
         new VentanaInicio().setVisible(true);
         dispose();
     }//GEN-LAST:event_botonAtrasActionPerformed
+
+    private void botonBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBajaActionPerformed
+        // TODO add your handling code here:
+        dificultad = "BAJA";
+    }//GEN-LAST:event_botonBajaActionPerformed
+
+    private void botonMediaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMediaActionPerformed
+        // TODO add your handling code here:
+        dificultad = "MEDIA";
+    }//GEN-LAST:event_botonMediaActionPerformed
+
+    private void botonAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAltaActionPerformed
+        // TODO add your handling code here:
+        dificultad = "ALTA";
+    }//GEN-LAST:event_botonAltaActionPerformed
+
+    private void botonImposibleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonImposibleActionPerformed
+        // TODO add your handling code here:
+        dificultad = "IMPOSIBLE";
+    }//GEN-LAST:event_botonImposibleActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

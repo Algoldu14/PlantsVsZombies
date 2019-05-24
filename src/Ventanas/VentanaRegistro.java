@@ -28,7 +28,7 @@ public class VentanaRegistro extends javax.swing.JFrame {
     public VentanaRegistro() {
         initComponents();
         this.getContentPane().setBackground(Color.darkGray);
-        this.botonAJugar.setVisible(false);
+        this.botonSiguiente.setVisible(false);
         nombreRegistro.setToolTipText("María García");
         DNIRegistro.setToolTipText("00000000A");
 
@@ -58,7 +58,7 @@ public class VentanaRegistro extends javax.swing.JFrame {
         DNIRegistro = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         botonRegistrarUs = new javax.swing.JButton();
-        botonAJugar = new javax.swing.JButton();
+        botonSiguiente = new javax.swing.JButton();
         botonVolverInicio = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -98,13 +98,13 @@ public class VentanaRegistro extends javax.swing.JFrame {
             }
         });
 
-        botonAJugar.setBackground(new java.awt.Color(102, 102, 102));
-        botonAJugar.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
-        botonAJugar.setForeground(new java.awt.Color(255, 255, 255));
-        botonAJugar.setText("¡A JUGAR!");
-        botonAJugar.addActionListener(new java.awt.event.ActionListener() {
+        botonSiguiente.setBackground(new java.awt.Color(102, 102, 102));
+        botonSiguiente.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        botonSiguiente.setForeground(new java.awt.Color(255, 255, 255));
+        botonSiguiente.setText("SIGUIENTE");
+        botonSiguiente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonAJugarActionPerformed(evt);
+                botonSiguienteActionPerformed(evt);
             }
         });
 
@@ -146,7 +146,7 @@ public class VentanaRegistro extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(botonRegistrarUs, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(botonAJugar, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(botonSiguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(50, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -164,7 +164,7 @@ public class VentanaRegistro extends javax.swing.JFrame {
                     .addComponent(DNIRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonAJugar, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonSiguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonRegistrarUs, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonVolverInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(44, Short.MAX_VALUE))
@@ -192,7 +192,8 @@ public class VentanaRegistro extends javax.swing.JFrame {
             LocalDate fechaReg =  LocalDate.parse(fechaAct.format(dtf), dtf);
             Jugador jugadorNuevo = new Jugador(nombre, DNI, fechaReg, 0);
             BBDDJuego.altaJugador(jugadorNuevo);
-            this.botonAJugar.setVisible(true);
+            BBDDJuego.guardarDatos();
+            this.botonSiguiente.setVisible(true);
         } catch (NumberFormatException nfe) {//Metodo que utilizaremos para capturar los errores por formato
             System.out.println(nfe.toString());
             JOptionPane.showMessageDialog(this, "ERROR: Error de formato numérico: " + nfe.toString(), "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
@@ -202,11 +203,11 @@ public class VentanaRegistro extends javax.swing.JFrame {
     }//GEN-LAST:event_botonRegistrarUsActionPerformed
 
 
-    private void botonAJugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAJugarActionPerformed
+    private void botonSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSiguienteActionPerformed
         // TODO add your handling code here:
-        new VentanaTablero().setVisible(true);
+        new VentanaDificultad().setVisible(true);
         dispose();
-    }//GEN-LAST:event_botonAJugarActionPerformed
+    }//GEN-LAST:event_botonSiguienteActionPerformed
 
     private void nombreRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreRegistroActionPerformed
         // TODO add your handling code here:
@@ -219,8 +220,8 @@ public class VentanaRegistro extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField DNIRegistro;
-    private javax.swing.JButton botonAJugar;
     private javax.swing.JButton botonRegistrarUs;
+    private javax.swing.JButton botonSiguiente;
     private javax.swing.JButton botonVolverInicio;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

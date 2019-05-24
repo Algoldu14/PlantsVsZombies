@@ -5,7 +5,6 @@
  */
 package Ventanas;
 
-
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import Juego.*;
@@ -17,7 +16,7 @@ import Juego.*;
 public class VentanaTablero extends javax.swing.JFrame {
 
     Tablero tablero = new Tablero();
-    
+
     /**
      * Creates new form Tablero
      */
@@ -26,7 +25,22 @@ public class VentanaTablero extends javax.swing.JFrame {
         this.getContentPane().setBackground(Color.DARK_GRAY);
         lectorComando.setToolTipText("G 0 0");
         tablero.crearMatrizTablero();
+        tablero.setDificultad(VentanaDificultad.dificultad);
         this.imprimirTablero();
+        switch (tablero.getDificultad()) {
+            case "BAJA":
+                tablero.setContadorZombies(5);
+                break;
+            case "MEDIA":
+                tablero.setContadorZombies(15);
+                break;
+            case "ALTA":
+                tablero.setContadorZombies(25);
+                break;
+            case "IMPOSIBLE":
+                tablero.setContadorZombies(50);
+                break;
+        }
     }
 
     /**
@@ -121,6 +135,7 @@ public class VentanaTablero extends javax.swing.JFrame {
         labelContadorZombies = new javax.swing.JLabel();
         labelTurno = new javax.swing.JLabel();
         labelSoles = new javax.swing.JLabel();
+        botonAyuda = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -243,177 +258,246 @@ public class VentanaTablero extends javax.swing.JFrame {
 
         celda00.setBackground(new java.awt.Color(0, 255, 0));
         celda00.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        celda00.setForeground(new java.awt.Color(255, 255, 255));
 
         celda10.setBackground(new java.awt.Color(0, 255, 0));
         celda10.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        celda10.setForeground(new java.awt.Color(255, 255, 255));
 
         celda20.setBackground(new java.awt.Color(0, 255, 0));
         celda20.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        celda20.setForeground(new java.awt.Color(255, 255, 255));
 
         celda30.setBackground(new java.awt.Color(0, 255, 0));
         celda30.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        celda30.setForeground(new java.awt.Color(255, 255, 255));
 
         celda40.setBackground(new java.awt.Color(0, 255, 0));
         celda40.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        celda40.setForeground(new java.awt.Color(255, 255, 255));
 
         celda50.setBackground(new java.awt.Color(0, 255, 0));
         celda50.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        celda50.setForeground(new java.awt.Color(255, 255, 255));
 
         celda60.setBackground(new java.awt.Color(0, 255, 0));
         celda60.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        celda60.setForeground(new java.awt.Color(255, 255, 255));
 
         celda01.setBackground(new java.awt.Color(0, 255, 0));
         celda01.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        celda01.setForeground(new java.awt.Color(255, 255, 255));
 
         celda11.setBackground(new java.awt.Color(0, 255, 0));
         celda11.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        celda11.setForeground(new java.awt.Color(255, 255, 255));
 
         celda21.setBackground(new java.awt.Color(0, 255, 0));
         celda21.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        celda21.setForeground(new java.awt.Color(255, 255, 255));
 
         celda31.setBackground(new java.awt.Color(0, 255, 0));
         celda31.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        celda31.setForeground(new java.awt.Color(255, 255, 255));
 
         celda41.setBackground(new java.awt.Color(0, 255, 0));
         celda41.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        celda41.setForeground(new java.awt.Color(255, 255, 255));
 
         celda51.setBackground(new java.awt.Color(0, 255, 0));
         celda51.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        celda51.setForeground(new java.awt.Color(255, 255, 255));
 
         celda61.setBackground(new java.awt.Color(0, 255, 0));
         celda61.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        celda61.setForeground(new java.awt.Color(255, 255, 255));
 
         celda02.setBackground(new java.awt.Color(0, 255, 0));
         celda02.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        celda02.setForeground(new java.awt.Color(255, 255, 255));
 
         celda12.setBackground(new java.awt.Color(0, 255, 0));
         celda12.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        celda12.setForeground(new java.awt.Color(255, 255, 255));
 
         celda22.setBackground(new java.awt.Color(0, 255, 0));
         celda22.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        celda22.setForeground(new java.awt.Color(255, 255, 255));
 
         celda32.setBackground(new java.awt.Color(0, 255, 0));
         celda32.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        celda32.setForeground(new java.awt.Color(255, 255, 255));
 
         celda42.setBackground(new java.awt.Color(0, 255, 0));
         celda42.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        celda42.setForeground(new java.awt.Color(255, 255, 255));
 
         celda52.setBackground(new java.awt.Color(0, 255, 0));
         celda52.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        celda52.setForeground(new java.awt.Color(255, 255, 255));
 
         celda62.setBackground(new java.awt.Color(0, 255, 0));
         celda62.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        celda62.setForeground(new java.awt.Color(255, 255, 255));
 
         celda03.setBackground(new java.awt.Color(0, 255, 0));
         celda03.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        celda03.setForeground(new java.awt.Color(255, 255, 255));
 
         celda13.setBackground(new java.awt.Color(0, 255, 0));
         celda13.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        celda13.setForeground(new java.awt.Color(255, 255, 255));
 
         celda23.setBackground(new java.awt.Color(0, 255, 0));
         celda23.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        celda23.setForeground(new java.awt.Color(255, 255, 255));
 
         celda33.setBackground(new java.awt.Color(0, 255, 0));
         celda33.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        celda33.setForeground(new java.awt.Color(255, 255, 255));
 
         celda43.setBackground(new java.awt.Color(0, 255, 0));
         celda43.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        celda43.setForeground(new java.awt.Color(255, 255, 255));
 
         celda53.setBackground(new java.awt.Color(0, 255, 0));
         celda53.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        celda53.setForeground(new java.awt.Color(255, 255, 255));
 
         celda63.setBackground(new java.awt.Color(0, 255, 0));
         celda63.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        celda63.setForeground(new java.awt.Color(255, 255, 255));
 
         celda04.setBackground(new java.awt.Color(0, 255, 0));
         celda04.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        celda04.setForeground(new java.awt.Color(255, 255, 255));
 
         celda14.setBackground(new java.awt.Color(0, 255, 0));
         celda14.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        celda14.setForeground(new java.awt.Color(255, 255, 255));
 
         celda24.setBackground(new java.awt.Color(0, 255, 0));
         celda24.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        celda24.setForeground(new java.awt.Color(255, 255, 255));
 
         celda34.setBackground(new java.awt.Color(0, 255, 0));
         celda34.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        celda34.setForeground(new java.awt.Color(255, 255, 255));
 
         celda44.setBackground(new java.awt.Color(0, 255, 0));
         celda44.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        celda44.setForeground(new java.awt.Color(255, 255, 255));
 
         celda54.setBackground(new java.awt.Color(0, 255, 0));
         celda54.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        celda54.setForeground(new java.awt.Color(255, 255, 255));
 
         celda64.setBackground(new java.awt.Color(0, 255, 0));
         celda64.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        celda64.setForeground(new java.awt.Color(255, 255, 255));
 
         celda05.setBackground(new java.awt.Color(0, 255, 0));
         celda05.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        celda05.setForeground(new java.awt.Color(255, 255, 255));
 
         celda15.setBackground(new java.awt.Color(0, 255, 0));
         celda15.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        celda15.setForeground(new java.awt.Color(255, 255, 255));
 
         celda25.setBackground(new java.awt.Color(0, 255, 0));
         celda25.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        celda25.setForeground(new java.awt.Color(255, 255, 255));
 
         celda35.setBackground(new java.awt.Color(0, 255, 0));
         celda35.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        celda35.setForeground(new java.awt.Color(255, 255, 255));
 
         celda45.setBackground(new java.awt.Color(0, 255, 0));
         celda45.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        celda45.setForeground(new java.awt.Color(255, 255, 255));
 
         celda55.setBackground(new java.awt.Color(0, 255, 0));
         celda55.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        celda55.setForeground(new java.awt.Color(255, 255, 255));
 
         celda65.setBackground(new java.awt.Color(0, 255, 0));
         celda65.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        celda65.setForeground(new java.awt.Color(255, 255, 255));
 
         celda06.setBackground(new java.awt.Color(0, 255, 0));
         celda06.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        celda06.setForeground(new java.awt.Color(255, 255, 255));
 
         celda16.setBackground(new java.awt.Color(0, 255, 0));
         celda16.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        celda16.setForeground(new java.awt.Color(255, 255, 255));
 
         celda26.setBackground(new java.awt.Color(0, 255, 0));
         celda26.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        celda26.setForeground(new java.awt.Color(255, 255, 255));
 
         celda36.setBackground(new java.awt.Color(0, 255, 0));
         celda36.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        celda36.setForeground(new java.awt.Color(255, 255, 255));
 
         celda46.setBackground(new java.awt.Color(0, 255, 0));
         celda46.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        celda46.setForeground(new java.awt.Color(255, 255, 255));
 
         celda56.setBackground(new java.awt.Color(0, 255, 0));
         celda56.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        celda56.setForeground(new java.awt.Color(255, 255, 255));
 
         celda66.setBackground(new java.awt.Color(0, 255, 0));
         celda66.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        celda66.setForeground(new java.awt.Color(255, 255, 255));
 
         celda07.setBackground(new java.awt.Color(0, 255, 0));
         celda07.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        celda07.setForeground(new java.awt.Color(255, 255, 255));
 
         celda17.setBackground(new java.awt.Color(0, 255, 0));
         celda17.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        celda17.setForeground(new java.awt.Color(255, 255, 255));
 
         celda27.setBackground(new java.awt.Color(0, 255, 0));
         celda27.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        celda27.setForeground(new java.awt.Color(255, 255, 255));
 
         celda37.setBackground(new java.awt.Color(0, 255, 0));
         celda37.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        celda37.setForeground(new java.awt.Color(255, 255, 255));
 
         celda47.setBackground(new java.awt.Color(0, 255, 0));
         celda47.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        celda47.setForeground(new java.awt.Color(255, 255, 255));
 
         celda57.setBackground(new java.awt.Color(0, 255, 0));
         celda57.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        celda57.setForeground(new java.awt.Color(255, 255, 255));
 
         celda67.setBackground(new java.awt.Color(0, 255, 0));
         celda67.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        celda67.setForeground(new java.awt.Color(255, 255, 255));
 
         labelContadorZombies.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        labelContadorZombies.setForeground(new java.awt.Color(255, 255, 255));
 
         labelTurno.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        labelTurno.setForeground(new java.awt.Color(255, 255, 255));
 
         labelSoles.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        labelSoles.setForeground(new java.awt.Color(255, 255, 255));
+
+        botonAyuda.setBackground(new java.awt.Color(102, 102, 102));
+        botonAyuda.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        botonAyuda.setForeground(new java.awt.Color(255, 255, 255));
+        botonAyuda.setText("AYUDA");
+        botonAyuda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAyudaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -465,38 +549,33 @@ public class VentanaTablero extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(celda62, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(celda21, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(celda31, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(celda22, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(celda32, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(celda41, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(celda51, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)))
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(celda42, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(celda52, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(celda11, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(celda01, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(celda21, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(celda31, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(18, 18, 18)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(celda02, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(celda12, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                            .addComponent(celda22, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(celda32, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(celda41, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(celda51, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGap(18, 18, 18)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(celda42, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(celda52, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addComponent(celda11, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(celda01, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGap(18, 18, 18)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(celda02, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(celda12, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(celda63, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -566,16 +645,10 @@ public class VentanaTablero extends javax.swing.JFrame {
                                         .addComponent(celda66, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(celda67, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 496, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 496, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(BotonInsertarComando, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
-                            .addComponent(lectorComando))
-                        .addGap(30, 30, 30))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(29, 29, 29)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -597,8 +670,17 @@ public class VentanaTablero extends javax.swing.JFrame {
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                             .addComponent(labelTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(BotonPasarTurno))))
-                        .addGap(0, 22, Short.MAX_VALUE))))
+                                    .addComponent(BotonPasarTurno)))
+                            .addComponent(botonAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 22, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(BotonInsertarComando, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
+                            .addComponent(lectorComando))
+                        .addGap(30, 30, 30))))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {celda00, celda01, celda02, celda03, celda04, celda05, celda06, celda07, celda10, celda11, celda12, celda13, celda14, celda15, celda16, celda17, celda20, celda21, celda22, celda23, celda24, celda25, celda26, celda27, celda30, celda31, celda32, celda33, celda34, celda35, celda36, celda37, celda40, celda41, celda42, celda43, celda44, celda45, celda46, celda47, celda50, celda51, celda52, celda53, celda54, celda55, celda56, celda57, celda60, celda61, celda62, celda63, celda64, celda65, celda66, celda67});
@@ -607,7 +689,9 @@ public class VentanaTablero extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
@@ -618,46 +702,51 @@ public class VentanaTablero extends javax.swing.JFrame {
                     .addComponent(jLabel19)
                     .addComponent(jLabel20)
                     .addComponent(jLabel14))
-                .addGap(4, 4, 4)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(celda06, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(celda05, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(labelContadorZombies, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(celda01, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(celda00, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(celda02, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(celda03, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(celda04, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(celda07, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jLabel7))
+                        .addGap(4, 4, 4)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(celda06, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(celda05, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(labelContadorZombies, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(celda01, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(celda00, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(celda02, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(celda03, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(celda04, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(celda07, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(22, 22, 22)
+                                        .addComponent(jLabel7))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(BotonPasarTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(celda12, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(celda13, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(celda14, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(celda15, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(celda16, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(celda17, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(celda10, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(celda11, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(0, 9, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(BotonPasarTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(celda12, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(celda13, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(celda14, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(celda15, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(celda16, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(celda17, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(celda10, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(celda11, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(labelTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 18, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(labelTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(26, 26, 26)
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(celda27, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(celda26, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -667,11 +756,11 @@ public class VentanaTablero extends javax.swing.JFrame {
                             .addComponent(celda22, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(celda21, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(celda20, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labelSoles, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(labelSoles, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
+                        .addGap(27, 27, 27)
                         .addComponent(jLabel8)))
-                .addGap(18, 18, 18)
+                .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(celda37, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(celda36, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -754,16 +843,21 @@ public class VentanaTablero extends javax.swing.JFrame {
 
     private void BotonPasarTurnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonPasarTurnoActionPerformed
         // TODO add your handling code here:
-        tablero.sumarGirasoles(); //Se suman los soles cada dos turnos
-        tablero.ataquePlanta();  //Las plantas atacan
-        tablero.ataqueZombie(); //Los zombies atacan
-        tablero.moverZombie(); //Los zombies se mueven
-        if (tablero.getContadorZombies() > 0) {
-            tablero.insertarZombieAleatorio(); //Metemos zombies nuevos    
+        try {
+            tablero.sumarGirasoles(); //Se suman los soles cada dos turnos
+            tablero.ataquePlanta();  //Las plantas atacan
+            tablero.ataqueZombie(); //Los zombies atacan
+            tablero.moverZombie(); //Los zombies se mueven
+            if (tablero.getContadorZombies() > 0) {
+                tablero.insertarZombieAleatorio(); //Metemos zombies nuevos    
+            }
+            tablero.limpiarTablero(); //Limpiamos el tablero
+            tablero.comprobarVictoria();
+            tablero.setTurno(tablero.getTurno() + 1); //Aumentamos el turno
+            this.imprimirTablero();
+        } catch (Exception ej){
+            
         }
-        tablero.limpiarTablero(); //Limpiamos el tablero
-        tablero.comprobarVictoria();
-        tablero.setTurno(tablero.getTurno() + 1); //Aumentamos el turno
     }//GEN-LAST:event_BotonPasarTurnoActionPerformed
 
     private void BotonInsertarComandoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonInsertarComandoActionPerformed
@@ -772,23 +866,91 @@ public class VentanaTablero extends javax.swing.JFrame {
             tablero.actualizarTablero(lectorComando.getText());
         } catch (Exception x) {
             JOptionPane.showMessageDialog(this, "Error:" + x.toString(), "Mensaje de error", JOptionPane.ERROR_MESSAGE);
-        } 
+        }
+        this.imprimirTablero();
     }//GEN-LAST:event_BotonInsertarComandoActionPerformed
 
     private void lectorComandoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lectorComandoActionPerformed
         // TODO add your handling code here:
+
     }//GEN-LAST:event_lectorComandoActionPerformed
 
+    private void botonAyudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAyudaActionPerformed
+        // TODO add your handling code here:
+        new VentanaAyuda().setVisible(true);
+    }//GEN-LAST:event_botonAyudaActionPerformed
+
     /**
-     Esta funcion imprime el tablero en la interfaz
+     * Esta funcion imprime el tablero en la interfaz
      */
-    public void imprimirTablero(){
-        
+    public void imprimirTablero() {
+
+        this.labelContadorZombies.setText(Integer.toString(tablero.getContadorZombies()));
+        this.labelSoles.setText(Integer.toString(tablero.getSoles()));
+        this.labelTurno.setText(Integer.toString(tablero.getTurno()));
+
+        this.celda00.setText(tablero.getMatrizTablero()[0][0].toString());
+        this.celda01.setText(tablero.getMatrizTablero()[0][1].toString());
+        this.celda02.setText(tablero.getMatrizTablero()[0][2].toString());
+        this.celda03.setText(tablero.getMatrizTablero()[0][3].toString());
+        this.celda04.setText(tablero.getMatrizTablero()[0][4].toString());
+        this.celda05.setText(tablero.getMatrizTablero()[0][5].toString());
+        this.celda06.setText(tablero.getMatrizTablero()[0][6].toString());
+        this.celda07.setText(tablero.getMatrizTablero()[0][7].toString());
+        this.celda10.setText(tablero.getMatrizTablero()[1][0].toString());
+        this.celda11.setText(tablero.getMatrizTablero()[1][1].toString());
+        this.celda12.setText(tablero.getMatrizTablero()[1][2].toString());
+        this.celda13.setText(tablero.getMatrizTablero()[1][3].toString());
+        this.celda14.setText(tablero.getMatrizTablero()[1][4].toString());
+        this.celda15.setText(tablero.getMatrizTablero()[1][5].toString());
+        this.celda16.setText(tablero.getMatrizTablero()[1][6].toString());
+        this.celda17.setText(tablero.getMatrizTablero()[1][7].toString());
+        this.celda20.setText(tablero.getMatrizTablero()[2][0].toString());
+        this.celda21.setText(tablero.getMatrizTablero()[2][1].toString());
+        this.celda22.setText(tablero.getMatrizTablero()[2][2].toString());
+        this.celda23.setText(tablero.getMatrizTablero()[2][3].toString());
+        this.celda24.setText(tablero.getMatrizTablero()[2][4].toString());
+        this.celda25.setText(tablero.getMatrizTablero()[2][5].toString());
+        this.celda26.setText(tablero.getMatrizTablero()[2][6].toString());
+        this.celda27.setText(tablero.getMatrizTablero()[2][7].toString());
+        this.celda30.setText(tablero.getMatrizTablero()[3][0].toString());
+        this.celda31.setText(tablero.getMatrizTablero()[3][1].toString());
+        this.celda32.setText(tablero.getMatrizTablero()[3][2].toString());
+        this.celda33.setText(tablero.getMatrizTablero()[3][3].toString());
+        this.celda34.setText(tablero.getMatrizTablero()[3][4].toString());
+        this.celda35.setText(tablero.getMatrizTablero()[3][5].toString());
+        this.celda36.setText(tablero.getMatrizTablero()[3][6].toString());
+        this.celda37.setText(tablero.getMatrizTablero()[3][7].toString());
+        this.celda40.setText(tablero.getMatrizTablero()[4][0].toString());
+        this.celda41.setText(tablero.getMatrizTablero()[4][1].toString());
+        this.celda42.setText(tablero.getMatrizTablero()[4][2].toString());
+        this.celda43.setText(tablero.getMatrizTablero()[4][3].toString());
+        this.celda44.setText(tablero.getMatrizTablero()[4][4].toString());
+        this.celda45.setText(tablero.getMatrizTablero()[4][5].toString());
+        this.celda46.setText(tablero.getMatrizTablero()[4][6].toString());
+        this.celda47.setText(tablero.getMatrizTablero()[4][7].toString());
+        this.celda50.setText(tablero.getMatrizTablero()[5][0].toString());
+        this.celda51.setText(tablero.getMatrizTablero()[5][1].toString());
+        this.celda52.setText(tablero.getMatrizTablero()[5][2].toString());
+        this.celda53.setText(tablero.getMatrizTablero()[5][3].toString());
+        this.celda54.setText(tablero.getMatrizTablero()[5][4].toString());
+        this.celda55.setText(tablero.getMatrizTablero()[5][5].toString());
+        this.celda56.setText(tablero.getMatrizTablero()[5][6].toString());
+        this.celda57.setText(tablero.getMatrizTablero()[5][7].toString());
+        this.celda60.setText(tablero.getMatrizTablero()[6][0].toString());
+        this.celda61.setText(tablero.getMatrizTablero()[6][1].toString());
+        this.celda62.setText(tablero.getMatrizTablero()[6][2].toString());
+        this.celda63.setText(tablero.getMatrizTablero()[6][3].toString());
+        this.celda64.setText(tablero.getMatrizTablero()[6][4].toString());
+        this.celda65.setText(tablero.getMatrizTablero()[6][5].toString());
+        this.celda66.setText(tablero.getMatrizTablero()[6][6].toString());
+        this.celda67.setText(tablero.getMatrizTablero()[6][7].toString());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonInsertarComando;
     private javax.swing.JButton BotonPasarTurno;
+    private javax.swing.JButton botonAyuda;
     private javax.swing.JButton botonSalir;
     private javax.swing.JLabel celda00;
     private javax.swing.JLabel celda01;

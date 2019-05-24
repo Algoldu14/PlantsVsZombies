@@ -21,6 +21,7 @@ import java.util.HashMap;
  */
 public class BBDDJuego {
 
+    
     public static HashMap<String, Jugador> jugadoresR = new HashMap<>();
 
     public static void altaJugador(Jugador jr) {

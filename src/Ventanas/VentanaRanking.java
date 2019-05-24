@@ -5,6 +5,7 @@
  */
 package Ventanas;
 
+import Juego.BBDDJuego;
 import java.awt.Color;
 import javax.swing.JTextArea;
 
@@ -99,7 +100,7 @@ public class VentanaRanking extends javax.swing.JFrame {
     }
 
     public void setListaJugadores(String listaJug) {
-        this.listaJugadores.setText(listaJug);
+        this.listaJugadores.setText(BBDDJuego.jugadoresR.toString());
     }
 
     

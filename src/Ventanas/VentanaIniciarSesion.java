@@ -34,7 +34,7 @@ public class VentanaIniciarSesion extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         DNIInicioSesion = new javax.swing.JTextField();
-        BotonAJugar = new javax.swing.JButton();
+        BotonSiguiente = new javax.swing.JButton();
         BotonAtras = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -54,13 +54,13 @@ public class VentanaIniciarSesion extends javax.swing.JFrame {
             }
         });
 
-        BotonAJugar.setBackground(new java.awt.Color(102, 102, 102));
-        BotonAJugar.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
-        BotonAJugar.setForeground(new java.awt.Color(255, 255, 255));
-        BotonAJugar.setText("¡A JUGAR!");
-        BotonAJugar.addActionListener(new java.awt.event.ActionListener() {
+        BotonSiguiente.setBackground(new java.awt.Color(102, 102, 102));
+        BotonSiguiente.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        BotonSiguiente.setForeground(new java.awt.Color(255, 255, 255));
+        BotonSiguiente.setText("SIGUIENTE");
+        BotonSiguiente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonAJugarActionPerformed(evt);
+                BotonSiguienteActionPerformed(evt);
             }
         });
 
@@ -84,7 +84,7 @@ public class VentanaIniciarSesion extends javax.swing.JFrame {
                         .addGap(115, 115, 115)
                         .addComponent(BotonAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(BotonAJugar, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(BotonSiguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(67, 67, 67)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -108,7 +108,7 @@ public class VentanaIniciarSesion extends javax.swing.JFrame {
                 .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BotonAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BotonAJugar, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(BotonSiguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
 
@@ -125,16 +125,16 @@ public class VentanaIniciarSesion extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_BotonAtrasActionPerformed
 
-    private void BotonAJugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAJugarActionPerformed
+    private void BotonSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonSiguienteActionPerformed
         // TODO add your handling code here:
-        new VentanaTablero().setVisible(true);
+        new VentanaDificultad().setVisible(true);
         dispose();
-    }//GEN-LAST:event_BotonAJugarActionPerformed
+    }//GEN-LAST:event_BotonSiguienteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BotonAJugar;
     private javax.swing.JButton BotonAtras;
+    private javax.swing.JButton BotonSiguiente;
     private javax.swing.JTextField DNIInicioSesion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

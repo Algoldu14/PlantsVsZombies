@@ -5,12 +5,9 @@
  */
 package Juego;
 
-import Ventanas.*;
 import Excepciones.ExcepcionJuego;
 import Excepciones.ExcepcionPlanta;
 import java.util.Random;
-import java.util.Scanner;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -133,52 +130,53 @@ public final class Tablero {
      */
     public void actualizarTablero(String comando) throws ExcepcionPlanta, ExcepcionJuego {
 
-            try {
-                comando = comando.toUpperCase();
-                String arrayComando[] = comando.split(" ");
-                switch (arrayComando[0]) {
-                    case "L": //Si son las plantas
-                        if (this.soles < 50) {
-                            throw new ExcepcionPlanta(ExcepcionPlanta.INSUFICIENTES_SOLES);
-                        } else {
-                            this.introducirPlanta(comando);
-                        }
-                        break;
-                    case "G":
-                        if (this.soles < 20) {
-                            throw new ExcepcionPlanta(ExcepcionPlanta.INSUFICIENTES_SOLES);
-                        } else {
-                            this.introducirPlanta(comando);
-                        }
-                    case "B":
-                        if (this.soles < 200) {
-                            throw new ExcepcionPlanta(ExcepcionPlanta.INSUFICIENTES_SOLES);
-                        } else {
-                            this.meterBomba(comando);
-                        }
-                        break;
-                    case "N":
-                        if (this.soles < 50) {
-                            throw new ExcepcionPlanta(ExcepcionPlanta.INSUFICIENTES_SOLES);
-                        } else {
-                            this.introducirPlanta(comando);
-                        }
-                        break;
-                    case "P":
-                        if (this.soles < 50) {
-                            throw new ExcepcionPlanta(ExcepcionPlanta.INSUFICIENTES_SOLES);
-                        } else {
-                            this.introducirPlanta(comando);
-                        }
-                        break;
-                    default:
-                        System.out.println("Error al introducir el comando.");
-                        break;
-                }
-            } catch (ExcepcionPlanta ep) {
-                
+        try {
+            comando = comando.toUpperCase();
+            String arrayComando[] = comando.split(" ");
+            if  (this.comprobarComando(comando))
+            switch (arrayComando[0]) {
+                case "L": //Si son las plantas
+                    if (this.soles < 50) {
+                        throw new ExcepcionPlanta(ExcepcionPlanta.INSUFICIENTES_SOLES);
+                    } else {
+                        this.introducirPlanta(comando);
+                    }
+                    break;
+                case "G":
+                    if (this.soles < 20) {
+                        throw new ExcepcionPlanta(ExcepcionPlanta.INSUFICIENTES_SOLES);
+                    } else {
+                        this.introducirPlanta(comando);
+                    }
+                case "B":
+                    if (this.soles < 200) {
+                        throw new ExcepcionPlanta(ExcepcionPlanta.INSUFICIENTES_SOLES);
+                    } else {
+                        this.meterBomba(comando);
+                    }
+                    break;
+                case "N":
+                    if (this.soles < 50) {
+                        throw new ExcepcionPlanta(ExcepcionPlanta.INSUFICIENTES_SOLES);
+                    } else {
+                        this.introducirPlanta(comando);
+                    }
+                    break;
+                case "P":
+                    if (this.soles < 50) {
+                        throw new ExcepcionPlanta(ExcepcionPlanta.INSUFICIENTES_SOLES);
+                    } else {
+                        this.introducirPlanta(comando);
+                    }
+                    break;
+                default:
+
+                    break;
             }
-        
+        } catch (ExcepcionPlanta ep) {
+
+        }
+
     }
 
     /*
@@ -264,7 +262,7 @@ public final class Tablero {
                 System.out.println("");
             }
         } catch (ExcepcionPlanta ep) {
-           
+
         }
     }
 
@@ -515,7 +513,6 @@ public final class Tablero {
                 }
             }
         } catch (Exception e) {
-            System.out.println("Has perdido, los zombies han llegado a tu casa.");
 
         }
     }
@@ -660,26 +657,86 @@ public final class Tablero {
             if (this.matrizTablero[filaM][columnaM].getNPC() instanceof ZombieComun) {
                 this.matrizTablero[filaM][columnaM].setNPC(new NPC()); //Vaciamos esa casilla
                 this.setSoles(this.getSoles() - 200);
-                System.out.println("Has eliminado un zombie");
-                System.out.println("");
             } else if (this.matrizTablero[filaM][columnaM].getNPC() instanceof LanzaGuisantes) {
                 this.matrizTablero[filaM][columnaM].setNPC(new NPC()); //Vaciamos esa casilla
                 this.setSoles(this.getSoles() - 200);
-                System.out.println("Has eliminado un Lanza Guisantes");
-                System.out.println("");
             } else if (this.matrizTablero[filaM][columnaM].getNPC() instanceof Girasol) {
                 this.matrizTablero[filaM][columnaM].setNPC(new NPC()); //Vaciamos esa casilla
                 this.setSoles(this.getSoles() - 200);
-                System.out.println("Has eliminado un Girasol");
-                System.out.println("");
             } else {
                 this.setSoles(this.getSoles() - 200);
-                System.out.println("La bomba no ha eliminado nada");
-                System.out.println("");
             }
         } else {
             System.out.println("No existe esa posicion el la matriz");
             System.out.println("");
         }
     }
+
+    public static boolean esNumerico(String cadena) {
+        try {
+            Integer.parseInt(cadena);
+            return true;
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+    }
+
+    public boolean comprobarComando(String comando) {
+
+        String arrayComando[] = comando.split(" ");
+        boolean comandoMal = false;
+
+        switch (arrayComando[0]) {
+            case "N":
+                if (arrayComando.length != 3) {
+                    comandoMal = true;
+                } else {
+                    if (!(this.esNumerico(arrayComando[1]) && this.esNumerico(arrayComando[2]))) {
+                        comandoMal = true;
+                    }
+                }
+                break;
+            case "G":
+                if (arrayComando.length != 3) {
+                    comandoMal = true;
+                } else {
+                    if (!(this.esNumerico(arrayComando[1]) && this.esNumerico(arrayComando[2]))) {
+                        comandoMal = true;
+                    }
+                }
+                break;
+            case "L":
+                if (arrayComando.length != 3) {
+                    comandoMal = true;
+                } else {
+                    if (!(this.esNumerico(arrayComando[1]) && this.esNumerico(arrayComando[2]))) {
+                        comandoMal = true;
+                    }
+                }
+                break;
+            case "P":
+                if (arrayComando.length != 3) {
+                    comandoMal = true;
+                } else {
+                    if (!(this.esNumerico(arrayComando[1]) && this.esNumerico(arrayComando[2]))) {
+                        comandoMal = true;
+                    }
+                }
+                break;
+            case "B":
+                if (arrayComando.length != 3) {
+                    comandoMal = true;
+                } else {
+                    if (!(this.esNumerico(arrayComando[1]) && this.esNumerico(arrayComando[2]))) {
+                        comandoMal = true;
+                    }
+                }
+                break;
+            default:
+                comandoMal = true;
+                break;
+        }
+        return comandoMal;
+    }
+
 }
