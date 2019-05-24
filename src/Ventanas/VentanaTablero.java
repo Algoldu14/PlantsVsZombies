@@ -5,6 +5,7 @@
  */
 package Ventanas;
 
+import Excepciones.ExcepcionJuego;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import Juego.*;
@@ -855,18 +856,29 @@ public class VentanaTablero extends javax.swing.JFrame {
             tablero.comprobarVictoria();
             tablero.setTurno(tablero.getTurno() + 1); //Aumentamos el turno
             this.imprimirTablero();
-        } catch (Exception ej){
-            
+        } catch (Exception ej) {
+            JOptionPane.showMessageDialog(this, "Error:" + ej.toString(), "Mensaje de error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_BotonPasarTurnoActionPerformed
 
     private void BotonInsertarComandoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonInsertarComandoActionPerformed
+        
         try {
-            // TODO add your handling code here:
-            tablero.actualizarTablero(lectorComando.getText());
+            String comando = lectorComando.getText();
+            
+            //if (!(tablero.comprobarComando(comando))) {
+                if (!(tablero.comprobarPosicionMatriz(comando))) {
+                    tablero.actualizarTablero(comando);
+                } else {
+                    throw new ExcepcionJuego(ExcepcionJuego.NO_EXISTE_POSICION);
+                }
+            //} else {
+                //throw new ExcepcionJuego(ExcepcionJuego.ERROR_COMANDO);
+            //}
         } catch (Exception x) {
             JOptionPane.showMessageDialog(this, "Error:" + x.toString(), "Mensaje de error", JOptionPane.ERROR_MESSAGE);
         }
+
         this.imprimirTablero();
     }//GEN-LAST:event_BotonInsertarComandoActionPerformed
 

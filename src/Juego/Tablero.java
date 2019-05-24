@@ -130,53 +130,59 @@ public final class Tablero {
      */
     public void actualizarTablero(String comando) throws ExcepcionPlanta, ExcepcionJuego {
 
+        comando = comando.toUpperCase();
+        String arrayComando[] = comando.split(" ");
         try {
-            comando = comando.toUpperCase();
-            String arrayComando[] = comando.split(" ");
-            if  (this.comprobarComando(comando))
-            switch (arrayComando[0]) {
-                case "L": //Si son las plantas
-                    if (this.soles < 50) {
-                        throw new ExcepcionPlanta(ExcepcionPlanta.INSUFICIENTES_SOLES);
-                    } else {
-                        this.introducirPlanta(comando);
-                    }
-                    break;
-                case "G":
-                    if (this.soles < 20) {
-                        throw new ExcepcionPlanta(ExcepcionPlanta.INSUFICIENTES_SOLES);
-                    } else {
-                        this.introducirPlanta(comando);
-                    }
-                case "B":
-                    if (this.soles < 200) {
-                        throw new ExcepcionPlanta(ExcepcionPlanta.INSUFICIENTES_SOLES);
-                    } else {
-                        this.meterBomba(comando);
-                    }
-                    break;
-                case "N":
-                    if (this.soles < 50) {
-                        throw new ExcepcionPlanta(ExcepcionPlanta.INSUFICIENTES_SOLES);
-                    } else {
-                        this.introducirPlanta(comando);
-                    }
-                    break;
-                case "P":
-                    if (this.soles < 50) {
-                        throw new ExcepcionPlanta(ExcepcionPlanta.INSUFICIENTES_SOLES);
-                    } else {
-                        this.introducirPlanta(comando);
-                    }
-                    break;
-                default:
+            if (!(this.comprobarComando(comando))) {
+                if (!(this.comprobarPosicionMatriz(comando))) {
+                    switch (arrayComando[0]) {
+                        case "L": //Si son las plantas
+                            if (this.soles < 50) {
+                                throw new ExcepcionPlanta(ExcepcionPlanta.INSUFICIENTES_SOLES);
+                            } else {
+                                this.introducirPlanta(comando);
+                            }
+                            break;
+                        case "G":
+                            if (this.soles < 20) {
+                                throw new ExcepcionPlanta(ExcepcionPlanta.INSUFICIENTES_SOLES);
+                            } else {
+                                this.introducirPlanta(comando);
+                            }
+                        case "B":
+                            if (this.soles < 200) {
+                                throw new ExcepcionPlanta(ExcepcionPlanta.INSUFICIENTES_SOLES);
+                            } else {
+                                this.meterBomba(comando);
+                            }
+                            break;
+                        case "N":
+                            if (this.soles < 50) {
+                                throw new ExcepcionPlanta(ExcepcionPlanta.INSUFICIENTES_SOLES);
+                            } else {
+                                this.introducirPlanta(comando);
+                            }
+                            break;
+                        case "P":
+                            if (this.soles < 50) {
+                                throw new ExcepcionPlanta(ExcepcionPlanta.INSUFICIENTES_SOLES);
+                            } else {
+                                this.introducirPlanta(comando);
+                            }
+                            break;
+                        default:
 
-                    break;
+                            break;
+                    }
+                } else {
+                    throw new ExcepcionJuego(ExcepcionJuego.NO_EXISTE_POSICION);
+                }
+            } else {
+                throw new ExcepcionJuego(ExcepcionJuego.ERROR_COMANDO);
             }
-        } catch (ExcepcionPlanta ep) {
-
+        } catch (Exception e) {
+            
         }
-
     }
 
     /*
@@ -667,8 +673,7 @@ public final class Tablero {
                 this.setSoles(this.getSoles() - 200);
             }
         } else {
-            System.out.println("No existe esa posicion el la matriz");
-            System.out.println("");
+
         }
     }
 
@@ -736,7 +741,20 @@ public final class Tablero {
                 comandoMal = true;
                 break;
         }
+
         return comandoMal;
     }
 
+    public boolean comprobarPosicionMatriz(String comando) {
+
+        String arrayComando[] = comando.split(" ");
+        int filaM = Integer.parseInt(arrayComando[1]);
+        int columnaM = Integer.parseInt(arrayComando[2]);
+
+        if (filaM <= this.filas && columnaM <= this.columnas && filaM >= 0 && columnaM >= 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 }
