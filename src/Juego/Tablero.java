@@ -181,7 +181,7 @@ public final class Tablero {
                 throw new ExcepcionJuego(ExcepcionJuego.ERROR_COMANDO);
             }
         } catch (Exception e) {
-            
+
         }
     }
 
@@ -554,7 +554,10 @@ public final class Tablero {
             for (int j = 0; j < this.columnas; j++) {
                 if (this.matrizTablero[i][j].getNPC() instanceof LanzaGuisantes && this.matrizTablero[i][j].getNPC().getFrecuencia() == 1) { //Si hay un LanzaGuisantes y puede atacar
                     for (int columna = j + 1; columna < this.columnas; columna++) { //Recorremos la fila en la que se encuentra
-                        if (this.matrizTablero[i][columna].getNPC() instanceof ZombieComun && this.matrizTablero[i][columna].getNPC().getResistencia() != 0) { //Si es un zombie con vida
+                        if ((this.matrizTablero[i][columna].getNPC() instanceof ZombieComun
+                                || this.matrizTablero[i][columna].getNPC() instanceof Caracubo
+                                || this.matrizTablero[i][columna].getNPC() instanceof Deportista)
+                                && this.matrizTablero[i][columna].getNPC().getResistencia() != 0) { //Si es un zombie con vida
                             this.matrizTablero[i][columna].getNPC().setResistencia(this.matrizTablero[i][columna].getNPC().getResistencia() - 1);//Le quitamos vida al zombie
                             this.matrizTablero[i][j].getNPC().setFrecuencia(0);//le negamos a la palnta que dispare mas
                         }
@@ -562,34 +565,34 @@ public final class Tablero {
                     this.matrizTablero[i][j].getNPC().setFrecuencia(1);//Reseteamos la posibilidad de ataque de la planta para el siguiente turno
                 }
 
-                if (this.matrizTablero[i][j].getNPC() instanceof Petacereza && this.matrizTablero[i][j].getNPC().getFrecuencia() == 0) {
-                    for (int columnaAr = j - 1; columnaAr <= j + 1; columnaAr++) { //Empezamos en la columna anterior 
-                        if (this.matrizTablero[i - 1][columnaAr].getNPC() instanceof ZombieComun
-                                || this.matrizTablero[i - 1][columnaAr].getNPC() instanceof Deportista
-                                || this.matrizTablero[i - 1][columnaAr].getNPC() instanceof Caracubo) {
-                            this.matrizTablero[i - 1][columnaAr].setNPC(new NPC());
-                        }
-                    }
-                    for (int columnaAb = j - 1; columnaAb <= j + 1; columnaAb++) {
-                        if (this.matrizTablero[i][columnaAb].getNPC() instanceof ZombieComun
-                                || this.matrizTablero[i + 1][columnaAb].getNPC() instanceof Deportista
-                                || this.matrizTablero[i + 1][columnaAb].getNPC() instanceof Caracubo) {
-                            this.matrizTablero[i + 1][columnaAb].setNPC(new NPC());
-                        }
-                    }
-                    if (this.matrizTablero[i][j + 1].getNPC() instanceof ZombieComun
-                            || this.matrizTablero[i][j + 1].getNPC() instanceof Deportista
-                            || this.matrizTablero[i][j + 1].getNPC() instanceof Caracubo) {
-
-                        this.matrizTablero[i][j + 1].setNPC(new NPC());
-                    }
-                    if (this.matrizTablero[i][j - 1].getNPC() instanceof ZombieComun
-                            || this.matrizTablero[i][j + 1].getNPC() instanceof Deportista
-                            || this.matrizTablero[i][j + 1].getNPC() instanceof Caracubo) {
-                        this.matrizTablero[i][j + 1].setNPC(new NPC());
-                    }
-                    this.matrizTablero[i][j].getNPC().setFrecuencia(this.matrizTablero[i][j].getNPC().getFrecuencia() - 1);
-                }
+//                if (this.matrizTablero[i][j].getNPC() instanceof Petacereza && this.matrizTablero[i][j].getNPC().getFrecuencia() == 0) {
+//                    for (int columnaAr = j - 1; columnaAr <= j + 1; columnaAr++) { //Empezamos en la columna anterior 
+//                        if (this.matrizTablero[i - 1][columnaAr].getNPC() instanceof ZombieComun
+//                                || this.matrizTablero[i - 1][columnaAr].getNPC() instanceof Deportista
+//                                || this.matrizTablero[i - 1][columnaAr].getNPC() instanceof Caracubo) {
+//                            this.matrizTablero[i - 1][columnaAr].setNPC(new NPC());
+//                        }
+//                    }
+//                    for (int columnaAb = j - 1; columnaAb <= j + 1; columnaAb++) {
+//                        if (this.matrizTablero[i][columnaAb].getNPC() instanceof ZombieComun
+//                                || this.matrizTablero[i + 1][columnaAb].getNPC() instanceof Deportista
+//                                || this.matrizTablero[i + 1][columnaAb].getNPC() instanceof Caracubo) {
+//                            this.matrizTablero[i + 1][columnaAb].setNPC(new NPC());
+//                        }
+//                    }
+//                    if (this.matrizTablero[i][j + 1].getNPC() instanceof ZombieComun
+//                            || this.matrizTablero[i][j + 1].getNPC() instanceof Deportista
+//                            || this.matrizTablero[i][j + 1].getNPC() instanceof Caracubo) {
+//
+//                        this.matrizTablero[i][j + 1].setNPC(new NPC());
+//                    }
+//                    if (this.matrizTablero[i][j - 1].getNPC() instanceof ZombieComun
+//                            || this.matrizTablero[i][j + 1].getNPC() instanceof Deportista
+//                            || this.matrizTablero[i][j + 1].getNPC() instanceof Caracubo) {
+//                        this.matrizTablero[i][j + 1].setNPC(new NPC());
+//                    }
+//                    this.matrizTablero[i][j].getNPC().setFrecuencia(this.matrizTablero[i][j].getNPC().getFrecuencia() - 1);
+//                }
             }
         }
     }
