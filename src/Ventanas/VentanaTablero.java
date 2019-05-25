@@ -845,41 +845,54 @@ public class VentanaTablero extends javax.swing.JFrame {
     private void BotonPasarTurnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonPasarTurnoActionPerformed
         // TODO add your handling code here:
         try {
-            tablero.sumarGirasoles(); //Se suman los soles cada dos turnos
-            tablero.ataquePlanta();  //Las plantas atacan
-            tablero.ataqueZombie(); //Los zombies atacan
-            tablero.moverZombie(); //Los zombies se mueven
-            if (tablero.getContadorZombies() > 0) {
-                tablero.insertarZombieAleatorio(); //Metemos zombies nuevos    
+            if (tablero.getTurno() < 30) {
+                tablero.sumarGirasoles(); //Se suman los soles cada dos turnos
+                tablero.ataquePlanta();  //Las plantas atacan
+                tablero.ataqueZombie(); //Los zombies atacan
+                tablero.moverZombie(); //Los zombies se mueven
+                if (tablero.getContadorZombies() > 0) {
+                    tablero.insertarZombieAleatorio(); //Metemos zombies nuevos    
+                }
+                tablero.limpiarTablero(); //Limpiamos el tablero
+                tablero.comprobarVictoria();
+                tablero.setTurno(tablero.getTurno() + 1); //Aumentamos el turno
+                this.imprimirTablero();
+            } else {
+                if (tablero.isVictoria()) {
+                    JOptionPane.showMessageDialog(this, "¡Has ganado! Han ganado las plantas.", "VICTORIA", JOptionPane.PLAIN_MESSAGE);
+                    new VentanaInicio().setVisible(true);
+                    dispose();
+                } else {
+                    JOptionPane.showMessageDialog(this, "¡Has perdido! Han ganado los zombies.", "DERROTA", JOptionPane.PLAIN_MESSAGE);
+                    new VentanaInicio().setVisible(true);
+                    dispose();
+                }
             }
-            tablero.limpiarTablero(); //Limpiamos el tablero
-            tablero.comprobarVictoria();
-            tablero.setTurno(tablero.getTurno() + 1); //Aumentamos el turno
-            this.imprimirTablero();
         } catch (Exception ej) {
             JOptionPane.showMessageDialog(this, "Error:" + ej.toString(), "Mensaje de error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_BotonPasarTurnoActionPerformed
 
     private void BotonInsertarComandoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonInsertarComandoActionPerformed
-        
+
         try {
             String comando = lectorComando.getText();
-            
+
             //if (!(tablero.comprobarComando(comando))) {
-                if (!(tablero.comprobarPosicionMatriz(comando))) {
-                    tablero.actualizarTablero(comando);
-                } else {
-                    throw new ExcepcionJuego(ExcepcionJuego.NO_EXISTE_POSICION);
-                }
+            if (!(tablero.comprobarPosicionMatriz(comando))) {
+                tablero.actualizarTablero(comando);
+            } else {
+                throw new ExcepcionJuego(ExcepcionJuego.NO_EXISTE_POSICION);
+            }
             //} else {
-                //throw new ExcepcionJuego(ExcepcionJuego.ERROR_COMANDO);
+            //throw new ExcepcionJuego(ExcepcionJuego.ERROR_COMANDO);
             //}
         } catch (Exception x) {
             JOptionPane.showMessageDialog(this, "Error:" + x.toString(), "Mensaje de error", JOptionPane.ERROR_MESSAGE);
         }
 
         this.imprimirTablero();
+        lectorComando.setText("");
     }//GEN-LAST:event_BotonInsertarComandoActionPerformed
 
     private void lectorComandoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lectorComandoActionPerformed

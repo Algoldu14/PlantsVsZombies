@@ -5,6 +5,8 @@
  */
 package Ventanas;
 
+import Juego.BBDDJuego;
+import Juego.Jugador;
 import java.awt.Color;
 
 /**
@@ -19,6 +21,7 @@ public class VentanaInicio extends javax.swing.JFrame {
     public VentanaInicio() {
         initComponents();
         this.getContentPane().setBackground(Color.darkGray);
+        BBDDJuego.cargarDatos();
     }
 
     /**
@@ -153,8 +156,13 @@ public class VentanaInicio extends javax.swing.JFrame {
 
     private void rankingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rankingActionPerformed
         // TODO add your handling code here:
-        new VentanaRanking().setVisible(true);
+        VentanaRanking ventana = new VentanaRanking();
+        ventana.setVisible(true);
         dispose();
+        
+        for (Jugador jgr : BBDDJuego.jugadoresR.values()) {
+            ventana.setListaJugadores(jgr.toString());
+        }
     }//GEN-LAST:event_rankingActionPerformed
 
     

@@ -186,7 +186,7 @@ public class VentanaRegistro extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "ERROR: No puede dejar campos en blanco", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
         }
         try {
-            String nombre = this.nombreLabel.getText();
+            String nombre = this.nombreRegistro.getText();
             String DNI = this.DNIRegistro.getText();
             LocalDate fechaAct = LocalDate.now();
             LocalDate fechaReg =  LocalDate.parse(fechaAct.format(dtf), dtf);

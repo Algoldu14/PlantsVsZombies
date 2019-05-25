@@ -14,13 +14,14 @@ import javax.swing.JTextArea;
  * @author Alvaro
  */
 public class VentanaRanking extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form Ranking
      */
     public VentanaRanking() {
         initComponents();
         this.getContentPane().setBackground(Color.darkGray);
+        
     }
 
     /**
@@ -45,6 +46,7 @@ public class VentanaRanking extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("RANKING JUGADORES");
 
+        listaJugadores.setEditable(false);
         listaJugadores.setColumns(20);
         listaJugadores.setRows(5);
         jScrollPane1.setViewportView(listaJugadores);
@@ -100,7 +102,8 @@ public class VentanaRanking extends javax.swing.JFrame {
     }
 
     public void setListaJugadores(String listaJug) {
-        this.listaJugadores.setText(BBDDJuego.jugadoresR.toString());
+        
+        this.listaJugadores.setText(listaJug);
     }
 
     

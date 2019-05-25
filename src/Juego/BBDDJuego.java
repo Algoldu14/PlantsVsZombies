@@ -21,9 +21,19 @@ import java.util.HashMap;
  */
 public class BBDDJuego {
 
-    
+    public BBDDJuego() {
+    }
+
     public static HashMap<String, Jugador> jugadoresR = new HashMap<>();
 
+    public static HashMap<String, Jugador> getJugadoresR() {
+        return jugadoresR;
+    }
+
+    public static void setJugadoresR(HashMap<String, Jugador> jugadoresR) {
+        BBDDJuego.jugadoresR = jugadoresR;
+    }
+  
     public static void altaJugador(Jugador jr) {
         jugadoresR.put(jr.getDNI(), jr);
     }

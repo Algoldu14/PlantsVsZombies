@@ -7,7 +7,9 @@ package Juego;
 
 import Excepciones.ExcepcionJuego;
 import Excepciones.ExcepcionPlanta;
+import Ventanas.VentanaTablero;
 import java.util.Random;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -259,13 +261,9 @@ public final class Tablero {
                             break;
                         }
                     default:
-                        System.out.println("No existe esa planta.");
-                        System.out.println("");
+
                         break;
                 }
-            } else {
-                System.out.println("No existe esa posición.");
-                System.out.println("");
             }
         } catch (ExcepcionPlanta ep) {
 
@@ -557,9 +555,10 @@ public final class Tablero {
                         if ((this.matrizTablero[i][columna].getNPC() instanceof ZombieComun
                                 || this.matrizTablero[i][columna].getNPC() instanceof Caracubo
                                 || this.matrizTablero[i][columna].getNPC() instanceof Deportista)
-                                && this.matrizTablero[i][columna].getNPC().getResistencia() != 0) { //Si es un zombie con vida
+                                && this.matrizTablero[i][columna].getNPC().getResistencia() != 0 
+                                && this.matrizTablero[i][j].getNPC().getFrecuencia() == 1) { //Si es un zombie con vida y la planta puede atacar
                             this.matrizTablero[i][columna].getNPC().setResistencia(this.matrizTablero[i][columna].getNPC().getResistencia() - 1);//Le quitamos vida al zombie
-                            this.matrizTablero[i][j].getNPC().setFrecuencia(0);//le negamos a la palnta que dispare mas
+                            this.matrizTablero[i][j].getNPC().setFrecuencia(0);//le negamos a la planta que dispare mas
                         }
                     }
                     this.matrizTablero[i][j].getNPC().setFrecuencia(1);//Reseteamos la posibilidad de ataque de la planta para el siguiente turno
@@ -644,7 +643,9 @@ public final class Tablero {
         if (this.contadorZombies == 0) {
             for (int i = 0; i < this.filas; i++) {
                 for (int j = 0; j < this.columnas; j++) {
-                    if (this.matrizTablero[i][j].getNPC() instanceof ZombieComun) {
+                    if (this.matrizTablero[i][j].getNPC() instanceof ZombieComun
+                            || this.matrizTablero[i][j].getNPC() instanceof Caracubo
+                            || this.matrizTablero[i][j].getNPC() instanceof Deportista) {
                         zombiesRestantesT += 1;
                     }
                 }
@@ -689,7 +690,7 @@ public final class Tablero {
         }
     }
 
-    public boolean comprobarComando(String comando) {
+    public boolean comprobarComando(String comando) { //no funciona xd
 
         String arrayComando[] = comando.split(" ");
         boolean comandoMal = false;
