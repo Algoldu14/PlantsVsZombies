@@ -17,6 +17,6 @@ public class Deportista extends NPC {
      
     @Override
     public String toString() {
-        return this.getNombre() + "  (" + this.getResistencia() + ")";
+        return "  " + this.getNombre() + " (" + this.getResistencia() + ")";
     }
 }

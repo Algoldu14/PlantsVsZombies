@@ -23,6 +23,119 @@ public class VentanaTablero extends javax.swing.JFrame {
      */
     public VentanaTablero() {
         initComponents();
+        celda00.setBackground(Color.LIGHT_GRAY);
+        celda00.setOpaque(true);
+        celda01.setBackground(Color.LIGHT_GRAY);
+        celda01.setOpaque(true);
+        celda02.setBackground(Color.LIGHT_GRAY);
+        celda02.setOpaque(true);
+        celda03.setBackground(Color.LIGHT_GRAY);
+        celda03.setOpaque(true);
+        celda04.setBackground(Color.LIGHT_GRAY);
+        celda04.setOpaque(true);
+        celda05.setBackground(Color.LIGHT_GRAY);
+        celda05.setOpaque(true);
+        celda06.setBackground(Color.LIGHT_GRAY);
+        celda06.setOpaque(true);
+        celda07.setBackground(Color.LIGHT_GRAY);
+        celda07.setOpaque(true);
+        celda10.setBackground(Color.LIGHT_GRAY);
+        celda10.setOpaque(true);
+        celda11.setBackground(Color.LIGHT_GRAY);
+        celda11.setOpaque(true);
+        celda12.setBackground(Color.LIGHT_GRAY);
+        celda12.setOpaque(true);
+        celda13.setBackground(Color.LIGHT_GRAY);
+        celda13.setOpaque(true);
+        celda14.setBackground(Color.LIGHT_GRAY);
+        celda14.setOpaque(true);
+        celda15.setBackground(Color.LIGHT_GRAY);
+        celda15.setOpaque(true);
+        celda16.setBackground(Color.LIGHT_GRAY);
+        celda16.setOpaque(true);
+        celda17.setBackground(Color.LIGHT_GRAY);
+        celda17.setOpaque(true);
+        celda20.setBackground(Color.LIGHT_GRAY);
+        celda20.setOpaque(true);
+        celda21.setBackground(Color.LIGHT_GRAY);
+        celda21.setOpaque(true);
+        celda22.setBackground(Color.LIGHT_GRAY);
+        celda22.setOpaque(true);
+        celda23.setBackground(Color.LIGHT_GRAY);
+        celda23.setOpaque(true);
+        celda24.setBackground(Color.LIGHT_GRAY);
+        celda24.setOpaque(true);
+        celda25.setBackground(Color.LIGHT_GRAY);
+        celda25.setOpaque(true);
+        celda26.setBackground(Color.LIGHT_GRAY);
+        celda26.setOpaque(true);
+        celda27.setBackground(Color.LIGHT_GRAY);
+        celda27.setOpaque(true);
+        celda30.setBackground(Color.LIGHT_GRAY);
+        celda30.setOpaque(true);
+        celda31.setBackground(Color.LIGHT_GRAY);
+        celda31.setOpaque(true);
+        celda32.setBackground(Color.LIGHT_GRAY);
+        celda32.setOpaque(true);
+        celda33.setBackground(Color.LIGHT_GRAY);
+        celda33.setOpaque(true);
+        celda34.setBackground(Color.LIGHT_GRAY);
+        celda34.setOpaque(true);
+        celda35.setBackground(Color.LIGHT_GRAY);
+        celda35.setOpaque(true);
+        celda36.setBackground(Color.LIGHT_GRAY);
+        celda36.setOpaque(true);
+        celda37.setBackground(Color.LIGHT_GRAY);
+        celda37.setOpaque(true);
+        celda40.setBackground(Color.LIGHT_GRAY);
+        celda40.setOpaque(true);
+        celda41.setBackground(Color.LIGHT_GRAY);
+        celda41.setOpaque(true);
+        celda42.setBackground(Color.LIGHT_GRAY);
+        celda42.setOpaque(true);
+        celda43.setBackground(Color.LIGHT_GRAY);
+        celda43.setOpaque(true);
+        celda44.setBackground(Color.LIGHT_GRAY);
+        celda44.setOpaque(true);
+        celda45.setBackground(Color.LIGHT_GRAY);
+        celda45.setOpaque(true);
+        celda46.setBackground(Color.LIGHT_GRAY);
+        celda46.setOpaque(true);
+        celda47.setBackground(Color.LIGHT_GRAY);
+        celda47.setOpaque(true);
+        celda50.setBackground(Color.LIGHT_GRAY);
+        celda50.setOpaque(true);
+        celda51.setBackground(Color.LIGHT_GRAY);
+        celda51.setOpaque(true);
+        celda52.setBackground(Color.LIGHT_GRAY);
+        celda52.setOpaque(true);
+        celda53.setBackground(Color.LIGHT_GRAY);
+        celda53.setOpaque(true);
+        celda54.setBackground(Color.LIGHT_GRAY);
+        celda54.setOpaque(true);
+        celda55.setBackground(Color.LIGHT_GRAY);
+        celda55.setOpaque(true);
+        celda56.setBackground(Color.LIGHT_GRAY);
+        celda56.setOpaque(true);
+        celda57.setBackground(Color.LIGHT_GRAY);
+        celda57.setOpaque(true);
+        celda60.setBackground(Color.LIGHT_GRAY);
+        celda60.setOpaque(true);
+        celda61.setBackground(Color.LIGHT_GRAY);
+        celda61.setOpaque(true);
+        celda62.setBackground(Color.LIGHT_GRAY);
+        celda62.setOpaque(true);
+        celda63.setBackground(Color.LIGHT_GRAY);
+        celda63.setOpaque(true);
+        celda64.setBackground(Color.LIGHT_GRAY);
+        celda64.setOpaque(true);
+        celda65.setBackground(Color.LIGHT_GRAY);
+        celda65.setOpaque(true);
+        celda66.setBackground(Color.LIGHT_GRAY);
+        celda66.setOpaque(true);
+        celda67.setBackground(Color.LIGHT_GRAY);
+        celda67.setOpaque(true);
+        
         this.getContentPane().setBackground(Color.DARK_GRAY);
         lectorComando.setToolTipText("G 0 0");
         tablero.crearMatrizTablero();
@@ -257,229 +370,229 @@ public class VentanaTablero extends javax.swing.JFrame {
         jLabel20.setForeground(new java.awt.Color(255, 255, 255));
         jLabel20.setText("7");
 
-        celda00.setBackground(new java.awt.Color(0, 255, 0));
+        celda00.setBackground(new java.awt.Color(204, 255, 153));
         celda00.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        celda00.setForeground(new java.awt.Color(255, 255, 255));
+        celda00.setForeground(new java.awt.Color(0, 0, 0));
 
         celda10.setBackground(new java.awt.Color(0, 255, 0));
         celda10.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        celda10.setForeground(new java.awt.Color(255, 255, 255));
+        celda10.setForeground(new java.awt.Color(0, 0, 0));
 
         celda20.setBackground(new java.awt.Color(0, 255, 0));
         celda20.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        celda20.setForeground(new java.awt.Color(255, 255, 255));
+        celda20.setForeground(new java.awt.Color(0, 0, 0));
 
         celda30.setBackground(new java.awt.Color(0, 255, 0));
         celda30.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        celda30.setForeground(new java.awt.Color(255, 255, 255));
+        celda30.setForeground(new java.awt.Color(0, 0, 0));
 
         celda40.setBackground(new java.awt.Color(0, 255, 0));
         celda40.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        celda40.setForeground(new java.awt.Color(255, 255, 255));
+        celda40.setForeground(new java.awt.Color(0, 0, 0));
 
         celda50.setBackground(new java.awt.Color(0, 255, 0));
         celda50.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        celda50.setForeground(new java.awt.Color(255, 255, 255));
+        celda50.setForeground(new java.awt.Color(0, 0, 0));
 
         celda60.setBackground(new java.awt.Color(0, 255, 0));
         celda60.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        celda60.setForeground(new java.awt.Color(255, 255, 255));
+        celda60.setForeground(new java.awt.Color(0, 0, 0));
 
         celda01.setBackground(new java.awt.Color(0, 255, 0));
         celda01.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        celda01.setForeground(new java.awt.Color(255, 255, 255));
+        celda01.setForeground(new java.awt.Color(0, 0, 0));
 
         celda11.setBackground(new java.awt.Color(0, 255, 0));
         celda11.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        celda11.setForeground(new java.awt.Color(255, 255, 255));
+        celda11.setForeground(new java.awt.Color(0, 0, 0));
 
         celda21.setBackground(new java.awt.Color(0, 255, 0));
         celda21.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        celda21.setForeground(new java.awt.Color(255, 255, 255));
+        celda21.setForeground(new java.awt.Color(0, 0, 0));
 
         celda31.setBackground(new java.awt.Color(0, 255, 0));
         celda31.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        celda31.setForeground(new java.awt.Color(255, 255, 255));
+        celda31.setForeground(new java.awt.Color(0, 0, 0));
 
         celda41.setBackground(new java.awt.Color(0, 255, 0));
         celda41.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        celda41.setForeground(new java.awt.Color(255, 255, 255));
+        celda41.setForeground(new java.awt.Color(0, 0, 0));
 
         celda51.setBackground(new java.awt.Color(0, 255, 0));
         celda51.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        celda51.setForeground(new java.awt.Color(255, 255, 255));
+        celda51.setForeground(new java.awt.Color(0, 0, 0));
 
         celda61.setBackground(new java.awt.Color(0, 255, 0));
         celda61.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        celda61.setForeground(new java.awt.Color(255, 255, 255));
+        celda61.setForeground(new java.awt.Color(0, 0, 0));
 
         celda02.setBackground(new java.awt.Color(0, 255, 0));
         celda02.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        celda02.setForeground(new java.awt.Color(255, 255, 255));
+        celda02.setForeground(new java.awt.Color(0, 0, 0));
 
         celda12.setBackground(new java.awt.Color(0, 255, 0));
         celda12.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        celda12.setForeground(new java.awt.Color(255, 255, 255));
+        celda12.setForeground(new java.awt.Color(0, 0, 0));
 
         celda22.setBackground(new java.awt.Color(0, 255, 0));
         celda22.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        celda22.setForeground(new java.awt.Color(255, 255, 255));
+        celda22.setForeground(new java.awt.Color(0, 0, 0));
 
         celda32.setBackground(new java.awt.Color(0, 255, 0));
         celda32.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        celda32.setForeground(new java.awt.Color(255, 255, 255));
+        celda32.setForeground(new java.awt.Color(0, 0, 0));
 
         celda42.setBackground(new java.awt.Color(0, 255, 0));
         celda42.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        celda42.setForeground(new java.awt.Color(255, 255, 255));
+        celda42.setForeground(new java.awt.Color(0, 0, 0));
 
         celda52.setBackground(new java.awt.Color(0, 255, 0));
         celda52.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        celda52.setForeground(new java.awt.Color(255, 255, 255));
+        celda52.setForeground(new java.awt.Color(0, 0, 0));
 
         celda62.setBackground(new java.awt.Color(0, 255, 0));
         celda62.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        celda62.setForeground(new java.awt.Color(255, 255, 255));
+        celda62.setForeground(new java.awt.Color(0, 0, 0));
 
         celda03.setBackground(new java.awt.Color(0, 255, 0));
         celda03.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        celda03.setForeground(new java.awt.Color(255, 255, 255));
+        celda03.setForeground(new java.awt.Color(0, 0, 0));
 
         celda13.setBackground(new java.awt.Color(0, 255, 0));
         celda13.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        celda13.setForeground(new java.awt.Color(255, 255, 255));
+        celda13.setForeground(new java.awt.Color(0, 0, 0));
 
         celda23.setBackground(new java.awt.Color(0, 255, 0));
         celda23.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        celda23.setForeground(new java.awt.Color(255, 255, 255));
+        celda23.setForeground(new java.awt.Color(0, 0, 0));
 
         celda33.setBackground(new java.awt.Color(0, 255, 0));
         celda33.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        celda33.setForeground(new java.awt.Color(255, 255, 255));
+        celda33.setForeground(new java.awt.Color(0, 0, 0));
 
         celda43.setBackground(new java.awt.Color(0, 255, 0));
         celda43.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        celda43.setForeground(new java.awt.Color(255, 255, 255));
+        celda43.setForeground(new java.awt.Color(0, 0, 0));
 
         celda53.setBackground(new java.awt.Color(0, 255, 0));
         celda53.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        celda53.setForeground(new java.awt.Color(255, 255, 255));
+        celda53.setForeground(new java.awt.Color(0, 0, 0));
 
         celda63.setBackground(new java.awt.Color(0, 255, 0));
         celda63.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        celda63.setForeground(new java.awt.Color(255, 255, 255));
+        celda63.setForeground(new java.awt.Color(0, 0, 0));
 
         celda04.setBackground(new java.awt.Color(0, 255, 0));
         celda04.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        celda04.setForeground(new java.awt.Color(255, 255, 255));
+        celda04.setForeground(new java.awt.Color(0, 0, 0));
 
         celda14.setBackground(new java.awt.Color(0, 255, 0));
         celda14.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        celda14.setForeground(new java.awt.Color(255, 255, 255));
+        celda14.setForeground(new java.awt.Color(0, 0, 0));
 
         celda24.setBackground(new java.awt.Color(0, 255, 0));
         celda24.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        celda24.setForeground(new java.awt.Color(255, 255, 255));
+        celda24.setForeground(new java.awt.Color(0, 0, 0));
 
         celda34.setBackground(new java.awt.Color(0, 255, 0));
         celda34.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        celda34.setForeground(new java.awt.Color(255, 255, 255));
+        celda34.setForeground(new java.awt.Color(0, 0, 0));
 
         celda44.setBackground(new java.awt.Color(0, 255, 0));
         celda44.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        celda44.setForeground(new java.awt.Color(255, 255, 255));
+        celda44.setForeground(new java.awt.Color(0, 0, 0));
 
         celda54.setBackground(new java.awt.Color(0, 255, 0));
         celda54.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        celda54.setForeground(new java.awt.Color(255, 255, 255));
+        celda54.setForeground(new java.awt.Color(0, 0, 0));
 
         celda64.setBackground(new java.awt.Color(0, 255, 0));
         celda64.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        celda64.setForeground(new java.awt.Color(255, 255, 255));
+        celda64.setForeground(new java.awt.Color(0, 0, 0));
 
         celda05.setBackground(new java.awt.Color(0, 255, 0));
         celda05.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        celda05.setForeground(new java.awt.Color(255, 255, 255));
+        celda05.setForeground(new java.awt.Color(0, 0, 0));
 
         celda15.setBackground(new java.awt.Color(0, 255, 0));
         celda15.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        celda15.setForeground(new java.awt.Color(255, 255, 255));
+        celda15.setForeground(new java.awt.Color(0, 0, 0));
 
         celda25.setBackground(new java.awt.Color(0, 255, 0));
         celda25.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        celda25.setForeground(new java.awt.Color(255, 255, 255));
+        celda25.setForeground(new java.awt.Color(0, 0, 0));
 
         celda35.setBackground(new java.awt.Color(0, 255, 0));
         celda35.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        celda35.setForeground(new java.awt.Color(255, 255, 255));
+        celda35.setForeground(new java.awt.Color(0, 0, 0));
 
         celda45.setBackground(new java.awt.Color(0, 255, 0));
         celda45.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        celda45.setForeground(new java.awt.Color(255, 255, 255));
+        celda45.setForeground(new java.awt.Color(0, 0, 0));
 
         celda55.setBackground(new java.awt.Color(0, 255, 0));
         celda55.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        celda55.setForeground(new java.awt.Color(255, 255, 255));
+        celda55.setForeground(new java.awt.Color(0, 0, 0));
 
         celda65.setBackground(new java.awt.Color(0, 255, 0));
         celda65.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        celda65.setForeground(new java.awt.Color(255, 255, 255));
+        celda65.setForeground(new java.awt.Color(0, 0, 0));
 
         celda06.setBackground(new java.awt.Color(0, 255, 0));
         celda06.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        celda06.setForeground(new java.awt.Color(255, 255, 255));
+        celda06.setForeground(new java.awt.Color(0, 0, 0));
 
         celda16.setBackground(new java.awt.Color(0, 255, 0));
         celda16.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        celda16.setForeground(new java.awt.Color(255, 255, 255));
+        celda16.setForeground(new java.awt.Color(0, 0, 0));
 
         celda26.setBackground(new java.awt.Color(0, 255, 0));
         celda26.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        celda26.setForeground(new java.awt.Color(255, 255, 255));
+        celda26.setForeground(new java.awt.Color(0, 0, 0));
 
         celda36.setBackground(new java.awt.Color(0, 255, 0));
         celda36.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        celda36.setForeground(new java.awt.Color(255, 255, 255));
+        celda36.setForeground(new java.awt.Color(0, 0, 0));
 
         celda46.setBackground(new java.awt.Color(0, 255, 0));
         celda46.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        celda46.setForeground(new java.awt.Color(255, 255, 255));
+        celda46.setForeground(new java.awt.Color(0, 0, 0));
 
         celda56.setBackground(new java.awt.Color(0, 255, 0));
         celda56.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        celda56.setForeground(new java.awt.Color(255, 255, 255));
+        celda56.setForeground(new java.awt.Color(0, 0, 0));
 
         celda66.setBackground(new java.awt.Color(0, 255, 0));
         celda66.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        celda66.setForeground(new java.awt.Color(255, 255, 255));
+        celda66.setForeground(new java.awt.Color(0, 0, 0));
 
         celda07.setBackground(new java.awt.Color(0, 255, 0));
         celda07.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        celda07.setForeground(new java.awt.Color(255, 255, 255));
+        celda07.setForeground(new java.awt.Color(0, 0, 0));
 
         celda17.setBackground(new java.awt.Color(0, 255, 0));
         celda17.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        celda17.setForeground(new java.awt.Color(255, 255, 255));
+        celda17.setForeground(new java.awt.Color(0, 0, 0));
 
         celda27.setBackground(new java.awt.Color(0, 255, 0));
         celda27.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        celda27.setForeground(new java.awt.Color(255, 255, 255));
+        celda27.setForeground(new java.awt.Color(0, 0, 0));
 
         celda37.setBackground(new java.awt.Color(0, 255, 0));
         celda37.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        celda37.setForeground(new java.awt.Color(255, 255, 255));
+        celda37.setForeground(new java.awt.Color(0, 0, 0));
 
         celda47.setBackground(new java.awt.Color(0, 255, 0));
         celda47.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        celda47.setForeground(new java.awt.Color(255, 255, 255));
+        celda47.setForeground(new java.awt.Color(0, 0, 0));
 
         celda57.setBackground(new java.awt.Color(0, 255, 0));
         celda57.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        celda57.setForeground(new java.awt.Color(255, 255, 255));
+        celda57.setForeground(new java.awt.Color(0, 0, 0));
 
         celda67.setBackground(new java.awt.Color(0, 255, 0));
         celda67.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        celda67.setForeground(new java.awt.Color(255, 255, 255));
+        celda67.setForeground(new java.awt.Color(0, 0, 0));
 
         labelContadorZombies.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
         labelContadorZombies.setForeground(new java.awt.Color(255, 255, 255));
@@ -646,9 +759,7 @@ public class VentanaTablero extends javax.swing.JFrame {
                                         .addComponent(celda66, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(celda67, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 496, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 496, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(29, 29, 29)
@@ -738,7 +849,7 @@ public class VentanaTablero extends javax.swing.JFrame {
                                             .addComponent(celda17, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(celda10, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(celda11, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGap(0, 9, Short.MAX_VALUE))))
+                                .addGap(0, 12, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(labelTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -761,7 +872,7 @@ public class VentanaTablero extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addComponent(jLabel8)))
-                .addGap(22, 22, 22)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(celda37, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(celda36, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)

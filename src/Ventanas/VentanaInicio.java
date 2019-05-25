@@ -161,7 +161,8 @@ public class VentanaInicio extends javax.swing.JFrame {
         dispose();
         
         for (Jugador jgr : BBDDJuego.jugadoresR.values()) {
-            ventana.setListaJugadores(jgr.toString());
+//            ventana.setListaJugadores(jgr.toString());
+            ventana.setListaJugadores(ventana.getListaJugadores().getText() + jgr.getNombre() + " con DNI " + jgr.getDNI() + " registrado el " + jgr.getFechaRegistro() + " con " + jgr.getPuntos() + " puntos." + "\n");
         }
     }//GEN-LAST:event_rankingActionPerformed
 

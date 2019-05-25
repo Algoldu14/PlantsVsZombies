@@ -60,7 +60,7 @@ public class Jugador implements Serializable {
 
     @Override
     public String toString() {
-        return " Nombre: " + this.nombre + "  DNI: " + this.DNI + "  Puntos: " + this.puntos + "  Fecha registro: " + this.fechaRegistro;
+        return " Nombre: " + this.nombre + "  DNI: " + this.DNI + "  Puntos: " + this.puntos + "  Fecha registro: " + this.fechaRegistro + "\n";
     }
 
 }

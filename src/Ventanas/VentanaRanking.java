@@ -47,7 +47,10 @@ public class VentanaRanking extends javax.swing.JFrame {
         jLabel1.setText("RANKING JUGADORES");
 
         listaJugadores.setEditable(false);
+        listaJugadores.setBackground(new java.awt.Color(102, 102, 102));
         listaJugadores.setColumns(20);
+        listaJugadores.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        listaJugadores.setForeground(new java.awt.Color(255, 255, 255));
         listaJugadores.setRows(5);
         jScrollPane1.setViewportView(listaJugadores);
 
