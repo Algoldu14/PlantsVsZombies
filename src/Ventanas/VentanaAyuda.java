@@ -126,7 +126,7 @@ public class VentanaAyuda extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAtrasActionPerformed
-        // TODO add your handling code here:
+
         dispose();
     }//GEN-LAST:event_botonAtrasActionPerformed
 

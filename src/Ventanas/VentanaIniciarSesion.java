@@ -5,13 +5,20 @@
  */
 package Ventanas;
 
+import Excepciones.ExcepcionJuego;
+import Juego.BBDDJuego;
+import Juego.Jugador;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Alvaro
  */
 public class VentanaIniciarSesion extends javax.swing.JFrame {
+    
+    static Jugador jugadorReg;
+    private static boolean inicioSes;
 
     /**
      * Creates new form IniciarSesion
@@ -48,6 +55,7 @@ public class VentanaIniciarSesion extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Introduce tu DNI:");
 
+        DNIInicioSesion.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
         DNIInicioSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DNIInicioSesionActionPerformed(evt);
@@ -115,6 +123,14 @@ public class VentanaIniciarSesion extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public static boolean isInicioSes() {
+        return inicioSes;
+    }
+    
+    public void setInicioSes(boolean inicioSes) {
+        this.inicioSes = inicioSes;
+    }
+    
     private void DNIInicioSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DNIInicioSesionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_DNIInicioSesionActionPerformed
@@ -127,8 +143,21 @@ public class VentanaIniciarSesion extends javax.swing.JFrame {
 
     private void BotonSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonSiguienteActionPerformed
         // TODO add your handling code here:
-        new VentanaDificultad().setVisible(true);
-        dispose();
+
+        try {
+            jugadorReg = BBDDJuego.jugadoresR.get(DNIInicioSesion.getText());
+            if (DNIInicioSesion.getText().equals("")) {
+                JOptionPane.showMessageDialog(this, "ERROR: No ha introducido su DNI", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+            } else if (jugadorReg == null) {
+                throw new ExcepcionJuego(ExcepcionJuego.USUARIO_NO_EXISTE);
+            } else if (DNIInicioSesion.getText().equals(BBDDJuego.jugadoresR.get(DNIInicioSesion.getText()).getDNI())) { //si existe ese usuario
+                this.setInicioSes(true);
+                new VentanaDificultad().setVisible(true);
+                dispose();
+            }
+        } catch (ExcepcionJuego ej) {
+            JOptionPane.showMessageDialog(this, "Error: " + ej.getMessage(), "Mensaje", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_BotonSiguienteActionPerformed
 
 

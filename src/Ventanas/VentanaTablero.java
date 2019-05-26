@@ -135,7 +135,7 @@ public class VentanaTablero extends javax.swing.JFrame {
         celda66.setOpaque(true);
         celda67.setBackground(Color.LIGHT_GRAY);
         celda67.setOpaque(true);
-        
+
         this.getContentPane().setBackground(Color.DARK_GRAY);
         lectorComando.setToolTipText("G 0 0");
         tablero.crearMatrizTablero();
@@ -971,6 +971,7 @@ public class VentanaTablero extends javax.swing.JFrame {
             } else {
                 if (tablero.isVictoria()) {
                     JOptionPane.showMessageDialog(this, "¡Has ganado! Han ganado las plantas.", "VICTORIA", JOptionPane.PLAIN_MESSAGE);
+                    this.darPuntos();
                     new VentanaInicio().setVisible(true);
                     dispose();
                 } else {
@@ -1015,6 +1016,40 @@ public class VentanaTablero extends javax.swing.JFrame {
         // TODO add your handling code here:
         new VentanaAyuda().setVisible(true);
     }//GEN-LAST:event_botonAyudaActionPerformed
+
+    public void darPuntos() {
+
+        //Si te has registrado:
+        if (VentanaRegistro.isInicioSes()) {
+            for (int i = 0; i < tablero.getFilas(); i++) {
+                for (int j = 0; j < tablero.getColumnas(); j++) {
+                    if (tablero.getMatrizTablero()[i][j].getNPC() instanceof Girasol
+                            || tablero.getMatrizTablero()[i][j].getNPC() instanceof LanzaGuisantes
+                            || tablero.getMatrizTablero()[i][j].getNPC() instanceof Petacereza
+                            || tablero.getMatrizTablero()[i][j].getNPC() instanceof Nuez) {
+                        VentanaRegistro.jugadorAc.setPuntos(VentanaRegistro.jugadorAc.getPuntos() + 1);
+                    }
+                }
+            }
+            VentanaRegistro.jugadorAc.setPuntos(VentanaRegistro.jugadorAc.getPuntos() + tablero.getSoles());
+            BBDDJuego.jugadoresR.replace(VentanaRegistro.jugadorAc.getDNI(), VentanaRegistro.jugadorAc);
+        }
+        //Si vienes de un jugadoe ya registrado:
+        if (VentanaIniciarSesion.isInicioSes()) {
+            for (int i = 0; i < tablero.getFilas(); i++) {
+                for (int j = 0; j < tablero.getColumnas(); j++) {
+                    if (tablero.getMatrizTablero()[i][j].getNPC() instanceof Girasol
+                            || tablero.getMatrizTablero()[i][j].getNPC() instanceof LanzaGuisantes
+                            || tablero.getMatrizTablero()[i][j].getNPC() instanceof Petacereza
+                            || tablero.getMatrizTablero()[i][j].getNPC() instanceof Nuez) {
+                        VentanaIniciarSesion.jugadorReg.setPuntos(VentanaIniciarSesion.jugadorReg.getPuntos() + 1);
+                    }
+                }
+            }
+            VentanaIniciarSesion.jugadorReg.setPuntos(VentanaIniciarSesion.jugadorReg.getPuntos() + tablero.getSoles());
+            BBDDJuego.jugadoresR.replace(VentanaIniciarSesion.jugadorReg.getDNI(), VentanaIniciarSesion.jugadorReg);
+        }
+    }
 
     /**
      * Esta funcion imprime el tablero en la interfaz

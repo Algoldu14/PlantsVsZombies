@@ -6,6 +6,7 @@
 package Ventanas;
 
 import Juego.BBDDJuego;
+import Juego.Jugador;
 import java.awt.Color;
 import javax.swing.JTextArea;
 
@@ -37,6 +38,7 @@ public class VentanaRanking extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         listaJugadores = new javax.swing.JTextArea();
         botonAtras = new javax.swing.JButton();
+        botonDarDeBaja = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -64,6 +66,16 @@ public class VentanaRanking extends javax.swing.JFrame {
             }
         });
 
+        botonDarDeBaja.setBackground(new java.awt.Color(102, 102, 102));
+        botonDarDeBaja.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        botonDarDeBaja.setForeground(new java.awt.Color(255, 255, 255));
+        botonDarDeBaja.setText("DAR DE BAJA");
+        botonDarDeBaja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonDarDeBajaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -74,8 +86,11 @@ public class VentanaRanking extends javax.swing.JFrame {
                 .addGap(122, 122, 122))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(35, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(botonAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(botonDarDeBaja)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(botonAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 688, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
@@ -87,7 +102,9 @@ public class VentanaRanking extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(botonAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(botonAtras, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
+                    .addComponent(botonDarDeBaja, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
@@ -99,6 +116,11 @@ public class VentanaRanking extends javax.swing.JFrame {
         new VentanaInicio().setVisible(true);
         dispose();
     }//GEN-LAST:event_botonAtrasActionPerformed
+
+    private void botonDarDeBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDarDeBajaActionPerformed
+        // TODO add your handling code here:  
+        new VentanaBaja().setVisible(true);
+    }//GEN-LAST:event_botonDarDeBajaActionPerformed
 
     public JTextArea getListaJugadores() {
         return listaJugadores;
@@ -113,6 +135,7 @@ public class VentanaRanking extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAtras;
+    private javax.swing.JButton botonDarDeBaja;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea listaJugadores;

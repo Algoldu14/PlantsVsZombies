@@ -21,6 +21,8 @@ import Juego.BBDDJuego;
 public class VentanaRegistro extends javax.swing.JFrame {
 
     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    static Jugador jugadorAc;
+    private static boolean inicioSes;
 
     /**
      * Creates new form Registro
@@ -32,6 +34,14 @@ public class VentanaRegistro extends javax.swing.JFrame {
         nombreRegistro.setToolTipText("María García");
         DNIRegistro.setToolTipText("00000000A");
 
+    }
+
+    public static boolean isInicioSes() {
+        return inicioSes;
+    }
+
+    public void setInicioSes(boolean inicioSes) {
+        this.inicioSes = inicioSes;
     }
 
     public static String fechaActual() {
@@ -68,6 +78,7 @@ public class VentanaRegistro extends javax.swing.JFrame {
         nombreLabel.setForeground(new java.awt.Color(255, 255, 255));
         nombreLabel.setText("Introduce tu nombre:");
 
+        nombreRegistro.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
         nombreRegistro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nombreRegistroActionPerformed(evt);
@@ -78,6 +89,7 @@ public class VentanaRegistro extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Introduce tu DNI:");
 
+        DNIRegistro.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
         DNIRegistro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DNIRegistroActionPerformed(evt);
@@ -167,7 +179,7 @@ public class VentanaRegistro extends javax.swing.JFrame {
                     .addComponent(botonSiguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonRegistrarUs, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonVolverInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         pack();
@@ -180,17 +192,17 @@ public class VentanaRegistro extends javax.swing.JFrame {
     }//GEN-LAST:event_botonVolverInicioActionPerformed
 
     private void botonRegistrarUsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarUsActionPerformed
-        // TODO add your handling code here:
 
         if (this.nombreRegistro.getText().equals("") || this.DNIRegistro.getText().equals("")) { //Si los espacios a rellenar para registrarse estan en blanco
-            JOptionPane.showMessageDialog(this, "ERROR: No puede dejar campos en blanco", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "ERROR: No puede dejar campos en blanco.", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
         }
         try {
             String nombre = this.nombreRegistro.getText();
             String DNI = this.DNIRegistro.getText();
             LocalDate fechaAct = LocalDate.now();
-            LocalDate fechaReg =  LocalDate.parse(fechaAct.format(dtf), dtf);
+            LocalDate fechaReg = LocalDate.parse(fechaAct.format(dtf), dtf);
             Jugador jugadorNuevo = new Jugador(nombre, DNI, fechaReg, 0);
+            this.jugadorAc = jugadorNuevo;
             BBDDJuego.altaJugador(jugadorNuevo);
             BBDDJuego.guardarDatos();
             this.botonSiguiente.setVisible(true);
@@ -204,17 +216,18 @@ public class VentanaRegistro extends javax.swing.JFrame {
 
 
     private void botonSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSiguienteActionPerformed
-        // TODO add your handling code here:
+        
+        this.setInicioSes(true);
         new VentanaDificultad().setVisible(true);
         dispose();
     }//GEN-LAST:event_botonSiguienteActionPerformed
 
     private void nombreRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreRegistroActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_nombreRegistroActionPerformed
 
     private void DNIRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DNIRegistroActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_DNIRegistroActionPerformed
 
 

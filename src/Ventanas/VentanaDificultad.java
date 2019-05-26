@@ -161,7 +161,7 @@ public class VentanaDificultad extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonAJugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAJugarActionPerformed
-        // TODO add your handling code here:
+
         if (!(this.botonBaja.isSelected()) && !(this.botonMedia.isSelected())
                 && !(this.botonMedia.isSelected()) && !(this.botonAlta.isSelected())) {
             JOptionPane.showMessageDialog(this, "ERROR: Selecciona una dificultad", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
@@ -173,28 +173,28 @@ public class VentanaDificultad extends javax.swing.JFrame {
     }//GEN-LAST:event_botonAJugarActionPerformed
 
     private void botonAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAtrasActionPerformed
-        // TODO add your handling code here:
+
         new VentanaInicio().setVisible(true);
         dispose();
     }//GEN-LAST:event_botonAtrasActionPerformed
 
     private void botonBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBajaActionPerformed
-        // TODO add your handling code here:
+
         dificultad = "BAJA";
     }//GEN-LAST:event_botonBajaActionPerformed
 
     private void botonMediaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMediaActionPerformed
-        // TODO add your handling code here:
+
         dificultad = "MEDIA";
     }//GEN-LAST:event_botonMediaActionPerformed
 
     private void botonAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAltaActionPerformed
-        // TODO add your handling code here:
+
         dificultad = "ALTA";
     }//GEN-LAST:event_botonAltaActionPerformed
 
     private void botonImposibleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonImposibleActionPerformed
-        // TODO add your handling code here:
+
         dificultad = "IMPOSIBLE";
     }//GEN-LAST:event_botonImposibleActionPerformed
 
