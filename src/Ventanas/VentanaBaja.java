@@ -140,7 +140,9 @@ static Jugador jugadorBaja;
             } else if (jugadorReg == null) {
                 throw new ExcepcionJuego(ExcepcionJuego.USUARIO_NO_EXISTE);
             } else if (DNIBaja.getText().equals(BBDDJuego.jugadoresR.get(DNIBaja.getText()).getDNI())) { //si existe ese usuario
-                BBDDJuego.bajaJugador(jugadorBaja.getDNI());
+                BBDDJuego.bajaJugador(DNIBaja.getText());
+                DNIBaja.setText("");
+                BBDDJuego.guardarDatos();
             }
         } catch (ExcepcionJuego ej) {
             JOptionPane.showMessageDialog(this, "Error: " + ej.getMessage(), "Mensaje", JOptionPane.ERROR_MESSAGE);

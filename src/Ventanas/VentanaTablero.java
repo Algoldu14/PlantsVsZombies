@@ -948,7 +948,7 @@ public class VentanaTablero extends javax.swing.JFrame {
 
     private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showConfirmDialog(null, "¿Realmente desea salir del juego?", "Perderas todo el progreso", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+        JOptionPane.showConfirmDialog(null, "¿Realmente desea salir del juego?", "Perderás todo el progreso.", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
         new VentanaInicio().setVisible(true);
         dispose();
     }//GEN-LAST:event_botonSalirActionPerformed

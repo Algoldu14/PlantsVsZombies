@@ -147,7 +147,7 @@ public class VentanaIniciarSesion extends javax.swing.JFrame {
         try {
             jugadorReg = BBDDJuego.jugadoresR.get(DNIInicioSesion.getText());
             if (DNIInicioSesion.getText().equals("")) {
-                JOptionPane.showMessageDialog(this, "ERROR: No ha introducido su DNI", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "ERROR: No ha introducido su DNI.", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
             } else if (jugadorReg == null) {
                 throw new ExcepcionJuego(ExcepcionJuego.USUARIO_NO_EXISTE);
             } else if (DNIInicioSesion.getText().equals(BBDDJuego.jugadoresR.get(DNIInicioSesion.getText()).getDNI())) { //si existe ese usuario

@@ -164,7 +164,7 @@ public class VentanaDificultad extends javax.swing.JFrame {
 
         if (!(this.botonBaja.isSelected()) && !(this.botonMedia.isSelected())
                 && !(this.botonMedia.isSelected()) && !(this.botonAlta.isSelected())) {
-            JOptionPane.showMessageDialog(this, "ERROR: Selecciona una dificultad", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "ERROR: Selecciona una dificultad.", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
         } else {
             new VentanaTablero().setVisible(true);
             dispose();
