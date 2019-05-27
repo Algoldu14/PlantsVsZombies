@@ -378,21 +378,19 @@
                       </Group>
                       <EmptySpace type="separate" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="BotonInsertarComando" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                              <Component id="celda57" linkSize="2" alignment="0" min="-2" pref="55" max="-2" attributes="0"/>
-                              <Component id="celda56" linkSize="2" min="-2" pref="55" max="-2" attributes="0"/>
-                              <Component id="celda55" linkSize="2" min="-2" pref="55" max="-2" attributes="0"/>
-                              <Component id="celda54" linkSize="2" min="-2" pref="55" max="-2" attributes="0"/>
-                              <Component id="celda53" linkSize="2" min="-2" pref="55" max="-2" attributes="0"/>
-                              <Component id="celda52" linkSize="2" min="-2" pref="55" max="-2" attributes="0"/>
-                              <Component id="celda51" linkSize="2" min="-2" pref="55" max="-2" attributes="0"/>
-                              <Component id="celda50" linkSize="2" min="-2" pref="55" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                                  <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                          <Component id="celda57" linkSize="2" alignment="0" min="-2" pref="55" max="-2" attributes="0"/>
+                          <Component id="celda56" linkSize="2" min="-2" pref="55" max="-2" attributes="0"/>
+                          <Component id="celda55" linkSize="2" min="-2" pref="55" max="-2" attributes="0"/>
+                          <Component id="celda54" linkSize="2" min="-2" pref="55" max="-2" attributes="0"/>
+                          <Component id="celda53" linkSize="2" min="-2" pref="55" max="-2" attributes="0"/>
+                          <Component id="celda52" linkSize="2" min="-2" pref="55" max="-2" attributes="0"/>
+                          <Component id="celda51" linkSize="2" min="-2" pref="55" max="-2" attributes="0"/>
+                          <Component id="celda50" linkSize="2" min="-2" pref="55" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                              <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="BotonInsertarComando" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   </Group>
