@@ -579,32 +579,32 @@ public final class Tablero {
                         this.matrizTablero[i - 1][j + 1].setNPC(new NPC());
                     }
                     if (this.matrizTablero[i][j - 1].getNPC() instanceof ZombieComun
-                            || this.matrizTablero[i][j-1].getNPC() instanceof Deportista
-                            || this.matrizTablero[i][j-1].getNPC() instanceof Caracubo) {
-                        this.matrizTablero[i][j-1].setNPC(new NPC());
+                            || this.matrizTablero[i][j - 1].getNPC() instanceof Deportista
+                            || this.matrizTablero[i][j - 1].getNPC() instanceof Caracubo) {
+                        this.matrizTablero[i][j - 1].setNPC(new NPC());
                     }
-                    if (this.matrizTablero[i][j+1].getNPC() instanceof ZombieComun
-                            || this.matrizTablero[i][j+1].getNPC() instanceof Deportista
-                            || this.matrizTablero[i][j+1].getNPC() instanceof Caracubo) {
-                        this.matrizTablero[i][j+1].setNPC(new NPC());
+                    if (this.matrizTablero[i][j + 1].getNPC() instanceof ZombieComun
+                            || this.matrizTablero[i][j + 1].getNPC() instanceof Deportista
+                            || this.matrizTablero[i][j + 1].getNPC() instanceof Caracubo) {
+                        this.matrizTablero[i][j + 1].setNPC(new NPC());
                     }
-                    if (this.matrizTablero[i+1][j-1].getNPC() instanceof ZombieComun
-                            || this.matrizTablero[i+1][j-1].getNPC() instanceof Deportista
-                            || this.matrizTablero[i+1][j-1].getNPC() instanceof Caracubo) {
-                        this.matrizTablero[i+1][j-1].setNPC(new NPC());
+                    if (this.matrizTablero[i + 1][j - 1].getNPC() instanceof ZombieComun
+                            || this.matrizTablero[i + 1][j - 1].getNPC() instanceof Deportista
+                            || this.matrizTablero[i + 1][j - 1].getNPC() instanceof Caracubo) {
+                        this.matrizTablero[i + 1][j - 1].setNPC(new NPC());
                     }
-                    if (this.matrizTablero[i+1][j].getNPC() instanceof ZombieComun
-                            || this.matrizTablero[i+1][j].getNPC() instanceof Deportista
-                            || this.matrizTablero[i+1][j].getNPC() instanceof Caracubo) {
-                        this.matrizTablero[i+1][j].setNPC(new NPC());
+                    if (this.matrizTablero[i + 1][j].getNPC() instanceof ZombieComun
+                            || this.matrizTablero[i + 1][j].getNPC() instanceof Deportista
+                            || this.matrizTablero[i + 1][j].getNPC() instanceof Caracubo) {
+                        this.matrizTablero[i + 1][j].setNPC(new NPC());
                     }
-                    if (this.matrizTablero[i+1][j+1].getNPC() instanceof ZombieComun
-                            || this.matrizTablero[i+1][j+1].getNPC() instanceof Deportista
-                            || this.matrizTablero[i+1][j+1].getNPC() instanceof Caracubo) {
-                        this.matrizTablero[i+1][j+1].setNPC(new NPC());
+                    if (this.matrizTablero[i + 1][j + 1].getNPC() instanceof ZombieComun
+                            || this.matrizTablero[i + 1][j + 1].getNPC() instanceof Deportista
+                            || this.matrizTablero[i + 1][j + 1].getNPC() instanceof Caracubo) {
+                        this.matrizTablero[i + 1][j + 1].setNPC(new NPC());
                     }
                     this.matrizTablero[i][j].setNPC(new NPC());
-                } else {
+                } else if (this.matrizTablero[i][j].getNPC() instanceof Petacereza && this.matrizTablero[i][j].getNPC().getFrecuencia() > 0) {
                     this.matrizTablero[i][j].getNPC().setFrecuencia(this.matrizTablero[i][j].getNPC().getFrecuencia() - 1);
                 }
             }
@@ -679,20 +679,16 @@ public final class Tablero {
         int columnaM = Integer.parseInt(arrayComando[2]);
 
         if (filaM <= this.filas && columnaM <= this.columnas && filaM >= 0 && columnaM >= 0) { //SI has metido bien el comando
-            if (this.matrizTablero[filaM][columnaM].getNPC() instanceof ZombieComun) {
-                this.matrizTablero[filaM][columnaM].setNPC(new NPC()); //Vaciamos esa casilla
-                this.setSoles(this.getSoles() - 200);
-            } else if (this.matrizTablero[filaM][columnaM].getNPC() instanceof LanzaGuisantes) {
-                this.matrizTablero[filaM][columnaM].setNPC(new NPC()); //Vaciamos esa casilla
-                this.setSoles(this.getSoles() - 200);
-            } else if (this.matrizTablero[filaM][columnaM].getNPC() instanceof Girasol) {
-                this.matrizTablero[filaM][columnaM].setNPC(new NPC()); //Vaciamos esa casilla
-                this.setSoles(this.getSoles() - 200);
-            } else {
+            if (this.matrizTablero[filaM][columnaM].getNPC() instanceof ZombieComun
+                    || this.matrizTablero[filaM][columnaM].getNPC() instanceof LanzaGuisantes
+                    || this.matrizTablero[filaM][columnaM].getNPC() instanceof Girasol
+                    || this.matrizTablero[filaM][columnaM].getNPC() instanceof Petacereza
+                    || this.matrizTablero[filaM][columnaM].getNPC() instanceof Nuez
+                    || this.matrizTablero[filaM][columnaM].getNPC() instanceof Deportista
+                    || this.matrizTablero[filaM][columnaM].getNPC() instanceof Caracubo) {
+                this.matrizTablero[filaM][columnaM].setNPC(new NPC());
                 this.setSoles(this.getSoles() - 200);
             }
-        } else {
-
         }
     }
 
@@ -776,4 +772,17 @@ public final class Tablero {
             return true;
         }
     }
+
+    public boolean zombiesLlegan() {
+
+        for (int i = 0; i < this.filas; i++) {
+            if (this.matrizTablero[i][0].getNPC() instanceof ZombieComun
+                    || this.matrizTablero[i][0].getNPC() instanceof Caracubo
+                    || this.matrizTablero[i][0].getNPC() instanceof Deportista) {
+                return true;
+            }
+        } 
+        return false;
+    }
+
 }

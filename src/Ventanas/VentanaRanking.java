@@ -22,8 +22,7 @@ public class VentanaRanking extends javax.swing.JFrame {
     public VentanaRanking() {
         initComponents();
         this.getContentPane().setBackground(Color.darkGray);
-        
-        
+        BBDDJuego.cargarDatos();
     }
 
     /**
@@ -128,7 +127,6 @@ public class VentanaRanking extends javax.swing.JFrame {
     }
 
     public void setListaJugadores(String listaJug) {
-        
         this.listaJugadores.setText(listaJug);
     }
 

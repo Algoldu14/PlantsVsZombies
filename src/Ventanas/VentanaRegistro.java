@@ -79,6 +79,7 @@ public class VentanaRegistro extends javax.swing.JFrame {
         nombreLabel.setText("Introduce tu nombre:");
 
         nombreRegistro.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        nombreRegistro.setForeground(new java.awt.Color(0, 0, 0));
         nombreRegistro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nombreRegistroActionPerformed(evt);
@@ -90,6 +91,7 @@ public class VentanaRegistro extends javax.swing.JFrame {
         jLabel2.setText("Introduce tu DNI:");
 
         DNIRegistro.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        DNIRegistro.setForeground(new java.awt.Color(0, 0, 0));
         DNIRegistro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DNIRegistroActionPerformed(evt);

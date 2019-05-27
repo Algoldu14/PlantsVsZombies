@@ -957,21 +957,28 @@ public class VentanaTablero extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             if (tablero.getTurno() < 30) {
-                tablero.sumarGirasoles(); //Se suman los soles cada dos turnos
-                tablero.ataquePlanta();  //Las plantas atacan
-                tablero.ataqueZombie(); //Los zombies atacan
-                tablero.moverZombie(); //Los zombies se mueven
-                if (tablero.getContadorZombies() > 0) {
-                    tablero.insertarZombieAleatorio(); //Metemos zombies nuevos    
+                if (!(tablero.zombiesLlegan())) {
+                    tablero.sumarGirasoles(); //Se suman los soles cada dos turnos
+                    tablero.ataquePlanta();  //Las plantas atacan
+                    tablero.ataqueZombie(); //Los zombies atacan
+                    tablero.moverZombie(); //Los zombies se mueven
+                    if (tablero.getContadorZombies() > 0) {
+                        tablero.insertarZombieAleatorio(); //Metemos zombies nuevos    
+                    }
+                    tablero.limpiarTablero(); //Limpiamos el tablero
+                    tablero.comprobarVictoria();
+                    tablero.setTurno(tablero.getTurno() + 1); //Aumentamos el turno
+                    this.imprimirTablero();
+                } else {
+                    JOptionPane.showMessageDialog(this, "¡Has perdido! Los zombies han llegado a tu casa.", "DERROTA", JOptionPane.PLAIN_MESSAGE);
+                    new VentanaInicio().setVisible(true);
+                    dispose();
                 }
-                tablero.limpiarTablero(); //Limpiamos el tablero
-                tablero.comprobarVictoria();
-                tablero.setTurno(tablero.getTurno() + 1); //Aumentamos el turno
-                this.imprimirTablero();
             } else {
                 if (tablero.isVictoria()) {
                     JOptionPane.showMessageDialog(this, "¡Has ganado! Han ganado las plantas.", "VICTORIA", JOptionPane.PLAIN_MESSAGE);
                     this.darPuntos();
+                    BBDDJuego.guardarDatos();
                     new VentanaInicio().setVisible(true);
                     dispose();
                 } else {
@@ -1019,6 +1026,7 @@ public class VentanaTablero extends javax.swing.JFrame {
 
     public void darPuntos() {
 
+        BBDDJuego.cargarDatos();
         //Si te has registrado:
         if (VentanaRegistro.isInicioSes()) {
             for (int i = 0; i < tablero.getFilas(); i++) {
@@ -1048,6 +1056,7 @@ public class VentanaTablero extends javax.swing.JFrame {
             }
             VentanaIniciarSesion.jugadorReg.setPuntos(VentanaIniciarSesion.jugadorReg.getPuntos() + tablero.getSoles());
             BBDDJuego.jugadoresR.replace(VentanaIniciarSesion.jugadorReg.getDNI(), VentanaIniciarSesion.jugadorReg);
+            BBDDJuego.guardarDatos();
         }
     }
 

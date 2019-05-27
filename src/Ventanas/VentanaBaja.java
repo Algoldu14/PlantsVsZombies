@@ -25,6 +25,7 @@ static Jugador jugadorBaja;
     public VentanaBaja() {
         initComponents();
         this.getContentPane().setBackground(Color.darkGray);
+        BBDDJuego.cargarDatos();
     }
 
     /** This method is called from within the constructor to
@@ -49,6 +50,7 @@ static Jugador jugadorBaja;
         jLabel1.setText("Introduce el DNI del jugador que quiera eliminar:");
 
         DNIBaja.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        DNIBaja.setForeground(new java.awt.Color(0, 0, 0));
         DNIBaja.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DNIBajaActionPerformed(evt);
@@ -133,7 +135,7 @@ static Jugador jugadorBaja;
     private void botonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConfirmarActionPerformed
         // TODO add your handling code here:
          try {
-             BBDDJuego.cargarDatos();
+            BBDDJuego.cargarDatos();
             jugadorBaja = BBDDJuego.jugadoresR.get(DNIBaja.getText());
             if (DNIBaja.getText().equals("")) {
                 JOptionPane.showMessageDialog(this, "ERROR: No ha introducido un DNI.", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
