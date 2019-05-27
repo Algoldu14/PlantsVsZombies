@@ -42,8 +42,8 @@ public class BBDDJuego {
         jugadoresR.remove(DNI);
     }
 
-    /**
-     * Guarda los datos de los jugadores en el fichero
+    /*
+     Guarda los datos de los jugadores en el fichero
      */
     public static void guardarDatos() {
         try {
@@ -59,6 +59,9 @@ public class BBDDJuego {
         }
     }//fin guardarDatos 
 
+    /*
+     Carga los datos de los jugadores en el fichero
+    */
     public static void cargarDatos() {
         try {
             //Lectura de los objetos de tipo jugador

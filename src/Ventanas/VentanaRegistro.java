@@ -43,7 +43,10 @@ public class VentanaRegistro extends javax.swing.JFrame {
     public void setInicioSes(boolean inicioSes) {
         this.inicioSes = inicioSes;
     }
-
+    
+    /*
+    El método fechaActual recoge la fecha actual.
+    */
     public static String fechaActual() {
         //Inicializo una variable llamada Date
         Date fecha = new Date();
@@ -197,28 +200,31 @@ public class VentanaRegistro extends javax.swing.JFrame {
 
         if (this.nombreRegistro.getText().equals("") || this.DNIRegistro.getText().equals("")) { //Si los espacios a rellenar para registrarse estan en blanco
             JOptionPane.showMessageDialog(this, "ERROR: No puede dejar campos en blanco.", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            try {
+                BBDDJuego.cargarDatos();
+                String nombre = this.nombreRegistro.getText();
+                String DNI = this.DNIRegistro.getText();
+                LocalDate fechaAct = LocalDate.now();
+                LocalDate fechaReg = LocalDate.parse(fechaAct.format(dtf), dtf);
+                Jugador jugadorNuevo = new Jugador(nombre, DNI, fechaReg, 0);
+                this.jugadorAc = jugadorNuevo;
+                BBDDJuego.altaJugador(jugadorNuevo);
+                BBDDJuego.guardarDatos();
+                this.botonSiguiente.setVisible(true);
+            } catch (NumberFormatException nfe) {//Metodo que utilizaremos para capturar los errores por formato
+                System.out.println(nfe.toString());
+                JOptionPane.showMessageDialog(this, "ERROR: Error de formato numérico: " + nfe.toString(), "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+            } catch (Exception e) {//Método para capturar cualquier posible error
+                JOptionPane.showMessageDialog(this, "ERROR: " + e.toString(), "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+            }
         }
-        try {
-            String nombre = this.nombreRegistro.getText();
-            String DNI = this.DNIRegistro.getText();
-            LocalDate fechaAct = LocalDate.now();
-            LocalDate fechaReg = LocalDate.parse(fechaAct.format(dtf), dtf);
-            Jugador jugadorNuevo = new Jugador(nombre, DNI, fechaReg, 1000);
-            this.jugadorAc = jugadorNuevo;
-            BBDDJuego.altaJugador(jugadorNuevo);
-            BBDDJuego.guardarDatos();
-            this.botonSiguiente.setVisible(true);
-        } catch (NumberFormatException nfe) {//Metodo que utilizaremos para capturar los errores por formato
-            System.out.println(nfe.toString());
-            JOptionPane.showMessageDialog(this, "ERROR: Error de formato numérico: " + nfe.toString(), "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
-        } catch (Exception e) {//Método para capturar cualquier posible error
-            JOptionPane.showMessageDialog(this, "ERROR: " + e.toString(), "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
-        }
+
     }//GEN-LAST:event_botonRegistrarUsActionPerformed
 
 
     private void botonSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSiguienteActionPerformed
-        
+
         this.setInicioSes(true);
         new VentanaDificultad().setVisible(true);
         dispose();

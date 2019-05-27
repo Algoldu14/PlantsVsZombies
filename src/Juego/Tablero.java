@@ -672,6 +672,9 @@ public final class Tablero {
 
     }
 
+    /*
+    El método meterBomba es una función que se pidio en la defensa de la práctica anterior y no pareció correcto dejarlo.
+    */
     public void meterBomba(String comandoJuego) {
 
         String arrayComando[] = comandoJuego.split(" ");
@@ -691,7 +694,10 @@ public final class Tablero {
             }
         }
     }
-
+    
+    /*
+    El método esNumerico comprueba si la cadena introducida son o no números.
+    */
     public static boolean esNumerico(String cadena) {
         try {
             Integer.parseInt(cadena);
@@ -700,7 +706,10 @@ public final class Tablero {
             return false;
         }
     }
-
+    
+    /*
+    El método comprobarComando comprueba si el comando introducido es correcto.
+    */
     public boolean comprobarComando(String comando) { //no funciona xd
 
         String arrayComando[] = comando.split(" ");
@@ -759,7 +768,10 @@ public final class Tablero {
 
         return comandoMal;
     }
-
+    
+    /*
+    El método comprobarPosicionMatriz comprueba si la posición introducida existe en la matriz.
+    */
     public boolean comprobarPosicionMatriz(String comando) {
 
         String arrayComando[] = comando.split(" ");
@@ -773,6 +785,9 @@ public final class Tablero {
         }
     }
 
+    /*
+    El método zombiesLlegan comprueba la columna 0 por si hay un zombie.
+    */
     public boolean zombiesLlegan() {
 
         for (int i = 0; i < this.filas; i++) {

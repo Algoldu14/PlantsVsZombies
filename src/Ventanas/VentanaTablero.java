@@ -1023,6 +1023,9 @@ public class VentanaTablero extends javax.swing.JFrame {
         new VentanaAyuda().setVisible(true);
     }//GEN-LAST:event_botonAyudaActionPerformed
 
+    /*
+    El método darPuntos otorga puntos si el jugador ha ganado.
+    */
     public void darPuntos() {
 
         BBDDJuego.cargarDatos();
@@ -1059,8 +1062,8 @@ public class VentanaTablero extends javax.swing.JFrame {
         }
     }
 
-    /**
-     * Esta funcion imprime el tablero en la interfaz
+    /*
+     Esta funcion imprime el tablero en la interfaz
      */
     public void imprimirTablero() {
 

@@ -163,13 +163,12 @@ public class VentanaDificultad extends javax.swing.JFrame {
     private void botonAJugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAJugarActionPerformed
 
         if (!(this.botonBaja.isSelected()) && !(this.botonMedia.isSelected())
-                && !(this.botonMedia.isSelected()) && !(this.botonAlta.isSelected())) {
+                && !(this.botonMedia.isSelected()) && !(this.botonAlta.isSelected()) && !(this.botonImposible.isSelected())) {
             JOptionPane.showMessageDialog(this, "ERROR: Selecciona una dificultad.", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
         } else {
             new VentanaTablero().setVisible(true);
             dispose();
         }
-
     }//GEN-LAST:event_botonAJugarActionPerformed
 
     private void botonAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAtrasActionPerformed

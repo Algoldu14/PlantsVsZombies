@@ -15,13 +15,13 @@ import java.awt.Color;
  */
 public class VentanaInicio extends javax.swing.JFrame {
 
+    
     /**
      * Creates new form VentanaInicio
      */
     public VentanaInicio() {
         initComponents();
         this.getContentPane().setBackground(Color.darkGray);
-        
     }
 
     /**
@@ -156,7 +156,7 @@ public class VentanaInicio extends javax.swing.JFrame {
 
     private void rankingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rankingActionPerformed
         // TODO add your handling code here:
-        BBDDJuego.cargarDatos();
+        
         VentanaRanking ventana = new VentanaRanking();
         ventana.setVisible(true);
         dispose();
