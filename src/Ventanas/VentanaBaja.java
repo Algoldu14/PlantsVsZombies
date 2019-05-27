@@ -133,10 +133,12 @@ static Jugador jugadorBaja;
     private void botonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConfirmarActionPerformed
         // TODO add your handling code here:
          try {
+             BBDDJuego.cargarDatos();
             jugadorBaja = BBDDJuego.jugadoresR.get(DNIBaja.getText());
             if (DNIBaja.getText().equals("")) {
                 JOptionPane.showMessageDialog(this, "ERROR: No ha introducido un DNI.", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
             } else if (jugadorReg == null) {
+                DNIBaja.setText("");
                 throw new ExcepcionJuego(ExcepcionJuego.USUARIO_NO_EXISTE);
             } else if (DNIBaja.getText().equals(BBDDJuego.jugadoresR.get(DNIBaja.getText()).getDNI())) { //si existe ese usuario
                 BBDDJuego.bajaJugador(DNIBaja.getText());

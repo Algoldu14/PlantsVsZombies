@@ -7,9 +7,7 @@ package Juego;
 
 import Excepciones.ExcepcionJuego;
 import Excepciones.ExcepcionPlanta;
-import Ventanas.VentanaTablero;
 import java.util.Random;
-import javax.swing.JOptionPane;
 
 /**
  *

@@ -201,7 +201,7 @@ public class VentanaRegistro extends javax.swing.JFrame {
             String DNI = this.DNIRegistro.getText();
             LocalDate fechaAct = LocalDate.now();
             LocalDate fechaReg = LocalDate.parse(fechaAct.format(dtf), dtf);
-            Jugador jugadorNuevo = new Jugador(nombre, DNI, fechaReg, 0);
+            Jugador jugadorNuevo = new Jugador(nombre, DNI, fechaReg, 1000);
             this.jugadorAc = jugadorNuevo;
             BBDDJuego.altaJugador(jugadorNuevo);
             BBDDJuego.guardarDatos();

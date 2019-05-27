@@ -56,6 +56,7 @@ public class VentanaIniciarSesion extends javax.swing.JFrame {
         jLabel2.setText("Introduce tu DNI:");
 
         DNIInicioSesion.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        DNIInicioSesion.setForeground(new java.awt.Color(255, 255, 255));
         DNIInicioSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DNIInicioSesionActionPerformed(evt);
@@ -143,8 +144,9 @@ public class VentanaIniciarSesion extends javax.swing.JFrame {
 
     private void BotonSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonSiguienteActionPerformed
         // TODO add your handling code here:
-
+        
         try {
+            BBDDJuego.cargarDatos();
             jugadorReg = BBDDJuego.jugadoresR.get(DNIInicioSesion.getText());
             if (DNIInicioSesion.getText().equals("")) {
                 JOptionPane.showMessageDialog(this, "ERROR: No ha introducido su DNI.", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
