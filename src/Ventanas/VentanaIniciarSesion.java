@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Alvaro
+ * @author Alvaro y Patricia
  */
 public class VentanaIniciarSesion extends javax.swing.JFrame {
     

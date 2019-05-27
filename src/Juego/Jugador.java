@@ -10,7 +10,7 @@ import java.time.LocalDate;
 
 /**
  *
- * @author Alvaro
+ * @author Alvaro y Patricia
  */
 public class Jugador implements Serializable {
 

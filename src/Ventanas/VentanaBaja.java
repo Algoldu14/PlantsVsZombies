@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author patri
+ * @author Alvaro y Patricia
  */
 public class VentanaBaja extends javax.swing.JFrame {
     

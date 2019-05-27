@@ -12,7 +12,7 @@ import javax.swing.JTextArea;
 
 /**
  *
- * @author Alvaro
+ * @author Alvaro y Patricia
  */
 public class VentanaRanking extends javax.swing.JFrame {
     

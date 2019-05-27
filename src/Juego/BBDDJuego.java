@@ -17,7 +17,7 @@ import java.util.HashMap;
 
 /**
  *
- * @author Alvaro
+ * @author Alvaro y Patricia
  */
 public class BBDDJuego {
 

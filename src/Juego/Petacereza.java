@@ -7,7 +7,7 @@ package Juego;
 
 /**
  *
- * @author Alvaro
+ * @author Alvaro y Patricia
  */
 public class Petacereza extends NPC {
     

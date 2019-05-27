@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author patri
+ * @author Alvaro y Patricia
  */
 public class VentanaDificultad extends javax.swing.JFrame {
 

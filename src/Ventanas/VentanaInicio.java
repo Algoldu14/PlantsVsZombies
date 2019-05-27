@@ -11,7 +11,7 @@ import java.awt.Color;
 
 /**
  *
- * @author Alvaro
+ * @author Alvaro y Patricia
  */
 public class VentanaInicio extends javax.swing.JFrame {
 

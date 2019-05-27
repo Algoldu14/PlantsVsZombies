@@ -16,7 +16,7 @@ import Juego.BBDDJuego;
 
 /**
  *
- * @author Alvaro
+ * @author Alvaro y Patricia
  */
 public class VentanaRegistro extends javax.swing.JFrame {
 

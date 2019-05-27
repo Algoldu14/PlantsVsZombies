@@ -9,7 +9,7 @@ import java.awt.Color;
 
 /**
  *
- * @author patri
+ * @author Alvaro y Patricia
  */
 public class VentanaAyuda extends javax.swing.JFrame {
 
